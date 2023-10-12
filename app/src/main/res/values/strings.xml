@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PYGTianguisTraker</string>
+    <string name="ButtonLogin">Iniciar Sesion</string>
+    <string name="registerButton">Registrarse</string>
 </resources>
