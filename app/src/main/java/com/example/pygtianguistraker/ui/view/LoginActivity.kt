@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
 
             val intent= Intent(this, ConsultActivityPublishedAdsbuyer::class.java)
             startActivity(intent)
-            val prueba:String?
+            val Cambiosto:String?
 
 
         }
