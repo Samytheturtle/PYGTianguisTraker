@@ -9,4 +9,6 @@
     <string name="logintitle">Iniciar Sesion</string>
     <string name="intoEmail">Correo electronico</string>
     <string name="contraseña">Ingrese su contraseña</string>
+    <string name="buttonNext">Siguiente</string>
+    <string name="cancel">Cancelar</string>
 </resources>

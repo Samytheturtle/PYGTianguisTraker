@@ -22,8 +22,8 @@ class UserPopRegisterSelect : DialogFragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        val ShowActivityRegisterSeller = view.findViewById<Button>(R.id.registerBuyer)
-        val ShowActivityRegisterBuyer = view.findViewById<Button>(R.id.registerSeller)
+        val ShowActivityRegisterSeller = view.findViewById<Button>(R.id.registerSeller)
+        val ShowActivityRegisterBuyer = view.findViewById<Button>(R.id.registerBuyer)
 
         ShowActivityRegisterSeller.setOnClickListener {
             val intent = Intent(requireContext(),RegisterUserActivitySeller ::class.java)
