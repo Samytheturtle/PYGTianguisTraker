@@ -2,4 +2,11 @@
     <string name="app_name">PYGTianguisTraker</string>
     <string name="ButtonLogin">Iniciar Sesion</string>
     <string name="registerButton">Registrarse</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">¿Como deseas registrarte? </string>
+    <string name="buttonRegisterSeller">Vendedor</string>
+    <string name="buttonRegisterBuyer">Comprador</string>
+    <string name="logintitle">Iniciar Sesion</string>
+    <string name="intoEmail">Correo electronico</string>
+    <string name="contraseña">Ingrese su contraseña</string>
 </resources>
