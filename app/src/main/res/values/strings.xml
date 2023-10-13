@@ -9,7 +9,6 @@
     <string name="logintitle">Iniciar Sesion</string>
     <string name="intoEmail">Correo electronico</string>
     <string name="contraseña">Ingrese su contraseña</string>
-<<<<<<< HEAD
     <string name="buttonNext">Siguiente</string>
     <string name="cancel">Cancelar</string>
     <string name="registro_de_vendedor">Registro de vendedor</string>
@@ -45,6 +44,4 @@
     <string name="UserEmailinformation">correo@example.com</string>
     <string name="Editinformation">Editar informacion</string>
     <string name="deletUser">Eliminar perfil</string>
-=======
->>>>>>> e93d006 (Creacion de fragments y login terminados)
 </resources>

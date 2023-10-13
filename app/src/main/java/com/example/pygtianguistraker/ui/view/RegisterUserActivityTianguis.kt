@@ -200,8 +200,3 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
         })
     }
 }
-
-
-
-
-
