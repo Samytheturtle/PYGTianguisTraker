@@ -17,9 +17,6 @@ class LoginActivity : AppCompatActivity() {
         binding.Loginbutton.setOnClickListener{
             val intent= Intent(this, HomeActivity::class.java)
             startActivity(intent)
-            val Cambiosto:String?
-
-
         }
 
         binding.registerButton.setOnClickListener{
