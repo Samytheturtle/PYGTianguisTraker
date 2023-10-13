@@ -31,7 +31,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ModifyActivityProfile"
+            android:name=".ui.view.ModifyActivityProfileSeller"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.ModifyActivityProfileBuyer"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.ModifyActivityProfileTianguis"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
