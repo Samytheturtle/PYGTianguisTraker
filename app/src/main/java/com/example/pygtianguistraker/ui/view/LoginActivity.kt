@@ -17,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
         binding.Loginbutton.setOnClickListener{
             val intent= Intent(this, HomeActivity::class.java)
             startActivity(intent)
-            val prueba:String?
+            val Cambiosto:String?
 
 
         }
