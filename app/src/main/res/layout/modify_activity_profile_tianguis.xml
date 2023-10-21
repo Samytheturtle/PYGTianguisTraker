@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.view.RegisterUserActivityTianguis">
+
+    <ImageView
+        android:id="@+id/imageViewModifyTianguis"
+        android:layout_width="263dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/round_border"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7ModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/informacion_del_tianguis"
+        android:textColor="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewModifyTianguis" />
+
+    <TextView
+        android:id="@+id/textView8ModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selecciona_el_tianguis"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7ModifyTianguis" />
+
+    <Spinner
+        android:id="@+id/spi_TianguisModifyTianguis"
+        android:layout_width="261dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8ModifyTianguis" />
+
+    <TextView
+        android:id="@+id/textView9ModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/direccion"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spi_TianguisModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_DirectionTianguisModifyTianguis"
+        android:layout_width="261dp"
+        android:layout_height="43dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9ModifyTianguis" />
+
+    <TextView
+        android:id="@+id/textView10ModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/horario"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_DirectionTianguisModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_MondayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lunes"
+        app:layout_constraintEnd_toStartOf="@+id/tv_MondayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10ModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_MondayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10ModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_TuesdayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/martes"
+        app:layout_constraintEnd_toStartOf="@+id/tv_TuesdayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_MondayModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_TuesdayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_MondayModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_WednesdayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/miercoles"
+        app:layout_constraintEnd_toStartOf="@+id/tv_WednesdayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_TuesdayModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_WednesdayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_TuesdayModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_ThursdayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/jueves"
+        app:layout_constraintEnd_toStartOf="@+id/tv_ThursdayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_WednesdayModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_ThursdayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_WednesdayModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_FridayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/viernes"
+        app:layout_constraintEnd_toStartOf="@+id/tv_FridayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_ThursdayModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_FridayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ThursdayModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_SaturdayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sabado"
+        app:layout_constraintEnd_toStartOf="@+id/tv_SaturdayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_FridayModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_SaturdayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_FridayModifyTianguis" />
+
+    <CheckBox
+        android:id="@+id/cb_SundayModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/domingo"
+        app:layout_constraintEnd_toStartOf="@+id/tv_SundayModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_SaturdayModifyTianguis" />
+
+    <TextView
+        android:id="@+id/tv_SundayModifyTianguis"
+        android:layout_width="158dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_SaturdayModifyTianguis" />
+
+    <Button
+        android:id="@+id/bt_RegisterSellerModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:backgroundTint="@color/yellow"
+        android:text="@string/registrar"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_SundayModifyTianguis" />
+
+    <Button
+        android:id="@+id/bt_CancelSellerModifyTianguis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/yellow"
+        android:text="@string/cancelar"
+        android:textColor="@color/blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_RegisterSellerModifyTianguis"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_SundayModifyTianguis"
+        app:layout_constraintVertical_bias="0.818" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

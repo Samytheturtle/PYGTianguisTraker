@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.Loginbutton.setOnClickListener{
-            val intent= Intent(this, ConsultActivityPublishedAdsbuyer::class.java)
+            val intent= Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 

@@ -4,15 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.SettingsActivity">
+    android:background="@color/background"
+    android:backgroundTint="@color/background"
+    tools:context=".ui.view.fragment.SettingsActivity" >
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/textViewSettings"
+        android:layout_width="272dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/Settingstitle"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonChangeLenguage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/buttonChangeLenguage"
+        android:layout_width="202dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/blue"
+        android:text="@string/buttonChangeLenguage"
+        app:layout_constraintBottom_toTopOf="@+id/ButtonSellProducts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ButtonSellProducts"
+        android:layout_width="202dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/blue"
+        android:text="@string/buttonConsultProductSell"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConsultReviews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonConsultReviews"
+        android:layout_width="202dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="120dp"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/blue"
+        android:text="@string/buttonConsultReviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
