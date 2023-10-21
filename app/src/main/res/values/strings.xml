@@ -31,4 +31,15 @@
     <string name="sabado">Sábado</string>
     <string name="domingo">Domingo</string>
     <string name="registrar">Registrar</string>
+    <string name="Qr">QR</string>
+    <string name="Settingstitle">Configuracion</string>
+    <string name="buttonChangeLenguage">Cambiar idioma</string>
+    <string name="buttonConsultProductSell">Productos vendidos</string>
+    <string name="buttonConsultReviews">Consultar Reseñas</string>
+    <string name="tittleInformationUser">Informacion de usuario</string>
+    <string name="usernameText">Nombre de usuario</string>
+    <string name="UserDateInformation">dia mes año</string>
+    <string name="UserEmailinformation">correo@example.com</string>
+    <string name="Editinformation">Editar informacion</string>
+    <string name="deletUser">Eliminar perfil</string>
 </resources>
