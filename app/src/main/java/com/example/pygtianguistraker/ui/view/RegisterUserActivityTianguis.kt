@@ -1,5 +1,6 @@
 package com.example.pygtianguistraker.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pygtianguistraker.R
@@ -13,5 +14,15 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = RegisterActivityTianguisBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btCancelSeller.setOnClickListener{
+            val intent= Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btRegisterSeller.setOnClickListener{
+            val intent= Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

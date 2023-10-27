@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ConsultActivityPublishedAdsbuyer"
+            android:name=".ui.view.fragment.ConsultActivityPublishedAdsbuyer"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ModifyActivityProfile"
+            android:name=".ui.view.ModifyActivityProfileSeller"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ConsultActivityProfile"
+            android:name=".ui.view.ModifyActivityProfileBuyer"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.ModifyActivityProfileTianguis"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.ConsultActivityProfile"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -94,7 +112,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ConsultActivityFavProducts"
+            android:name=".ui.view.fragment.ConsultActivityFavProducts"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -112,7 +130,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ConsultActivityListReservedProducts"
+            android:name=".ui.view.fragment.ConsultActivityListReservedProducts"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -121,7 +139,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.SettingsActivity"
+            android:name=".ui.view.fragment.SettingsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -176,6 +194,33 @@
         </activity>
         <activity
             android:name=".ui.view.ShowActivityDetailsProducts"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.UserPopRegisterSelect"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.HometabfragmentAds"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

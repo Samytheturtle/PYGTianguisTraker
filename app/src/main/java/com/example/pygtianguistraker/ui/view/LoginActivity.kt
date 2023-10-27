@@ -1,10 +1,10 @@
 package com.example.pygtianguistraker.ui.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.pygtianguistraker.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.pygtianguistraker.databinding.LoginActivityBinding
+import com.example.pygtianguistraker.ui.view.fragment.UserPopRegisterSelect
 
 class LoginActivity : AppCompatActivity() {
 
@@ -15,9 +15,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.Loginbutton.setOnClickListener{
-
-            val intent= Intent(this, ConsultActivityPublishedAdsbuyer::class.java)
+            val intent= Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.registerButton.setOnClickListener{
+            val dialogFragment = UserPopRegisterSelect()
+            dialogFragment.show(supportFragmentManager, "PopUp")
         }
     }
 }
