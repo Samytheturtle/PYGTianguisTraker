@@ -1,0 +1,29 @@
+[33mcommit 75c593201c5131377801da66077187823bcc4ae1[m[33m ([m[1;36mHEAD -> [m[1;32mxavier[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/PYGTianguisTraker-V-Alfa-1.0_XAVI_1.0[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: ElderBike4 <estebanelder4@gmail.com>
+Date:   Thu Oct 12 18:50:54 2023 -0600
+
+    Agregando el fondo y los colores
+
+[33mcommit 661652b98578fd8aeef7e5855844c21d7f1600ee[m
+Author: SAMUEL <samy.srzcln@gmail.com>
+Date:   Thu Oct 12 09:32:11 2023 -0600
+
+    Creacion de los archivos para trabajar y continuaacion de la navegabilidad del proyecto (Recuerden usar binding y el String.xml para establecer el nombre de los botones, campos de text, etc etc etc)
+
+[33mcommit e4a389c54581f37a37d29d2f5ea204dc9a1ddbc5[m
+Author: 7theturtle <samy.srzcln@gmail.com>
+Date:   Wed Oct 11 17:03:34 2023 -0600
+
+    Commit Reacomodacion de los archivos y creacion de la navegacion
+
+[33mcommit 7a4808574cbbef44d4c18bfd4798697a40dfc9de[m
+Author: 7theturtle <samy.srzcln@gmail.com>
+Date:   Wed Oct 11 17:02:42 2023 -0600
+
+    Commit Reacomodacion de los archivos y creacion de la navegacion
+
+[33mcommit bd5af87f61375c78a84fe7ba2f97e92290f5fc4e[m
+Author: 7theturtle <samy.srzcln@gmail.com>
+Date:   Mon Oct 9 19:25:56 2023 -0600
+
+    Initial commit
