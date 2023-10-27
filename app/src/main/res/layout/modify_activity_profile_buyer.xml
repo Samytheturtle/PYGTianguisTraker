@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/fecha_de_nacimiento"
+        android:text="@string/correo_electronico"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,11 +83,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/correo_electronico"
+        android:text="@string/ubicacion"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_BirthdateModifySeller" />
 
@@ -206,16 +205,6 @@
         tools:layout_editor_absoluteY="122dp"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/et_NameModifyBuyer"
-        android:layout_width="261dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2ModifySeller" />
-
 
     <EditText
         android:id="@+id/et_EmailModifyBuyer"
@@ -240,19 +229,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_BirthdateModifySeller" />
+        app:layout_constraintTop_toBottomOf="@+id/et_ConfirmPasswordModifyBuyer" />
 
-    <EditText
-        android:id="@+id/et_EmailModifyBuyer"
-        android:layout_width="261dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4ModifySeller"
-        tools:ignore="DuplicateIds" />
 
     <TextView
         android:id="@+id/textView5ModifyBuyer"

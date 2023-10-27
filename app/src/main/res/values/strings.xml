@@ -14,6 +14,7 @@
     <string name="registro_de_vendedor">Registro de vendedor</string>
     <string name="registro_de_comprador">Registro de comprador</string>
     <string name="nombre_completo">Nombre completo:</string>
+    <string name="ubicacion">Ubicacion:</string>
     <string name="fecha_de_nacimiento">Fecha de nacimiento:</string>
     <string name="correo_electronico">Correo Electronico:</string>
     <string name="contrasena">Contraseña:</string>
