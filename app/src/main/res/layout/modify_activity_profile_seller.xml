@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".ui.view.RegisterUserActivitybuyer">
+    tools:context=".ui.view.RegisterUserActivitySeller">
+
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewModifySeller"
         android:layout_width="263dp"
         android:layout_height="69dp"
         android:layout_marginTop="4dp"
@@ -19,56 +20,56 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewModifySeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Registro de vendedor"
+        android:text="@string/registro_de_vendedor"
         android:textColor="@color/blue"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewModifySeller" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView2ModifySeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre completo: "
-        android:textSize="20dp"
+        android:text="@string/nombre_completo"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewModifySeller" />
 
     <EditText
-        android:id="@+id/et_Name"
+        android:id="@+id/et_NameModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="8dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2ModifySeller" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView3ModifySeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/correo_electronico"
-        android:textSize="20dp"
+        android:text="@string/fecha_de_nacimiento"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_NameModifySeller" />
 
     <EditText
-        android:id="@+id/et_Birthdate"
+        android:id="@+id/et_BirthdateModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -76,23 +77,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3ModifySeller" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView4ModifySeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/ubicacion"
-        android:textSize="20dp"
+        android:text="@string/correo_electronico"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Birthdate" />
+        app:layout_constraintTop_toBottomOf="@+id/et_BirthdateModifySeller" />
 
     <EditText
-        android:id="@+id/et_Email"
+        android:id="@+id/et_EmailModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
@@ -100,23 +101,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4ModifySeller" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView5ModifySeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Contraseña:"
-        android:textSize="20dp"
+        android:text="@string/contrasena"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_EmailModifySeller" />
 
     <EditText
-        android:id="@+id/et_Password"
+        android:id="@+id/et_PasswordModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="8dp"
@@ -126,22 +127,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5ModifySeller" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView6ModifySeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Confirmar contraseña:"
-        android:textSize="20dp"
+        android:text="@string/confirmar_contrasena"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_PasswordModifySeller" />
 
     <EditText
-        android:id="@+id/et_ConfirmPassword"
+        android:id="@+id/et_ConfirmPasswordModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
@@ -150,37 +151,37 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6ModifySeller" />
 
     <Button
-        android:id="@id/bt_NextSeller"
+        android:id="@+id/bt_NextSellerModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/yellow"
-        android:text="@string/buttonNext"
+        android:text="@string/siguiente"
         android:textColor="@color/blue"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ConfirmPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/et_ConfirmPasswordModifySeller" />
 
     <Button
-        android:id="@id/bt_CancelSeller"
+        android:id="@+id/bt_CancelSellerModifySeller"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/yellow"
-        android:text="@string/cancel"
+        android:text="@string/cancelar"
         android:textColor="@color/blue"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_NextSeller"
+        app:layout_constraintTop_toBottomOf="@+id/bt_NextSellerModifySeller"
         app:layout_constraintVertical_bias="0.157" />
 
 
