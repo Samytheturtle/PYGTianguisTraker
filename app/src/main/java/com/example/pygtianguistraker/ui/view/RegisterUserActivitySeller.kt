@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pygtianguistraker.data.model.UserSeller
 import com.example.pygtianguistraker.databinding.RegisterActivitySellerBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -15,6 +16,10 @@ class RegisterUserActivitySeller : AppCompatActivity(){
     private lateinit var binding:RegisterActivitySellerBinding
     private lateinit var message :String
     private val calendar = Calendar.getInstance()
+    private lateinit var name:String
+    private lateinit var email:String
+    private lateinit var password:String
+    private lateinit var date:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +30,12 @@ class RegisterUserActivitySeller : AppCompatActivity(){
                 Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
             }else{
                 if(validPassword()){
+                    val user = UserSeller(0,name,"",email,password,"","","","","","","",0,date)
                     val intent= Intent(this, RegisterUserActivityTianguis::class.java)
+                    intent.putExtra("nombreVendedor",user.nombreVendedor);
+                    intent.putExtra("correo",user.correoVendedor)
+                    intent.putExtra("date",user.fechaNacimientoVendedor)
+                    intent.putExtra("password",user.contraseniaVendedor)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
@@ -45,21 +55,25 @@ class RegisterUserActivitySeller : AppCompatActivity(){
 
     }
     private fun validData(): Boolean{
+        name = binding.etName.text.toString().trim()
+        email = binding.etEmail.text.toString().trim()
+        date = binding.etBirthdate.text.toString().trim()
+        password = binding.etPassword.text.toString().trim()
         var validation: Boolean
         validation = true
-        if(binding.etName.text.toString().trim().isEmpty()){
+        if(name.isEmpty()){
             validation = false
             message = "El nombre no puede estar vacio"
         }
-        if(binding.etEmail.text.toString().trim().isEmpty()){
+        if(email.isEmpty()){
             validation = false
             message = "El correo no puede estar vacio"
         }
-        if(binding.etBirthdate.text.toString().trim().isEmpty()){
+        if(date.isEmpty()){
             validation = false
             message = "La fecha de nacimiento no puede estar vacia"
         }
-        if(binding.etPassword.text.toString().trim().isEmpty()) {
+        if(password.isEmpty()) {
             validation = false
             message = "La contraseña no puede estar vacia"
         }

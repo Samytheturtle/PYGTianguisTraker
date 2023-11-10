@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:text="Lunes"
         app:layout_constraintEnd_toStartOf="@+id/tv_Monday"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -118,6 +118,7 @@
         android:id="@+id/tv_Tuesday"
         android:layout_width="158dp"
         android:layout_height="43dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Monday" />
@@ -128,7 +129,7 @@
         android:layout_height="wrap_content"
         android:text="Miercoles"
         app:layout_constraintEnd_toStartOf="@+id/tv_Wednesday"
-        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Tuesday" />
 
@@ -136,7 +137,7 @@
         android:id="@+id/tv_Wednesday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Tuesday" />
@@ -145,6 +146,7 @@
         android:id="@+id/cb_Thursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Jueves"
         app:layout_constraintEnd_toStartOf="@+id/tv_Thursday"
         app:layout_constraintHorizontal_bias="0.718"
@@ -164,6 +166,7 @@
         android:id="@+id/cb_Friday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Viernes"
         app:layout_constraintEnd_toStartOf="@+id/tv_Friday"
         app:layout_constraintHorizontal_bias="0.747"
@@ -174,7 +177,7 @@
         android:id="@+id/tv_Friday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Thursday" />
