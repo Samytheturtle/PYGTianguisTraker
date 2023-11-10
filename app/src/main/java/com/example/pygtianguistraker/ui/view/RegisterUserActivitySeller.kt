@@ -33,9 +33,9 @@ class RegisterUserActivitySeller : AppCompatActivity(){
                     val user = UserSeller(0,name,"",email,password,"","","","","","","",0,date)
                     val intent= Intent(this, RegisterUserActivityTianguis::class.java)
                     intent.putExtra("nombreVendedor",user.nombreVendedor);
-                    intent.putExtra("correo",user.correoVendedor)
+                    intent.putExtra("correo",user.correoUsuario)
                     intent.putExtra("date",user.fechaNacimientoVendedor)
-                    intent.putExtra("password",user.contraseniaVendedor)
+                    intent.putExtra("password",user.contraseniaUsuario)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
