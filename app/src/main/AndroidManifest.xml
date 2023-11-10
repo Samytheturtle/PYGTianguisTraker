@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,12 +22,27 @@
         android:theme="@style/Theme.PYGTianguisTraker"
         tools:targetApi="31">
         <activity
+            android:name=".ui.view.ModifyAdImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.CreateAdImageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_create_ad_image"
+            android:theme="@style/Theme.PYGTianguisTraker" />
+        <activity
             android:name=".ui.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.OptionsLoadImageFragment"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
@@ -67,7 +91,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.ModifyActivityAds"
+            android:name=".ui.view.ModifyAdActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,7 +100,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.CreateActivityAds"
+            android:name=".ui.view.CreateAdActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -139,16 +163,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.fragment.SettingsActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.view.ChangeActivityLenguage"
+            android:name=".ui.view.fragment.SettingsFragment"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -202,7 +217,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.view.fragment.UserPopRegisterSelect"
+            android:name=".ui.view.fragment.UserPopRegisterSelectFragment"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

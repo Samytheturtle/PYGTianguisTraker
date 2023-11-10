@@ -9,7 +9,7 @@ import com.example.pygtianguistraker.ui.view.fragment.ConsultActivityFavProducts
 import com.example.pygtianguistraker.ui.view.fragment.ConsultActivityListReservedProducts
 import com.example.pygtianguistraker.ui.view.fragment.ConsultActivityProfile
 import com.example.pygtianguistraker.ui.view.fragment.HometabfragmentAds
-import com.example.pygtianguistraker.ui.view.fragment.SettingsActivity
+import com.example.pygtianguistraker.ui.view.fragment.SettingsFragment
 
 class HomeActivity : AppCompatActivity(){
     private lateinit var binding: HomeActivityBinding
@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity(){
                 R.id.home -> setFragment(HometabfragmentAds())
                 R.id.favorite -> setFragment(ConsultActivityFavProducts())
                 R.id.separates -> setFragment(ConsultActivityListReservedProducts())
-                R.id.settings -> setFragment(SettingsActivity())
+                R.id.settings -> setFragment(SettingsFragment())
                 R.id.User -> setFragment(ConsultActivityProfile())
                 else -> { }
             }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.view.ModifyAdActivity">
+
+    <ImageView
+        style="@style/style_logo"
+        android:id="@+id/ivLogo"
+        android:contentDescription="@string/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/style_title"
+        android:id="@+id/tvModifyAd"
+        android:text="@string/modify_ad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+
+    <TextView
+        style="@style/style_label"
+        android:id="@+id/tvName"
+        android:text="@string/name_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvModifyAd" />
+
+    <EditText
+        style="@style/style_text_input"
+        android:id="@+id/etEditedName"
+        android:background="@color/white"
+        android:inputType="text"
+        android:importantForAutofill="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        style="@style/style_label"
+        android:id="@+id/tvPrice"
+        android:text="@string/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditedName" />
+
+    <EditText
+        style="@style/style_text_input"
+        android:id="@+id/etEditedPrice"
+        android:background="@color/white"
+        android:inputType="numberDecimal"
+        android:importantForAutofill="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        style="@style/style_label"
+        android:id="@+id/tvQuantity"
+        android:text="@string/quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditedPrice" />
+
+    <EditText
+        style="@style/style_text_input"
+        android:id="@+id/etEditedQuantity"
+        android:background="@color/white"
+        android:inputType="number"
+        android:importantForAutofill="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuantity"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        style="@style/style_label"
+        android:id="@+id/tvState"
+        android:text="@string/state"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditedQuantity" />
+
+    <EditText
+        style="@style/style_text_input"
+        android:id="@+id/etEditedState"
+        android:background="@color/white"
+        android:inputType="numberDecimal"
+        android:importantForAutofill="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvState"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        style="@style/style_label"
+        android:id="@+id/tvType"
+        android:text="@string/type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditedState" />
+
+    <Spinner
+        style="@style/style_text_input"
+        android:id="@+id/spEditedType"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvType" />
+
+    <Button
+        style="@style/style_button"
+        android:id="@+id/btNextModifyAdImage"
+        android:text="@string/next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spEditedType" />
+
+    <Button
+        style="@style/style_button"
+        android:id="@+id/btCancelModifyAd"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btNextModifyAdImage"
+        app:layout_constraintVertical_bias="0.157" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
