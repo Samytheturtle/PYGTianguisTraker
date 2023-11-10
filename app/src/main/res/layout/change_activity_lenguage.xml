@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     tools:context=".ui.view.ChangeActivityLenguage">
 
-    <ImageView
-        android:id="@+id/imageViewModifySeller"
-        android:layout_width="263dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/round_border"
-        android:src="@drawable/logo"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26999998"
+        app:menu="@menu/bottom_nav_seller" />
 
 
     <TextView
@@ -24,11 +25,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cambiar_lenguaje"
-        android:textSize="18sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewModifySeller"
+        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="18dp"
         app:layout_constraintBottom_toTopOf="@+id/spinnerLanguage"
         android:layout_marginTop="16dp"/>
 
