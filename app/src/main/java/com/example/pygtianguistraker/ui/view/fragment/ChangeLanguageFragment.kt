@@ -7,34 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.ui.view.RegisterUserActivitySeller
 import com.example.pygtianguistraker.ui.view.RegisterUserActivitybuyer
 
-class UserPopRegisterSelect : DialogFragment() {
+class ChangeLanguageFragment : DialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_pop_register_select, container, false)
+        return inflater.inflate(R.layout.fragment_change_language, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
-        val ShowActivityRegisterSeller = view.findViewById<Button>(R.id.registerSeller)
-        val ShowActivityRegisterBuyer = view.findViewById<Button>(R.id.registerBuyer)
+        val spanishLanguage = view.findViewById<Button>(R.id.buttonSpanish)
+        val englishLanguage = view.findViewById<Button>(R.id.buttonEnglish)
 
-        ShowActivityRegisterSeller.setOnClickListener {
-            val intent = Intent(requireContext(),RegisterUserActivitySeller ::class.java)
-            startActivity(intent)
-            dismiss()
+        spanishLanguage.setOnClickListener {
+
         }
-        ShowActivityRegisterBuyer.setOnClickListener {
-            val intent = Intent(requireContext(), RegisterUserActivitybuyer::class.java)
-            startActivity(intent)
-            dismiss()
+        englishLanguage.setOnClickListener {
+
         }
     }
-
 }

@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:backgroundTint="@color/background"
-    tools:context=".ui.view.fragment.SettingsActivity" >
+    tools:context=".ui.view.fragment.SettingsFragment" >
 
     <TextView
         android:id="@+id/textViewSettings"
         android:layout_width="272dp"
         android:layout_height="55dp"
         android:layout_marginTop="144dp"
-        android:text="@string/Settingstitle"
+        android:text="@string/settings"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="34sp"
@@ -31,7 +31,7 @@
         android:layout_marginBottom="36dp"
         android:backgroundTint="@color/yellow"
         android:textColor="@color/blue"
-        android:text="@string/buttonChangeLenguage"
+        android:text="@string/change_language"
         app:layout_constraintBottom_toTopOf="@+id/ButtonSellProducts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
@@ -44,7 +44,7 @@
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/yellow"
         android:textColor="@color/blue"
-        android:text="@string/buttonConsultProductSell"
+        android:text="@string/sold_products"
         app:layout_constraintBottom_toTopOf="@+id/buttonConsultReviews"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
@@ -57,7 +57,7 @@
         android:layout_marginBottom="120dp"
         android:backgroundTint="@color/yellow"
         android:textColor="@color/blue"
-        android:text="@string/buttonConsultReviews"
+        android:text="@string/consult_reviews"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
