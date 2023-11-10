@@ -13,6 +13,7 @@
     <string name="cancel">Cancelar</string>
     <string name="registro_de_vendedor">Registro de vendedor</string>
     <string name="registro_de_comprador">Registro de comprador</string>
+    <string name="modificar_de_comprador">Modificar perfil</string>
     <string name="nombre_completo">Nombre completo:</string>
     <string name="ubicacion">Ubicacion:</string>
     <string name="fecha_de_nacimiento">Fecha de nacimiento:</string>
@@ -44,4 +45,7 @@
     <string name="UserEmailinformation">correo@example.com</string>
     <string name="Editinformation">Editar informacion</string>
     <string name="deletUser">Eliminar perfil</string>
+    <string name="cambiar_lenguaje">Selecciona el lenguaje</string>
+    <string name="cambiar_a_espanol">Cambiar a español</string>
+    <string name="aceptar">Aceptar</string>
 </resources>

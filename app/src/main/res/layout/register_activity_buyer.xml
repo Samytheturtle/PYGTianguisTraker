@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Registro de vendedor"
-        android:textColor="@color/blue"
+        android:text="@string/registro_de_comprador"
+        android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Nombre completo: "
         android:textSize="20dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -61,6 +62,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/correo_electronico"
         android:textSize="20dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -68,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_Name" />
 
     <EditText
-        android:id="@+id/et_Birthdate"
+        android:id="@+id/et_Email"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -85,14 +87,15 @@
         android:layout_marginTop="16dp"
         android:text="@string/ubicacion"
         android:textSize="20dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Birthdate" />
+        app:layout_constraintTop_toBottomOf="@+id/et_Email" />
 
     <EditText
-        android:id="@+id/et_Email"
+        android:id="@+id/et_Ubicacion"
         android:layout_width="261dp"
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
@@ -110,10 +113,11 @@
         android:text="Contraseña:"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_Email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_Ubicacion" />
 
     <EditText
         android:id="@+id/et_Password"
@@ -136,6 +140,7 @@
         android:text="Confirmar contraseña:"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_Password" />
@@ -159,7 +164,7 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/yellow"
         android:text="@string/buttonNext"
-        android:textColor="@color/blue"
+        android:textColor="@color/azul_marino"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -174,7 +179,7 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/yellow"
         android:text="@string/cancel"
-        android:textColor="@color/blue"
+        android:textColor="@color/azul_marino"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
