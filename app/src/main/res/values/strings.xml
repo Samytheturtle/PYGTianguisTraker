@@ -48,4 +48,6 @@
     <string name="cambiar_lenguaje">Selecciona el lenguaje</string>
     <string name="cambiar_a_espanol">Cambiar a español</string>
     <string name="aceptar">Aceptar</string>
+    <string name="lista_favoritos">Lista de Favoritos</string>
+    <string name="lista_reservados">Productos Reservados</string>
 </resources>
