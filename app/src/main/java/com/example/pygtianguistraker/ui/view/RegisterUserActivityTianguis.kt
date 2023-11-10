@@ -30,9 +30,10 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
         setContentView(binding.root)
 
         seller.nombreVendedor = intent.getSerializableExtra("nombreVendedor").toString()
-        seller.correoVendedor = intent.getSerializableExtra("correo").toString()
-        seller.contraseniaVendedor = intent.getSerializableExtra("password").toString()
+        seller.correoUsuario = intent.getSerializableExtra("correo").toString()
+        seller.contraseniaUsuario = intent.getSerializableExtra("password").toString()
         seller.fechaNacimientoVendedor = intent.getSerializableExtra("date").toString()
+        seller.calificacionVendedor ="0";
         getTianguis()
         binding.btCancelSeller.setOnClickListener{
             val intent= Intent(this, LoginActivity::class.java)
