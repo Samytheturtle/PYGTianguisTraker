@@ -52,4 +52,5 @@
     <string name="lista_reservados">Productos Reservados</string>
     <string name="write_review">Escribe tu reseña en el recuadro de abajo</string>
     <string name="save_review">Guardar reseña</string>
+    <string name="product_name">Producto: </string>
 </resources>

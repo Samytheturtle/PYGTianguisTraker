@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/white"
     tools:context=".ui.view.fragment.ConsultActivityListReservedProducts">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/framelayoutSeller"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,22 +38,23 @@
         android:id="@+id/framelayoutSeller"
         android:layout_width="404dp"
         android:layout_height="653dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintBottom_toBottomOf="wrap_content"
+        app:layout_constraintEnd_toEndOf="wrap_content"
+        android:paddingTop="15dp"
         app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/textViewReserved" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewReserved" >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewfavProduct"
+        android:id="@+id/recyclerViewReservedProduct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewReserved" />
 
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
