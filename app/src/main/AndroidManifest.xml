@@ -6,10 +6,17 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+=======
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
 
     <application
         android:allowBackup="true"
@@ -24,6 +31,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.view.ModifyAdImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.view.CreateAdImageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_create_ad_image"
+            android:theme="@style/Theme.PYGTianguisTraker" />
+        <activity
             android:name=".ui.view.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -32,24 +47,78 @@
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".ui.view.ModifyActivityProfileSeller"
+=======
+            android:name=".ui.view.fragment.OptionsLoadImageFragment"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.ConsultActivityPublishedAdsbuyer"
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
             android:exported="true">
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".ui.view.ModifyActivityProfileBuyer"
+=======
+            android:name=".ui.view.ModifyActivityProfileSeller"
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
             android:exported="true">
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".ui.view.ModifyActivityProfileTianguis"
             android:exported="true">
         </activity>
         <activity
             android:name=".ui.view.fragment.ConsultActivityProfile"
+=======
+            android:name=".ui.view.ModifyActivityProfileBuyer"
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
             android:exported="true">
         </activity>
         <activity
-            android:name=".ui.view.ModifyActivityAds"
+            android:name=".ui.view.ModifyActivityProfileTianguis"
             android:exported="true">
+<<<<<<< HEAD
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.ConsultActivityProfile"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.ModifyAdActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.CreateAdActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
         </activity>
         <activity
             android:name=".ui.view.RegisterUserActivitySeller"
@@ -62,6 +131,23 @@
         <activity
             android:name=".ui.view.fragment.ConsultActivityFavProducts"
             android:exported="true">
+<<<<<<< HEAD
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.ConsultActivityFavProducts"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
         </activity>
         <activity
             android:name=".ui.view.RegisterUserActivityTianguis"
@@ -70,6 +156,23 @@
         <activity
             android:name=".ui.view.fragment.ConsultActivityListReservedProducts"
             android:exported="true">
+<<<<<<< HEAD
+=======
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.SettingsFragment"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> 22b3fa335f2cef3cf042791983bd9bd0b6ff6de4
         </activity>
         <activity
             android:name=".ui.view.ConsultActivityListSellProducts"
@@ -101,6 +204,33 @@
             android:name=".ui.view.HomeActivity"
             android:exported="true">
 
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.UserPopRegisterSelectFragment"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.fragment.HometabfragmentAds"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.view.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
