@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pygtianguistraker.databinding.LoginActivityBinding
-import com.example.pygtianguistraker.ui.view.fragment.UserPopRegisterSelect
+import com.example.pygtianguistraker.ui.view.fragment.UserPopRegisterSelectFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.registerButton.setOnClickListener{
-            val dialogFragment = UserPopRegisterSelect()
+            val dialogFragment = UserPopRegisterSelectFragment()
             dialogFragment.show(supportFragmentManager, "PopUp")
         }
     }

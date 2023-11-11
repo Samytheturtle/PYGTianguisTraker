@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="style_logo">
+        <item name="android:layout_width">263dp</item>
+        <item name="android:layout_height">69dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:background">@drawable/round_border</item>
+        <item name="android:src">@drawable/logo</item>
+    </style>
+
+    <style name="style_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:background">@drawable/round_border</item>
+        <item name="android:src">@drawable/without_image</item>
+    </style>
+
+    <style name="style_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintHorizontal_bias">0.495</item>
+    </style>
+
+    <style name="style_title_fragment">
+        <item name="android:layout_width">374dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintVertical_bias">0.913</item>
+    </style>
+
+    <style name="style_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintHorizontal_bias">0.497</item>
+    </style>
+
+    <style name="style_text_input">
+        <item name="android:layout_width">261dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="style_button">
+        <item name="android:layout_width">261dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:backgroundTint">@color/yellow</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_button_fragment">
+        <item name="android:layout_width">255dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:backgroundTint">@color/yellow</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="style_button_carrousel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:backgroundTint">@color/yellow</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_image_button">
+        <item name="android:layout_width">261dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="style_image_switcher">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">400dp</item>
+    </style>
+
+    <style name="style_relative_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="style_linear_layout_horizontal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+</resources>

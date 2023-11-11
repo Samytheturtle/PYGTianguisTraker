@@ -5,28 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
-    tools:context=".ui.view.fragment.UserPopRegisterSelectFragment">
+    tools:context=".ui.view.fragment.ChangeLanguageFragment">
 
     <TextView
         android:layout_width="374dp"
         android:layout_height="72dp"
-        android:text="@string/how_do_you_want_register_you"
+        android:text="@string/change_language"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/registerBuyer"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSpanish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.913" />
 
     <Button
-        android:id="@+id/registerSeller"
+        android:id="@+id/buttonSpanish"
         android:layout_width="252dp"
         android:layout_height="59dp"
         android:layout_marginBottom="76dp"
-        android:text="@string/seller"
+        android:text="@string/spanish"
         android:backgroundTint="@color/yellow"
         android:textColor="@color/blue"
         android:textSize="20sp"
@@ -36,11 +36,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/registerBuyer"
+        android:id="@+id/buttonEnglish"
         android:layout_width="255dp"
         android:layout_height="48dp"
         android:layout_marginBottom="140dp"
-        android:text="@string/buyer"
+        android:text="@string/english"
         android:textSize="20sp"
         android:backgroundTint="@color/yellow"
         android:textColor="@color/blue"
