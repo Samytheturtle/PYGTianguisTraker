@@ -1,15 +1,12 @@
 package com.example.pygtianguistraker.data.network
 
+import com.example.pygtianguistraker.data.model.AuthResponse
+import com.example.pygtianguistraker.data.model.User
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface LoginApiClient {
-    @FormUrlEncoded
-    @POST("/api/accsess/login")
-    fun loginUser(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): Call<Int> // Aquí asumo que la ID se devuelve como un entero, puedes ajustarlo según la respuesta real de tu API
+    @POST("/api/access/")
+    fun loginUser(@Body user: User): Call<AuthResponse>
 }
