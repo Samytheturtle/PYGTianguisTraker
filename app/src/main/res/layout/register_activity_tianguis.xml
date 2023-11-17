@@ -87,11 +87,15 @@
 
     <CheckBox
         android:id="@+id/cb_Monday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Lunes"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Monday"
-        app:layout_constraintHorizontal_bias="0.672"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -99,16 +103,19 @@
         android:id="@+id/tv_Monday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <CheckBox
         android:id="@+id/cb_Tuesday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Martes"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Tuesday"
         app:layout_constraintHorizontal_bias="0.718"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,18 +125,20 @@
         android:id="@+id/tv_Tuesday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Monday" />
 
     <CheckBox
         android:id="@+id/cb_Wednesday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Miercoles"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Wednesday"
-        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Tuesday" />
 
@@ -137,19 +146,20 @@
         android:id="@+id/tv_Wednesday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Tuesday" />
 
     <CheckBox
         android:id="@+id/cb_Thursday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Jueves"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Thursday"
-        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Wednesday" />
 
@@ -157,19 +167,20 @@
         android:id="@+id/tv_Thursday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Wednesday" />
 
     <CheckBox
         android:id="@+id/cb_Friday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Viernes"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Friday"
-        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Thursday" />
 
@@ -177,18 +188,20 @@
         android:id="@+id/tv_Friday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Thursday" />
 
     <CheckBox
         android:id="@+id/cb_Saturday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Sabado"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Saturday"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Friday" />
 
@@ -196,18 +209,20 @@
         android:id="@+id/tv_Saturday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Friday" />
 
     <CheckBox
         android:id="@+id/cb_Sunday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Domingo"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Sunday"
-        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Saturday" />
 
@@ -215,7 +230,6 @@
         android:id="@+id/tv_Sunday"
         android:layout_width="158dp"
         android:layout_height="43dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Saturday" />
@@ -232,7 +246,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Sunday" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Sunday"
+        app:layout_constraintVertical_bias="0.682" />
 
     <Button
         android:id="@+id/bt_CancelSeller"
