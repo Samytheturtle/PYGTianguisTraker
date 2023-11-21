@@ -110,4 +110,5 @@
     <string name="buyer">Comprador</string>
     <string name="spanish">Español</string>
     <string name="english">Inglés</string>
+    <string name="register_buyer">Registrar Comprador</string>
 </resources>

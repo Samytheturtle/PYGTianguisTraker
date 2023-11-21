@@ -122,7 +122,6 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
             override fun onResponse(call: Call<UserSeller>, response: Response<UserSeller>) {
                 if(response.isSuccessful){
                     Toast.makeText(applicationContext, "Vendedor registrado", Toast.LENGTH_SHORT).show()
-
                 }else{
                     println(response)
                     println(seller.toString())
