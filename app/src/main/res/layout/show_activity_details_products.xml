@@ -28,7 +28,7 @@
         android:textStyle="bold"
         android:paddingTop="15dp"
         android:layout_marginStart="15dp"
-        app:layout_constraintEnd_toEndOf="15dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView"/>
 
@@ -49,7 +49,7 @@
         android:textStyle="bold"
         android:paddingTop="105dp"
         android:layout_marginStart="15dp"
-        app:layout_constraintEnd_toEndOf="15dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewProduct"/>
 

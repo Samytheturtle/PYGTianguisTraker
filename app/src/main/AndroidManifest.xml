@@ -26,6 +26,10 @@
         <activity
             android:name=".ui.view.LoginActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.view.ModifyActivityProfileSeller"
@@ -44,7 +48,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".ui.view.ModifyActivityAds"
+            android:name=".ui.view.ModifyAdActivity"
             android:exported="true">
         </activity>
         <activity

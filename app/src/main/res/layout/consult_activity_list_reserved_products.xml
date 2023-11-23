@@ -7,17 +7,6 @@
     android:background="@color/white"
     tools:context=".ui.view.fragment.ConsultActivityListReservedProducts">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26999998"
-        app:menu="@menu/bottom_nav_seller" />
 
     <TextView
         android:id="@+id/textViewReserved"
@@ -30,16 +19,15 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottomNavigationView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <FrameLayout
         android:id="@+id/framelayoutSeller"
         android:layout_width="404dp"
         android:layout_height="653dp"
-        app:layout_constraintBottom_toBottomOf="wrap_content"
-        app:layout_constraintEnd_toEndOf="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:paddingTop="15dp"
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintTop_toBottomOf="@+id/textViewReserved" >

@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/registro_de_vendedor"
+        android:text="@string/modificar_de_comprador"
         android:textColor="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold"
