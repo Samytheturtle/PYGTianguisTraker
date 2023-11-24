@@ -22,7 +22,7 @@ class ConsultActivityListReservedProducts : Fragment(){
         val products = ArrayList<ReservedProduct>()
         products.add(ReservedProduct(R.drawable.buyer_image_placeholder, "Wii U", "$250","Tianguis Revolución"))
         products.add(ReservedProduct(R.drawable.buyer_image_placeholder, "Xbox 360", "$800","Tianguis Revolución"))
-
+        products.add(ReservedProduct(R.drawable.buyer_image_placeholder, "Nintendo Switch", "$2250","Tianguis Revolución"))
         adapter = AdapterReservedProduct(requireContext(), products)
         listView.adapter = adapter
 

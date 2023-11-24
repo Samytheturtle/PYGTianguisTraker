@@ -12,7 +12,6 @@
     <string name="buttonNext">Siguiente</string>
     <string name="registro_de_vendedor">Registro de vendedor</string>
     <string name="registro_de_comprador">Registro de comprador</string>
-    <string name="modificar_de_comprador">Modificar perfil</string>
     <string name="nombre_completo">Nombre completo:</string>
     <string name="ubicacion">Ubicacion:</string>
     <string name="fecha_de_nacimiento">Fecha de nacimiento:</string>
@@ -44,17 +43,6 @@
     <string name="UserEmailinformation">correo@example.com</string>
     <string name="Editinformation">Editar informacion</string>
     <string name="deletUser">Eliminar perfil</string>
-<<<<<<< HEAD
-    <string name="cambiar_lenguaje">Selecciona el lenguaje</string>
-    <string name="cambiar_a_espanol">Cambiar a español</string>
-    <string name="aceptar">Aceptar</string>
-    <string name="lista_favoritos">Lista de Favoritos</string>
-    <string name="lista_reservados">Productos Reservados</string>
-    <string name="write_review">Escribe tu reseña en el recuadro de abajo</string>
-    <string name="save_review">Guardar reseña</string>
-    <string name="product_name">Producto: </string>
-    <string name="price">Precio: </string>
-=======
     =======
 
     <!-- TODO: About images -->
@@ -124,5 +112,4 @@
     <string name="english">Inglés</string>
     <string name="register_buyer">Registrar Comprador</string>
     <string name="title_activity_review_list">ReviewList</string>
->>>>>>> PYGTianguisTraker-V-Alfa-1.0_XAVI_1.0
 </resources>
