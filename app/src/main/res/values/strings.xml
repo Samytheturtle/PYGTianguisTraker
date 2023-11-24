@@ -43,7 +43,7 @@
     <string name="UserEmailinformation">correo@example.com</string>
     <string name="Editinformation">Editar informacion</string>
     <string name="deletUser">Eliminar perfil</string>
-=======
+    =======
 
     <!-- TODO: About images -->
     <string name="logo">Logo</string>
@@ -111,4 +111,5 @@
     <string name="spanish">Español</string>
     <string name="english">Inglés</string>
     <string name="register_buyer">Registrar Comprador</string>
+    <string name="title_activity_review_list">ReviewList</string>
 </resources>
