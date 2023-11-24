@@ -8,11 +8,11 @@ data class ReviewItem(
     val reviewContent: String
 )
 
-// En otra parte de tu código, por ejemplo, en una función de prueba:
+
 fun pruebaReviewItem() {
     val reviewList = ArrayList<ReviewItem>()
     reviewList.add(ReviewItem(R.drawable.buyer_image_placeholder, "Usuario1", "Excelente servicio. Recomendado."))
     reviewList.add(ReviewItem(R.drawable.buyer_image_placeholder, "Usuario2", "Muy buen vendedor. Producto de calidad."))
 
-    // Usar reviewList como datos estáticos para pruebas...
+    // Uso de reviewList como datos estáticos para pruebas...
 }
