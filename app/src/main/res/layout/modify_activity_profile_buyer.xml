@@ -42,12 +42,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
         tools:layout_editor_absoluteY="122dp"
         tools:ignore="MissingConstraints" />
-=======
-        tools:layout_editor_absoluteY="122dp" />
->>>>>>> d7b7758d2de234269693bbaa8536d32746f31636
 
     <EditText
         android:id="@+id/et_NameModifySeller"
