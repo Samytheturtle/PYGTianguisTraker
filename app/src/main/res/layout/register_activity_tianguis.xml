@@ -48,6 +48,7 @@
         android:layout_height="43dp"
         android:layout_marginTop="12dp"
         android:background="@color/white"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -65,9 +66,11 @@
 
     <TextView
         android:id="@+id/tv_DirectionTianguis"
-        android:layout_width="261dp"
-        android:layout_height="43dp"
+        android:layout_width="263dp"
+        android:layout_height="28dp"
         android:background="@color/white"
+        android:text="prueba"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -87,28 +90,37 @@
 
     <CheckBox
         android:id="@+id/cb_Monday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:text="Lunes"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Monday"
-        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/tv_Monday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:text="10:00 - 11:00"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <CheckBox
         android:id="@+id/cb_Tuesday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="5dp"
         android:text="Martes"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Tuesday"
         app:layout_constraintHorizontal_bias="0.718"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,104 +128,126 @@
 
     <TextView
         android:id="@+id/tv_Tuesday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Monday" />
 
     <CheckBox
         android:id="@+id/cb_Wednesday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="5dp"
         android:text="Miercoles"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Wednesday"
-        app:layout_constraintHorizontal_bias="0.882"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Tuesday" />
 
     <TextView
         android:id="@+id/tv_Wednesday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Tuesday" />
 
     <CheckBox
         android:id="@+id/cb_Thursday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="5dp"
         android:text="Jueves"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Thursday"
-        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Wednesday" />
 
     <TextView
         android:id="@+id/tv_Thursday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Wednesday" />
 
     <CheckBox
         android:id="@+id/cb_Friday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="5dp"
         android:text="Viernes"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Friday"
-        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Thursday" />
 
     <TextView
         android:id="@+id/tv_Friday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Thursday" />
 
     <CheckBox
         android:id="@+id/cb_Saturday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="5dp"
         android:text="Sabado"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Saturday"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Friday" />
 
     <TextView
         android:id="@+id/tv_Saturday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Friday" />
 
     <CheckBox
         android:id="@+id/cb_Sunday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="5dp"
         android:text="Domingo"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/tv_Sunday"
-        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Saturday" />
 
     <TextView
         android:id="@+id/tv_Sunday"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_Saturday" />
 
@@ -221,7 +255,8 @@
         android:id="@+id/bt_RegisterSeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/yellow"
         android:text="Registrar"
         android:textColor="@color/blue"
@@ -229,13 +264,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Sunday" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_Sunday"
+        app:layout_constraintVertical_bias="0.791" />
 
     <Button
         android:id="@+id/bt_CancelSeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/yellow"
         android:text="Cancelar"
         android:textColor="@color/blue"
@@ -243,9 +280,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bt_RegisterSeller"
-        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_Sunday"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.744" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

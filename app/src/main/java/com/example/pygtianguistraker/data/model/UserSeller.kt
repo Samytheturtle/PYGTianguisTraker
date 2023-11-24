@@ -1,7 +1,14 @@
 package com.example.pygtianguistraker.data.model
 
-data class UserSeller (val idVendedor : Int ,val nombreVendedor: String,val calificacionVendedor: String,
-    val correoVendedor: String, val contraseniaVendedor: String,val horarioLunesTianguis: String,
-    val horarioMartesVendedor: String,val horarioMiercolesVendedor:String, val horarioJuevesVendedor:String,
-    val horarioViernesVendedor: String,val horarioSabadoVeneddor: String, val horarioDomingoVendedor: String,
-    val idTianguisVendedor: Int, val fechaNacimientoVendedor: String)
+data class UserSeller (var idVendedor : Int,
+                       var nombreVendedor: String, var calificacionVendedor: String,
+                       var correoUsuario: String, var contraseniaUsuario: String, var horarioLunesVendedor: String,
+                       var horarioMartesVendedor: String, var horarioMiercolesVendedor:String, var horarioJuevesVendedor:String,
+                       var horarioViernesVendedor: String, var horarioSabadoVeneddor: String, var horarioDomingoVendedor: String,
+                       var idTianguisVendedor: Int, var fechaNacimientoVendedor: String){
+    constructor() : this(
+        0, "", "", "", "", "",
+        "", "", "", "", "", "",
+        0, ""
+    )
+}

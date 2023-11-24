@@ -10,7 +10,6 @@
     <string name="intoEmail">Correo electronico</string>
     <string name="contraseña">Ingrese su contraseña</string>
     <string name="buttonNext">Siguiente</string>
-    <string name="cancel">Cancelar</string>
     <string name="registro_de_vendedor">Registro de vendedor</string>
     <string name="registro_de_comprador">Registro de comprador</string>
     <string name="modificar_de_comprador">Modificar perfil</string>
@@ -45,6 +44,7 @@
     <string name="UserEmailinformation">correo@example.com</string>
     <string name="Editinformation">Editar informacion</string>
     <string name="deletUser">Eliminar perfil</string>
+<<<<<<< HEAD
     <string name="cambiar_lenguaje">Selecciona el lenguaje</string>
     <string name="cambiar_a_espanol">Cambiar a español</string>
     <string name="aceptar">Aceptar</string>
@@ -54,4 +54,75 @@
     <string name="save_review">Guardar reseña</string>
     <string name="product_name">Producto: </string>
     <string name="price">Precio: </string>
+=======
+    =======
+
+    <!-- TODO: About images -->
+    <string name="logo">Logo</string>
+    <string name="without_image">Sin imágen</string>
+
+    <!-- TODO: About users -->
+    <string name="email">Correo electronico</string>
+    <string name="information_user">Informacion de usuario</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="user_date_information">dia mes año</string>
+    <string name="username_email_information">correo@example.com</string>
+    <string name="password">Contraseña</string>
+    <string name="register_seller">Registro de vendedor</string>
+    <string name="full_name">Nombre completo</string>
+    <string name="birthdate">Fecha de nacimiento</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="information_tianguis">Información del tianguis</string>
+    <string name="select_tianguis">Selecciona el tianguis</string>
+    <string name="direction">Dirección</string>
+    <string name="schedule">Horario</string>
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miercoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+
+    <!-- TODO: About QR -->
+    <string name="qr">QR</string>
+
+    <!-- TODO: About lists -->
+    <string name="sold_products">Productos vendidos</string>
+
+    <!-- TODO: About ads -->
+    <string name="new_ad">Nuevo anuncio</string>
+    <string name="modify_ad">Modificar anuncio</string>
+    <string name="name_product">Nombre del producto</string>
+    <string name="price">Precio</string>
+    <string name="quantity">Cantidad</string>
+    <string name="state">Estado</string>
+    <string name="type">Tipo</string>
+
+    <!-- TODO: About fragments -->
+    <string name="how_do_you_want_register_you">¿Como deseas registrarte? </string>
+    <string name="choose_an_option">Elige una opción</string>
+    <string name="settings">Configuracion</string>
+
+    <!-- TODO: About buttons -->
+    <string name="login">Iniciar Sesión</string>
+    <string name="button_register">Registrarse</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Eliminar perfil</string>
+    <string name="next">Siguiente</string>
+    <string name="register">Registrar</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="consult_reviews">Consultar Reseñas</string>
+    <string name="load_image">Cargar imágen</string>
+    <string name="take_photo">Tomar foto</string>
+    <string name="load_from_gallery">Subir de galería</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="seller">Vendedor</string>
+    <string name="buyer">Comprador</string>
+    <string name="spanish">Español</string>
+    <string name="english">Inglés</string>
+    <string name="register_buyer">Registrar Comprador</string>
+    <string name="title_activity_review_list">ReviewList</string>
+>>>>>>> PYGTianguisTraker-V-Alfa-1.0_XAVI_1.0
 </resources>

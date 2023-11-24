@@ -1,7 +1,8 @@
 package com.example.pygtianguistraker.data.model
 
-class TianguisCollection : ArrayList<Tianguis>()
+class Tianguismodel : ArrayList<Tianguis>()
 data class Tianguis(
+    val idTianguis:Int,
     val nombreTianguis: String,
     val direccionTianguis: String,
     val horarioLunesTianguis: String,

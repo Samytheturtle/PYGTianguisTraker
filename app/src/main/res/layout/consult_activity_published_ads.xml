@@ -26,7 +26,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/yellow"
-        android:text="@string/Qr"
+        android:text="@string/qr"
         android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
