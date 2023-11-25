@@ -18,8 +18,8 @@ class ConsultActivityListReviews : AppCompatActivity() {
         setContentView(binding.root)
 
         val reviewList = ArrayList<ReviewItem>()
-        reviewList.add(ReviewItem(R.drawable.buyer_image_placeholder, "Usuario1", "Excelente servicio. Recomendado."))
-        reviewList.add(ReviewItem(R.drawable.buyer_image_placeholder, "Usuario2", "Muy buen vendedor. Producto de calidad."))
+        reviewList.add(ReviewItem(R.drawable.user_icon, "Usuario1", "Excelente servicio. Recomendado."))
+        reviewList.add(ReviewItem(R.drawable.user_icon, "Usuario2", "Muy buen vendedor. Producto de calidad."))
 
         val adapter = AdapterItem(this, reviewList)
         val listView: ListView = findViewById(R.id.listViewReviews)

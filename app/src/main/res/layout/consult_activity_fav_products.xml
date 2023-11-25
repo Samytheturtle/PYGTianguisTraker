@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,44 +7,21 @@
     android:background="@color/white"
     tools:context=".ui.view.fragment.ConsultActivityFavProducts">
 
-
     <TextView
-        android:id="@+id/textViewFavorites"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewHeader"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Lista favoritos"
-        android:textColor="@color/blue"
-        android:textSize="30sp"
+        android:text="Productos marcados como Favoritos"
+        android:textSize="18sp"
+        android:textColor="#808080"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:padding="16dp"/>
+    <ListView
+        android:id="@+id/listViewFavoriteProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textViewHeader"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
 
-
-    <FrameLayout
-        android:id="@+id/framelayoutSeller"
-        android:layout_width="404dp"
-        android:layout_height="653dp"
-        android:paddingTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFavorites" >
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewfavProduct"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewFavorites" />
-
-    </FrameLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -25,9 +25,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.Loginbutton.setOnClickListener{
-            createUserData()
-                authVerification()
-
+            //createUserData()
+              //  authVerification() !! SE QUITÓ PARA PRUEBAS
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
 
         binding.registerButton.setOnClickListener{

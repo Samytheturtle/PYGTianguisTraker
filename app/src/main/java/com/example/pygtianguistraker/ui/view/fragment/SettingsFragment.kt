@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.ui.view.ConsultActivityListReviews
 import com.example.pygtianguistraker.ui.view.ConsultActivityListSellProducts
+import com.example.pygtianguistraker.ui.view.CreateReviews
 
 class SettingsFragment : Fragment() {
     override fun onCreateView(
@@ -26,6 +27,7 @@ class SettingsFragment : Fragment() {
         val buttonChangeLanguage = view.findViewById<Button>(R.id.buttonChangeLenguage)
         val buttonSellProducts = view.findViewById<Button>(R.id.ButtonSellProducts)
         val buttonConsultReviews = view.findViewById<Button>(R.id.buttonConsultReviews)
+        val buttonCreateReview = view.findViewById<Button>(R.id.buttonCreateReview)
 
         buttonChangeLanguage.setOnClickListener {
             setFragment(ChangeLanguageFragment())
@@ -38,6 +40,11 @@ class SettingsFragment : Fragment() {
 
         buttonConsultReviews.setOnClickListener {
             val intent = Intent(activity, ConsultActivityListReviews::class.java)
+            startActivity(intent)
+        }
+
+        buttonCreateReview.setOnClickListener{
+            val intent = Intent(activity, CreateReviews::class.java)
             startActivity(intent)
         }
 

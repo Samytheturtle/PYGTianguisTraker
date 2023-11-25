@@ -16,8 +16,8 @@ class ConsultActivityListSellProducts: AppCompatActivity() {
         setContentView(binding.root)
 
         val soldProductsList = ArrayList<ItemSold>()
-        soldProductsList.add(ItemSold(R.drawable.buyer_image_placeholder, "Muñeco Jefe Maestro", "$1000."))
-        soldProductsList.add(ItemSold(R.drawable.buyer_image_placeholder, "Halo Infinite", "600."))
+        soldProductsList.add(ItemSold(R.drawable.without_image, "Muñeco Jefe Maestro", "$1000."))
+        soldProductsList.add(ItemSold(R.drawable.without_image, "Halo Infinite", "600."))
 
         val adapter = AdapterSoldItem(this, soldProductsList)
         val listView: ListView = findViewById(R.id.listViewProductsSold)

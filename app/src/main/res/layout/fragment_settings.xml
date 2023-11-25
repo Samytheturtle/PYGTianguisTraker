@@ -51,6 +51,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/buttonCreateReview"
+        android:layout_width="202dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/blue"
+        android:text="@string/create_reviews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/buttonConsultReviews"
         android:layout_width="202dp"
         android:layout_height="48dp"
