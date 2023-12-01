@@ -48,6 +48,9 @@
     <!-- TODO: About images -->
     <string name="logo">Logo</string>
     <string name="without_image">Sin imágen</string>
+    <string name="ic_baseline_star_border_24">M24,2L12,15.3L2,2h20Z</string>
+    <string name="ic_baseline_star_24">M24,12l–7.5,6l2.3-9.1L12,2l-6.8,6.9L4.5,18L12,14.3L19.5,18L17,8.9Z</string>
+
 
     <!-- TODO: About users -->
     <string name="email">Correo electronico</string>
@@ -111,6 +114,5 @@
     <string name="spanish">Español</string>
     <string name="english">Inglés</string>
     <string name="register_buyer">Registrar Comprador</string>
-    <string name="title_activity_review_list">ReviewList</string>
     <string name="create_reviews">Crear reseña</string>
 </resources>

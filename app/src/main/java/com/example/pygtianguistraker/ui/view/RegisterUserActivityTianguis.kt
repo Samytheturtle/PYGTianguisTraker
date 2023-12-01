@@ -45,6 +45,7 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
                 registerSeller()
                 var intent= Intent(this, LoginActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         binding.spiTianguis.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -120,9 +121,18 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
         val result: Call<UserSeller> = service.addSeller(seller)
         result.enqueue(object : Callback<UserSeller>{
             override fun onResponse(call: Call<UserSeller>, response: Response<UserSeller>) {
-                if(response.isSuccessful){
-                    Toast.makeText(applicationContext, "Vendedor registrado", Toast.LENGTH_SHORT).show()
-                }else{
+                if (response.isSuccessful) {
+                    if (response.code() == 409) {
+                        // Código de respuesta 409: Conflicto
+                        Toast.makeText(applicationContext, "Error: Conflicto, el vendedor ya está registrado", Toast.LENGTH_SHORT).show()
+                    } else if(response.code()==200) {
+                        Toast.makeText(applicationContext, "Vendedor registrado", Toast.LENGTH_SHORT).show()
+                    }else{
+                        // Otro código de respuesta diferente de 409
+                        Toast.makeText(applicationContext, "Error en el registro", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+
                     println(response)
                     println(seller.toString())
                 }

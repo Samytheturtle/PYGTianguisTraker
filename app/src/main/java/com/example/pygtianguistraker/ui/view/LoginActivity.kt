@@ -56,7 +56,6 @@ class LoginActivity : AppCompatActivity() {
                     if(response.isSuccessful){
                         loginResponse = response.body()!!
                         handleLoginSuccess()
-                        Log.d("Prueba","Revision de ejecucion ${validateRegister}")
                     }
                 }
 
