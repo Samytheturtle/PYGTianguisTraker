@@ -1,6 +1,6 @@
 package com.example.pygtianguistraker.ui.view
-
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -11,6 +11,7 @@ import com.example.pygtianguistraker.data.model.User
 import com.example.pygtianguistraker.data.network.LoginApiClient
 import com.example.pygtianguistraker.databinding.LoginActivityBinding
 import com.example.pygtianguistraker.ui.view.fragment.UserPopRegisterSelectFragment
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,17 +25,35 @@ class LoginActivity : AppCompatActivity() {
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+
         binding.Loginbutton.setOnClickListener{
-            //createUserData()
-              //  authVerification() !! SE QUITÓ PARA PRUEBAS
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            createUserData()
+            authVerification()
         }
 
         binding.registerButton.setOnClickListener{
             val dialogFragment = UserPopRegisterSelectFragment()
             dialogFragment.show(supportFragmentManager, "PopUp")
         }
+    }
+
+    private fun sharePreferencesPYAndroid(loginResponse: AuthResponse) {
+        // Nombre que identifica tus preferencias compartidas
+        val preferenceName = "my_app_information"
+
+        // Obtiene una instancia de SharedPreferences
+        val prefs: SharedPreferences = getSharedPreferences(preferenceName, MODE_PRIVATE)
+
+        // Obtiene un editor para realizar cambios en las preferencias compartidas
+        val editor: SharedPreferences.Editor = prefs.edit()
+        val gson = Gson()
+        val loginResponseJson = gson.toJson(loginResponse)
+        Log.d("JSONDATA",loginResponseJson.toString())
+
+        editor.putString("datos_usuario", loginResponseJson)
+        editor.apply()
     }
 
     private fun createUserData() {
@@ -55,6 +74,7 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     if(response.isSuccessful){
                         loginResponse = response.body()!!
+                        sharePreferencesPYAndroid(loginResponse)
                         handleLoginSuccess()
                     }
                 }
@@ -70,7 +90,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun handleLoginSuccess() {
-        Log.d("Prueba 2 ", "Revision de ejecución true")
+
         Toast.makeText(applicationContext, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)

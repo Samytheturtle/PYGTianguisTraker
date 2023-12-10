@@ -10,11 +10,12 @@
 
     <SearchView
         android:id="@+id/searchViewAdsHome"
-        android:layout_width="172dp"
-        android:layout_height="35dp"
+        android:layout_width="118dp"
+        android:layout_height="34dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/categorySpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="10dp"
+        android:background="@color/background"
         app:layout_constraintEnd_toStartOf="@+id/tianguisSpinner"
         app:layout_constraintStart_toEndOf="@+id/searchViewAdsHome"
         app:layout_constraintTop_toTopOf="@+id/searchViewAdsHome" />
@@ -35,16 +37,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="20dp"
+        android:background="@color/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/categorySpinner"
         app:layout_constraintTop_toTopOf="@+id/searchViewAdsHome" />
 
-    <ListView
-        android:id="@+id/listViewAdsHome"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAdsHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonAccionHome"
@@ -53,18 +56,21 @@
         app:layout_constraintTop_toBottomOf="@+id/searchViewAdsHome"
         tools:listitem="@layout/fragment_ads_seller" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonAccionHome"
         android:layout_width="108dp"
         android:layout_height="51dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/yellow"
         android:text="@string/qr"
         android:textColor="@color/blue"
+        android:scaleType="fitCenter"
+        android:background="@drawable/buttons_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listViewAdsHome" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewAdsHome" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

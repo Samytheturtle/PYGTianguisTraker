@@ -1,7 +1,6 @@
 package com.example.pygtianguistraker.ui.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AdsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AdsFragment : Fragment() {
+class AdsFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,25 +32,26 @@ class AdsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val reserveButton = view.findViewById<Button>(R.id.reserveButton)
         val detailsButton = view.findViewById<Button>(R.id.detailsButton)
         val favoriteButton = view.findViewById<ImageButton>(R.id.favoriteButton)
+
         // Controlador para el botón de reservar
-        Log.d("funciona", "HOLAAAAAAAAAAAAAAA")
         reserveButton.setOnClickListener {
-            Log.d("funciona", "Reservar clickeado")
             showToast("Reservar clickeado")
         }
 
+        // Controlador para el botón de detalles
         detailsButton.setOnClickListener {
-            Log.d("funciona", "Detalles clickeados")
             showToast("Detalles clickeados")
         }
 
+        // Controlador para el botón de favorito
         favoriteButton.setOnClickListener {
-            Log.d("funciona", "Favorito clickeado")
             showToast("Favorito clickeado")
         }
+
 
     }
 

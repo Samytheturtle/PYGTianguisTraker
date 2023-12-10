@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_with_border"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
@@ -71,7 +72,7 @@
         android:id="@+id/detailsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="5dp"
         android:text="Detalles"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,11 +84,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="4dp"
         android:text="Reservar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/detailsButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -118,15 +119,28 @@
 
     <TextView
         android:id="@+id/productLocationTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="171dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
         android:text="Ubicación"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/detailsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintEnd_toStartOf="@+id/productCategoryTextView"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/productCategoryTextView"
+        android:layout_width="171dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="4dp"
+        android:text="Categoria"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/detailsButton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/favoriteButton"

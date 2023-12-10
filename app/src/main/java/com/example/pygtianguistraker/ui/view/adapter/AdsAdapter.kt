@@ -1,60 +1,68 @@
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.data.model.AdsSeller
 
-class AdsAdapter(context: Context, private val data: List<AdsSeller>) :
-    ArrayAdapter<AdsSeller>(context, R.layout.fragment_ads_seller, data) {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var view: View? = convertView
-        val holder: ViewHolder
+class AdsAdapter(
+    context: Context,
+    var productList: ArrayList<AdsSeller>
+): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        if (view == null) {
-            val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.fragment_ads_seller, parent, false)
-            holder = ViewHolder()
-            // Asignar vistas al ViewHolder
-            holder.imageViewProduct = view.findViewById(R.id.productImageView)
-            holder.textViewProductName = view.findViewById(R.id.productNameTextView)
-            holder.textViewPrice = view.findViewById(R.id.productPriceTextView)
-            holder.textViewLocation = view.findViewById(R.id.productLocationTextView)
-            holder.buttonReserve = view.findViewById(R.id.reserveButton)
-            holder.buttonDetails = view.findViewById(R.id.detailsButton)
-            holder.buttonfavority= view.findViewById(R.id.favoriteButton)
+        val NameProducto = itemView.findViewById(R.id.productNameTextView) as TextView
+        //val imageProduct = itemView.findViewById(R.id.productImageView) as ImageView
+        val priceProduct = itemView.findViewById(R.id.productPriceTextView) as TextView
+        val locationProduct = itemView.findViewById(R.id.productLocationTextView) as TextView
+        val categoryProduct = itemView.findViewById(R.id.productCategoryTextView) as TextView
+        val buttonReserver = itemView.findViewById(R.id.reserveButton) as Button
+        val buttonFav = itemView.findViewById(R.id.favoriteButton) as ImageButton
+        val buttonDetails = itemView.findViewById(R.id.detailsButton) as Button
 
-            view.tag = holder
-        } else {
-            holder = view.tag as ViewHolder
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        var View = LayoutInflater.from(parent.context).inflate(R.layout.fragment_ads_seller, parent, false)
+        return ViewHolder(View)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.d("prueba","7")
+        val product = productList[position]
+        holder.NameProducto.text=product.name
+        //holder.imageProduct.drawable=product.imageResource
+        holder.priceProduct.text=product.price
+        holder.locationProduct.text=product.location
+        holder.categoryProduct.text=product.category
+        
+        holder.buttonReserver.setOnClickListener{
+            Log.d("prueba","SI JALA RESERVAR${product.name}")
+        }
+        holder.buttonFav.setOnClickListener{
+            Log.d("prueba","SI JALA FAVORiTOS${product.name}")
+        }
+        holder.buttonDetails.setOnClickListener{
+            Log.d("prueba","SI JALA DETALLES${product.name}")
         }
 
-        val currentItem = data[position]
-
-        // Asignar valores a las vistas
-        holder.imageViewProduct?.setImageResource(currentItem.imageResource)
-        holder.textViewProductName?.text = currentItem.name
-        holder.textViewPrice?.text = currentItem.price
-        holder.textViewLocation?.text = currentItem.location
-        return view!!
     }
-
-    // Clase ViewHolder para mantener las referencias a las vistas
-    private class ViewHolder {
-        var imageViewProduct: ImageView? = null
-        var textViewProductName: TextView? = null
-        var textViewPrice: TextView? = null
-        var textViewLocation: TextView? = null
-        var buttonReserve:Button?=null
-        var buttonDetails:Button?=null
-        var buttonfavority:ImageButton?=null
+    fun updateData(newData: ArrayList<AdsSeller>) {
+        productList.clear() // Limpia la lista actual
+        productList.addAll(newData) // Agrega los nuevos datos
+        notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
+    }
+    override fun getItemCount(): Int {
+        return productList.size
     }
 }
-
