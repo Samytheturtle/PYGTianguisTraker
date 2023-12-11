@@ -1,4 +1,5 @@
 package com.example.pygtianguistraker.ui.view
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Locale
 
 class LoginActivity : AppCompatActivity() {
     private var user= User()
@@ -22,10 +24,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginResponse: AuthResponse
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        applySavedLanguage()
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
 
         binding.Loginbutton.setOnClickListener{
@@ -38,7 +39,15 @@ class LoginActivity : AppCompatActivity() {
             dialogFragment.show(supportFragmentManager, "PopUp")
         }
     }
-
+    private fun applySavedLanguage() {
+        val preferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
+        val language = preferences.getString("Language", "es") ?: "es"
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
     private fun sharePreferencesPYAndroid(loginResponse: AuthResponse) {
         // Nombre que identifica tus preferencias compartidas
         val preferenceName = "my_app_information"
@@ -73,9 +82,17 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<AuthResponse>
                 ) {
                     if(response.isSuccessful){
+
                         loginResponse = response.body()!!
-                        sharePreferencesPYAndroid(loginResponse)
-                        handleLoginSuccess()
+                        if(loginResponse.message.equals("Correo no encontrado")){
+                            Toast.makeText(applicationContext, "ERROR, CORREO NO ENCONTRADO", Toast.LENGTH_SHORT).show()
+                        }else if(loginResponse.message.equals("Contraseña incorrecta")){
+                            Toast.makeText(applicationContext, "ERROR, Contrasenia incorrecta", Toast.LENGTH_SHORT).show()
+                        } else{
+                            sharePreferencesPYAndroid(loginResponse)
+                            handleLoginSuccess()
+                        }
+
                     }
                 }
 
@@ -94,6 +111,7 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(applicationContext, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun validateFields() :Boolean{

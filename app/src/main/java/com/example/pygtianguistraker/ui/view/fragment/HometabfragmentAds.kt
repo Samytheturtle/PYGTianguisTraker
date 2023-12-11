@@ -2,6 +2,8 @@ package com.example.pygtianguistraker.ui.view.fragment
 
 import AdsAdapter
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,13 +14,16 @@ import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.data.model.AdsSeller
 import com.example.pygtianguistraker.data.model.AuthResponse
+import com.example.pygtianguistraker.ui.view.CreateAdActivity
 import com.google.gson.Gson
+import com.google.zxing.integration.android.IntentIntegrator
 
 class HometabfragmentAds : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -225,22 +230,78 @@ class HometabfragmentAds : Fragment() {
     }
     private fun onActionButtonClicked() {
         when (userType) {
-            "Vendedor"  -> {
-                Log.d("prueba","1")
-                // Acción para el typeUser 1
-                // Por ejemplo, abrir un fragmento de escaneo de QR
-            }
             "Comprador" -> {
-                Log.d("prueba","0")
-                // Acción para el typeUser 0
-                // Por ejemplo, abrir un diálogo para agregar algo
+                // Acción para el tipo de usuario "Comprador"
+                initScanner()
+            }
+            "Vendedor" -> {
+                // Acción para el tipo de usuario "Vendedor"
+
+                val intent = Intent(requireContext(), CreateAdActivity::class.java)
+                startActivity(intent)
+
             }
             else -> {
-                Log.d("prueba","2")
-                // Acción por defecto o para otros valores de typeUser
+                Log.d("prueba", "2")
+                // Acción por defecto o para otros valores de tipo de usuario
             }
         }
     }
+    companion object {
+        private const val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            MY_PERMISSIONS_REQUEST_WRITE_STORAGE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // Permiso concedido, proceder con la funcionalidad
+                } else {
+                    // Permiso denegado, manejar la situación
+                }
+                return
+            }
+            // Verificar otros permisos de la aplicación
+        }
+    }
+
+
+    private fun initScanner() {
+        activity?.let {
+            val integrator = IntentIntegrator(it)
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+            integrator.setPrompt("Escanea el qr para ver la info del producto")
+            integrator.setTorchEnabled(false)
+            integrator.setBeepEnabled(true)
+            integrator.initiateScan()
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        Log.d("Revisor","PRE")
+        if (result != null) {
+            Log.d("Revisor","YES")
+            if (result.contents == null) {
+                activity?.let{
+                    Toast.makeText(it, "Cancelado", Toast.LENGTH_LONG).show()
+                    Log.d("Revisor","Cancelado")
+                }
+
+            } else {
+                Log.d("Revisor","NOOOOOOO")
+                activity?.let{
+                    Toast.makeText(it, "El valor escaneado es: " + result.contents, Toast.LENGTH_LONG).show()
+                    Log.d("Revisor","El valor escaneado es: " + result.contents)
+                }
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+
+
     private fun performSearch(query: String) {
         val filteredAds = ArrayList<AdsSeller>()
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PYGTianguisTraker</string>
+    <string name="app_name">TianguisTraker💰👵</string>
     <string name="ButtonLogin">Iniciar Sesion</string>
     <string name="registerButton">Registrarse</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -115,4 +115,5 @@
     <string name="english">Inglés</string>
     <string name="register_buyer">Registrar Comprador</string>
     <string name="create_reviews">Crear reseña</string>
+    <string name="ToastAlertLenguaje">Se a cambiado el idioma con exito</string>
 </resources>

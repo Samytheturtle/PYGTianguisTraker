@@ -41,7 +41,9 @@ class RegisterUserActivitySeller : AppCompatActivity(){
                             intent.putExtra("correo",user.correoUsuario)
                             intent.putExtra("date",user.fechaNacimientoVendedor)
                             intent.putExtra("password",user.contraseniaUsuario)
+
                             startActivity(intent)
+                            finish()
 
                         }else{
                             Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
