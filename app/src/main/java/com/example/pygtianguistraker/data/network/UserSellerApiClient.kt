@@ -14,7 +14,7 @@ public interface UserSellerApiClient {
     @GET("/api/tianguis")
     fun getTianguis(): Call<List<Tianguis>>
 
-    @POST("/api/register/Seller")
+    @POST("/api/Seller/registerSeller")
     fun addSeller(@Body seller: UserSeller): Call<UserSeller>
 
 }

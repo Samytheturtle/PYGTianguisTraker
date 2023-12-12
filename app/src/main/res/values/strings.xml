@@ -116,4 +116,8 @@
     <string name="register_buyer">Registrar Comprador</string>
     <string name="create_reviews">Crear reseña</string>
     <string name="ToastAlertLenguaje">Se a cambiado el idioma con exito</string>
+    <string name="title_fav_product">Productos marcados como Favoritos</string>
+    <string name="button_reserver">Reservar</string>
+    <string name="reserverProducts">Tus Productos Apartados</string>
+    <string name="selected_birthdate">Selecciona una fecha de nacimiento</string>
 </resources>

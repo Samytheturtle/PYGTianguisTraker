@@ -11,7 +11,7 @@
         android:id="@+id/textViewReservedProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tus Productos Apartados"
+        android:text="@string/reserverProducts"
         android:textSize="20sp"
         android:textColor="#808080"
         android:textStyle="bold"

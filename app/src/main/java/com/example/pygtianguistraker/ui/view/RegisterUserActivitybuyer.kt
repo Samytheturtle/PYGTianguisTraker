@@ -86,9 +86,11 @@ class RegisterUserActivitybuyer  : AppCompatActivity(){
         val result: Call<UserBuyer> = service.addBuyer(buyer)
         result.enqueue(object : Callback<UserBuyer> {
             override fun onResponse(call: Call<UserBuyer>, response: Response<UserBuyer>) {
+                Log.d("code", response.code().toString())
                 if (response.isSuccessful) {
                     Log.d("code", response.code().toString())
                     if (response.code() == 200) {
+
                         Toast.makeText(applicationContext, "Comprador registrado", Toast.LENGTH_SHORT).show()
                     } else if(response.code() == 409) {
                         // Código de respuesta 409: Conflicto
