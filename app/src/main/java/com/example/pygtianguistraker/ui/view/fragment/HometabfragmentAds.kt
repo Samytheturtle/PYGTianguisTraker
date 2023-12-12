@@ -270,7 +270,7 @@ class HometabfragmentAds : Fragment() {
         activity?.let {
             val integrator = IntentIntegrator(it)
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
-            integrator.setPrompt("Escanea el qr para ver la info del producto")
+            integrator.setPrompt(getString(R.string.ScanTestInstrucion))
             integrator.setTorchEnabled(false)
             integrator.setBeepEnabled(true)
             integrator.initiateScan()

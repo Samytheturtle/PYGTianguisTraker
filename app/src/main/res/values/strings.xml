@@ -98,7 +98,7 @@
     <!-- TODO: About buttons -->
     <string name="login">Iniciar Sesión</string>
     <string name="button_register">Registrarse</string>
-    <string name="edit">Editar</string>
+    <string name="edit">Editar perfil</string>
     <string name="delete">Eliminar perfil</string>
     <string name="next">Siguiente</string>
     <string name="register">Registrar</string>
@@ -120,4 +120,11 @@
     <string name="button_reserver">Reservar</string>
     <string name="reserverProducts">Tus Productos Apartados</string>
     <string name="selected_birthdate">Selecciona una fecha de nacimiento</string>
+    <string name="log_out">Cerrar Sesion</string>
+    <string name="ToastEmailIncorrect">Error: Correo incorrecto, compruebe e intente de nuevo</string>
+    <string name="ToastPasswordIncorrect">Error: Contraseña incorrecta, intente de nuevo</string>
+    <string name="ToastErrorResponse">A ocurrido un error :c, intente mas tarde</string>
+    <string name="ToastLoginCorrect">Bienvenido a TianguisTraker 💰👵</string>
+    <string name="ScanTestInstrucion">Escanee el QR para ver la info del producto</string>
+    <string name="details_product">Detalles</string>
 </resources>

@@ -97,7 +97,7 @@
     <!-- TODO: About buttons -->
     <string name="login">Login</string>
     <string name="button_register">Register</string>
-    <string name="edit">Edit</string>
+    <string name="edit">Edit Profile</string>
     <string name="delete">Delete Profile</string>
     <string name="next">Next</string>
     <string name="register">Register</string>
@@ -119,4 +119,11 @@
     <string name="button_reserver">To reserve</string>
     <string name="reserverProducts">Your Reserved Products</string>
     <string name="selected_birthdate">Select a birthdate</string>
+    <string name="log_out">Log out :D</string>
+    <string name="ToastEmailIncorrect">Error: Incorrect email, please check and try again.</string>
+    <string name="ToastPasswordIncorrect">Error: Incorrect password, please try again.</string>
+    <string name="ToastErrorResponse">An error has occurred :c, please try again later.</string>
+    <string name="ToastLoginCorrect">Welcome to TianguisTraker 💰👵</string>
+    <string name="ScanTestInstrucion">Scan the QR code to view product information.</string>
+    <string name="details_product">Details</string>
 </resources>

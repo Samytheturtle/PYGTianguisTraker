@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.core.Helper
 import com.example.pygtianguistraker.data.model.AuthResponse
 import com.example.pygtianguistraker.data.model.User
@@ -85,9 +86,9 @@ class LoginActivity : AppCompatActivity() {
 
                         loginResponse = response.body()!!
                         if(loginResponse.message.equals("Correo no encontrado")){
-                            Toast.makeText(applicationContext, "ERROR, CORREO NO ENCONTRADO", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, getString(R.string.ToastEmailIncorrect), Toast.LENGTH_SHORT).show()
                         }else if(loginResponse.message.equals("Contraseña incorrecta")){
-                            Toast.makeText(applicationContext, "ERROR, Contrasenia incorrecta", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, getString(R.string.ToastPasswordIncorrect) ,Toast.LENGTH_SHORT).show()
                         } else{
                             sharePreferencesPYAndroid(loginResponse)
                             handleLoginSuccess()
@@ -97,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                    Toast.makeText(applicationContext, "A ocurrido un error, intente mas tarde", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, getString(R.string.ToastErrorResponse), Toast.LENGTH_SHORT).show()
                     println(t.message)
                 }
 
@@ -108,10 +109,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleLoginSuccess() {
 
-        Toast.makeText(applicationContext, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, getString(R.string.ToastLoginCorrect), Toast.LENGTH_SHORT).show()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
-        finish()
+
     }
 
     private fun validateFields() :Boolean{
