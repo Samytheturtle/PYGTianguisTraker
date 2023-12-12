@@ -87,18 +87,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewQuantity" />
-
-    <EditText
+    <Spinner
         style="@style/style_text_input"
         android:id="@+id/etNewState"
         android:background="@color/white"
-        android:inputType="numberDecimal"
-        android:importantForAutofill="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvState"
-        tools:ignore="LabelFor" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvState" />
     <TextView
         style="@style/style_label"
         android:id="@+id/tvType"

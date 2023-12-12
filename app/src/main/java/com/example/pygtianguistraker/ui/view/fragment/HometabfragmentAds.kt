@@ -225,7 +225,7 @@ class HometabfragmentAds : Fragment() {
         actionButton.setImageResource(imageResource)
     }
     private fun adapterConexion(Adssellproduct: ArrayList<AdsSeller>) {
-        adapter = AdsAdapter(requireContext(),Adssellproduct)
+        adapter = AdsAdapter(requireContext(),Adssellproduct,userType)
         recyclerView.adapter = adapter
     }
     private fun onActionButtonClicked() {

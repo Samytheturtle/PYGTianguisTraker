@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
@@ -14,12 +15,13 @@ import com.example.pygtianguistraker.data.model.AdsSeller
 
 class AdsAdapter(
     context: Context,
-    var productList: ArrayList<AdsSeller>
+    var productList: ArrayList<AdsSeller>,
+    var userType: String
 ): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val NameProducto = itemView.findViewById(R.id.productNameTextView) as TextView
-        //val imageProduct = itemView.findViewById(R.id.productImageView) as ImageView
+        val imageProduct = itemView.findViewById(R.id.productImageView) as ImageView
         val priceProduct = itemView.findViewById(R.id.productPriceTextView) as TextView
         val locationProduct = itemView.findViewById(R.id.productLocationTextView) as TextView
         val categoryProduct = itemView.findViewById(R.id.productCategoryTextView) as TextView
@@ -45,15 +47,41 @@ class AdsAdapter(
         holder.priceProduct.text=product.price
         holder.locationProduct.text=product.location
         holder.categoryProduct.text=product.category
-        
-        holder.buttonReserver.setOnClickListener{
-            Log.d("prueba","SI JALA RESERVAR${product.name}")
+        if (userType == "Vendedor") {
+            holder.buttonFav.visibility = View.GONE
+        } else {
+            holder.buttonFav.visibility = View.VISIBLE
         }
-        holder.buttonFav.setOnClickListener{
-            Log.d("prueba","SI JALA FAVORiTOS${product.name}")
+
+        if (userType == "Vendedor") {
+            holder.buttonReserver.text = "Editar"
+            holder.buttonDetails.text = "Eliminar"
+
+            holder.buttonReserver.setOnClickListener {
+                // Acciones para el botón "Editar"
+                Log.d("prueba", "Editar ${product.name}")
+            }
+            holder.buttonDetails.setOnClickListener {
+                // Acciones para el botón "Eliminar"
+                Log.d("prueba", "Eliminar ${product.name}")
+            }
+        } else if (userType == "Comprador") {
+            holder.buttonReserver.text = "Reservar"
+            holder.buttonDetails.text = "Detalles"
+
+            holder.buttonReserver.setOnClickListener {
+                // Acciones para el botón "Reservar"
+                Log.d("prueba", "Reservar ${product.name}")
+            }
+            holder.buttonDetails.setOnClickListener {
+                // Acciones para el botón "Detalles"
+                Log.d("prueba", "Detalles ${product.name}")
+            }
         }
-        holder.buttonDetails.setOnClickListener{
-            Log.d("prueba","SI JALA DETALLES${product.name}")
+
+        holder.buttonFav.setOnClickListener {
+            // Acciones para el botón de favoritos
+            Log.d("prueba", "Favoritos ${product.name}")
         }
 
     }
