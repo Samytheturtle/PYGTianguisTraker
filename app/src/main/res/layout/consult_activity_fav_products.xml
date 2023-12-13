@@ -16,8 +16,10 @@
         android:textColor="#808080"
         android:textStyle="bold"
         android:padding="16dp"/>
-    <ListView
-        android:id="@+id/listViewFavoriteProducts"
+
+    <!-- Cambiando ListView por RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFavoriteProducts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/textViewHeader"

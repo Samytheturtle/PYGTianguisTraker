@@ -17,10 +17,12 @@
         android:textStyle="bold"
         android:padding="16dp"/>
 
-    <ListView
-        android:id="@+id/listViewBookedProducts"
+    <!-- Cambiando ListView por RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewBookedProducts"
         android:layout_width="match_parent"
-        android:paddingTop="20dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/textViewReservedProducts"
-        android:layout_height="wrap_content"/>
+        android:paddingTop="20dp"/>
+
 </RelativeLayout>
