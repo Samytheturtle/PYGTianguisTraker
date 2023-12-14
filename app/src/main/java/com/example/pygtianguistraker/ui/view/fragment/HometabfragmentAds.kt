@@ -100,6 +100,7 @@ class HometabfragmentAds : Fragment() {
                     // El texto de búsqueda está vacío o nulo, reinicia la lista original
                     //loadProducts()
                     //LoadDummysProducts()
+
                 } else {
                     // Realiza la búsqueda con el nuevo texto
                     performSearch(newText)
@@ -374,7 +375,6 @@ class HometabfragmentAds : Fragment() {
             else -> R.drawable.ic_default // Opcional, en caso de un valor inesperado
         }
         actionButton.setImageResource(imageResource)
-
         //loadProducts()
         LoadDummysProducts()
     }

@@ -18,4 +18,5 @@ interface AdvertisementsApiClient {
 
     @GET("/api/advertisement/getAdvertisements")
     fun getAllAds(): Call<List<AdsSeller>>
+
 }

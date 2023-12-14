@@ -8,5 +8,6 @@ data class Adsproduct (var estatusAnuncio: String, var precioAnuncio: Float, var
     Serializable {
     constructor() : this("", 0F, "",
         "", "","",0,0,""
+
     )
 }
