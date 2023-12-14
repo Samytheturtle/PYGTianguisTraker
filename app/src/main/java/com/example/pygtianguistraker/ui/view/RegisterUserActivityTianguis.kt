@@ -38,6 +38,7 @@ class RegisterUserActivityTianguis : AppCompatActivity() {
         binding.btCancelSeller.setOnClickListener{
             val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.btRegisterSeller.setOnClickListener{
