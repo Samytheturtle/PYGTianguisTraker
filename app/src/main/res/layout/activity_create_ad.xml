@@ -84,25 +84,26 @@
         style="@style/style_label"
         android:id="@+id/tvState"
         android:text="@string/state"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewQuantity" />
-
     <EditText
         style="@style/style_text_input"
         android:id="@+id/etNewState"
         android:background="@color/white"
-        android:inputType="numberDecimal"
-        android:importantForAutofill="no"
+        android:inputType="none"
+        android:text="@string/statusProductInit"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvState"
-        tools:ignore="LabelFor" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvState" />
     <TextView
         style="@style/style_label"
         android:id="@+id/tvType"
-        android:text="@string/type"
+        android:text="@string/category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewState" />

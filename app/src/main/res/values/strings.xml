@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PYGTianguisTraker</string>
+    <string name="app_name">TianguisTraker💰👵</string>
     <string name="ButtonLogin">Iniciar Sesion</string>
     <string name="registerButton">Registrarse</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -48,6 +48,9 @@
     <!-- TODO: About images -->
     <string name="logo">Logo</string>
     <string name="without_image">Sin imágen</string>
+    <string name="ic_baseline_star_border_24">M24,2L12,15.3L2,2h20Z</string>
+    <string name="ic_baseline_star_24">M24,12l–7.5,6l2.3-9.1L12,2l-6.8,6.9L4.5,18L12,14.3L19.5,18L17,8.9Z</string>
+
 
     <!-- TODO: About users -->
     <string name="email">Correo electronico</string>
@@ -95,7 +98,7 @@
     <!-- TODO: About buttons -->
     <string name="login">Iniciar Sesión</string>
     <string name="button_register">Registrarse</string>
-    <string name="edit">Editar</string>
+    <string name="edit">Editar perfil</string>
     <string name="delete">Eliminar perfil</string>
     <string name="next">Siguiente</string>
     <string name="register">Registrar</string>
@@ -111,6 +114,22 @@
     <string name="spanish">Español</string>
     <string name="english">Inglés</string>
     <string name="register_buyer">Registrar Comprador</string>
-    <string name="title_activity_review_list">ReviewList</string>
     <string name="create_reviews">Crear reseña</string>
+    <string name="ToastAlertLenguaje">Se a cambiado el idioma con exito</string>
+    <string name="title_fav_product">Productos marcados como Favoritos</string>
+    <string name="button_reserver">Reservar</string>
+    <string name="reserverProducts">Tus Productos Apartados</string>
+    <string name="selected_birthdate">Selecciona una fecha de nacimiento</string>
+    <string name="log_out">Cerrar Sesion</string>
+    <string name="ToastEmailIncorrect">Error: Correo incorrecto, compruebe e intente de nuevo</string>
+    <string name="ToastPasswordIncorrect">Error: Contraseña incorrecta, intente de nuevo</string>
+    <string name="ToastErrorResponse">A ocurrido un error :c, intente mas tarde</string>
+    <string name="ToastLoginCorrect">Bienvenido a TianguisTraker 💰👵</string>
+    <string name="ScanTestInstrucion">Escanee el QR para ver la info del producto</string>
+    <string name="details_product">Detalles</string>
+    <string name="ToastTextVoid">Error: Exiten campos vacios, revise por favor</string>
+    <string name="ToastValidNumbers">Error, ingrese una cantidad valida</string>
+    <string name="category">Categoria</string>
+    <string name="ToastImageSelected">Error: Seleccione una imagen para registrar</string>
+    <string name="statusProductInit">Disponible</string>
 </resources>

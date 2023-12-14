@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_with_border"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Imagen del producto -->
+
+    <!-- Guía para separar la imagen de los detalles -->
+
+    <ImageView
+        android:id="@+id/productImageView"
+        android:layout_width="380dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="395dp" />
+
+    <!-- Contenedor para detalles del producto -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Nombre del producto -->
+
+        <!-- Precio del producto -->
+
+        <!-- Ubicación del producto -->
+    </LinearLayout>
+
+    <!-- Contenedor para botones -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productNameTextView"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Botón de reservar -->
+
+        <!-- Botón de detalles -->
+
+        <!-- Botón de favorito (usando un ícono de corazón) -->
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/detailsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/details_product"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favoriteButton" />
+
+    <Button
+        android:id="@+id/reserveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/button_reserver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/detailsButton"
+        app:layout_constraintHorizontal_bias="0.672"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/productPriceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Precio"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/productLocationTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/productNameTextView"
+        android:layout_width="184dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="Nombre del Producto"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/productPriceTextView"
+        app:layout_constraintEnd_toStartOf="@+id/productNameTextView2"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/productNameTextView2"
+        android:layout_width="150dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="10dp"
+        android:text="Estatus"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/productPriceTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productImageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/productLocationTextView"
+        android:layout_width="171dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="Ubicación"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/detailsButton"
+        app:layout_constraintEnd_toStartOf="@+id/productCategoryTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/productCategoryTextView"
+        android:layout_width="171dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="4dp"
+        android:text="Categoria"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/detailsButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="55dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/red_heart_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@
         android:id="@+id/textViewHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Productos marcados como Favoritos"
+        android:text="@string/title_fav_product"
         android:textSize="18sp"
         android:textColor="#808080"
         android:textStyle="bold"

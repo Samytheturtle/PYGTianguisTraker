@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TianguisTraker💰👵</string>
+    <string name="ButtonLogin">Login</string>
+    <string name="registerButton">Register</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">How do you want to register?</string>
+    <string name="buttonRegisterSeller">Seller</string>
+    <string name="buttonRegisterBuyer">Buyer</string>
+    <string name="logintitle">Login</string>
+    <string name="intoEmail">Email</string>
+    <string name="contraseña">Enter your password</string>
+    <string name="buttonNext">Next</string>
+    <string name="registro_de_vendedor">Seller Registration</string>
+    <string name="registro_de_comprador">Buyer Registration</string>
+    <string name="nombre_completo">Full Name:</string>
+    <string name="ubicacion">Location:</string>
+    <string name="fecha_de_nacimiento">Date of Birth:</string>
+    <string name="correo_electronico">Email:</string>
+    <string name="contrasena">Password:</string>
+    <string name="confirmar_contrasena">Confirm Password:</string>
+    <string name="siguiente">Next</string>
+    <string name="cancelar">Cancel</string>
+    <string name="informacion_del_tianguis">Market Information</string>
+    <string name="selecciona_el_tianguis">Select the market:</string>
+    <string name="direccion">Address:</string>
+    <string name="horario">Opening Hours:</string>
+    <string name="lunes">Monday</string>
+    <string name="martes">Tuesday</string>
+    <string name="miercoles">Wednesday</string>
+    <string name="jueves">Thursday</string>
+    <string name="viernes">Friday</string>
+    <string name="sabado">Saturday</string>
+    <string name="domingo">Sunday</string>
+    <string name="registrar">Register</string>
+    <string name="Qr">QR</string>
+    <string name="Settingstitle">Settings</string>
+    <string name="buttonChangeLenguage">Change Language</string>
+    <string name="buttonConsultProductSell">Consult Sold Products</string>
+    <string name="buttonConsultReviews">Consult Reviews</string>
+    <string name="tittleInformationUser">User Information</string>
+    <string name="usernameText">Username</string>
+    <string name="UserDateInformation">day month year</string>
+    <string name="UserEmailinformation">email@example.com</string>
+    <string name="Editinformation">Edit Information</string>
+    <string name="deletUser">Delete Profile</string>
+
+    <!-- TODO: About images -->
+    <string name="logo">Logo</string>
+    <string name="without_image">Without Image</string>
+    <string name="ic_baseline_star_border_24">M24,2L12,15.3L2,2h20Z</string>
+    <string name="ic_baseline_star_24">M24,12l–7.5,6l2.3-9.1L12,2l-6.8,6.9L4.5,18L12,14.3L19.5,18L17,8.9Z</string>
+
+    <!-- TODO: About users -->
+    <string name="email">Email</string>
+    <string name="information_user">User Information</string>
+    <string name="username">Username</string>
+    <string name="user_date_information">day month year</string>
+    <string name="username_email_information">email@example.com</string>
+    <string name="password">Password</string>
+    <string name="register_seller">Seller Registration</string>
+    <string name="full_name">Full Name</string>
+    <string name="birthdate">Date of Birth</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="information_tianguis">Market Information</string>
+    <string name="select_tianguis">Select the Market</string>
+    <string name="direction">Address</string>
+    <string name="schedule">Opening Hours</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+
+    <!-- TODO: About QR -->
+    <string name="qr">QR</string>
+
+    <!-- TODO: About lists -->
+    <string name="sold_products">Sold Products</string>
+
+    <!-- TODO: About ads -->
+    <string name="new_ad">New Ad</string>
+    <string name="modify_ad">Modify Ad</string>
+    <string name="name_product">Product Name</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="state">State</string>
+    <string name="type">Type</string>
+
+    <!-- TODO: About fragments -->
+    <string name="how_do_you_want_register_you">How do you want to register?</string>
+    <string name="choose_an_option">Choose an Option</string>
+    <string name="settings">Settings</string>
+
+    <!-- TODO: About buttons -->
+    <string name="login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="edit">Edit Profile</string>
+    <string name="delete">Delete Profile</string>
+    <string name="next">Next</string>
+    <string name="register">Register</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="consult_reviews">Consult Reviews</string>
+    <string name="load_image">Load Image</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="load_from_gallery">Load from Gallery</string>
+    <string name="change_language">Change Language</string>
+    <string name="seller">Seller</string>
+    <string name="buyer">Buyer</string>
+    <string name="spanish">Spanish</string>
+    <string name="english">English</string>
+    <string name="register_buyer">Register Buyer</string>
+    <string name="create_reviews">Create Review</string>
+    <string name="ToastAlertLenguaje">It has been successfully changed the language</string>
+    <string name="title_fav_product">"Products marked as Favorites.</string>
+    <string name="button_reserver">To reserve</string>
+    <string name="reserverProducts">Your Reserved Products</string>
+    <string name="selected_birthdate">Select a birthdate</string>
+    <string name="log_out">Log out :D</string>
+    <string name="ToastEmailIncorrect">Error: Incorrect email, please check and try again.</string>
+    <string name="ToastPasswordIncorrect">Error: Incorrect password, please try again.</string>
+    <string name="ToastErrorResponse">An error has occurred :c, please try again later.</string>
+    <string name="ToastLoginCorrect">Welcome to TianguisTraker 💰👵</string>
+    <string name="ScanTestInstrucion">Scan the QR code to view product information.</string>
+    <string name="details_product">Details</string>
+    <string name="ToastTextVoid">Error: There are empty fields, please review</string>
+    <string name="ToastValidNumbers">Error, please enter a valid quantity.</string>
+    <string name="category">Category</string>
+    <string name="ToastImageSelected">Error: Please select an image to register</string>
+    <string name="statusProductInit">Available</string>
+</resources>
