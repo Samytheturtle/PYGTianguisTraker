@@ -129,4 +129,7 @@
     <string name="details_product">Detalles</string>
     <string name="ToastTextVoid">Error: Exiten campos vacios, revise por favor</string>
     <string name="ToastValidNumbers">Error, ingrese una cantidad valida</string>
+    <string name="category">Categoria</string>
+    <string name="ToastImageSelected">Error: Seleccione una imagen para registrar</string>
+    <string name="statusProductInit">Disponible</string>
 </resources>

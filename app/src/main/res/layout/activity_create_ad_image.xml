@@ -24,13 +24,15 @@
         app:layout_constraintTop_toBottomOf="@+id/ivLogo"/>
 
     <ImageView
-        style="@style/style_image"
         android:id="@+id/ivNewImage"
+        style="@style/style_image"
+        android:layout_width="0dp"
+        android:layout_height="240dp"
         android:contentDescription="@string/without_image"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNewAd" />
-
     <Button
         style="@style/style_button"
         android:id="@+id/btLoadImage"
