@@ -19,22 +19,42 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
+import com.example.pygtianguistraker.core.Helper
 import com.example.pygtianguistraker.data.model.AdsSeller
+import com.example.pygtianguistraker.data.model.Adsproduct
 import com.example.pygtianguistraker.data.model.AuthResponse
+import com.example.pygtianguistraker.data.model.Category
+import com.example.pygtianguistraker.data.model.Tianguis
+import com.example.pygtianguistraker.data.network.AdvertisementsApiClient
+import com.example.pygtianguistraker.data.network.CategoryApiClient
+import com.example.pygtianguistraker.data.network.UserSellerApiClient
 import com.example.pygtianguistraker.ui.view.CreateAdActivity
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HometabfragmentAds : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdsAdapter
     private lateinit var actionButton: ImageButton
+
+    private var categoryNames = ArrayList<String>()
+    private var selectedCategoryId: Int = -1
+    private var idListCategory: ArrayList<Int> = ArrayList()
+
+    private lateinit var tianguisList: List<Tianguis>
+    private lateinit var categoryList: List<Category>
     //private var typeUser :Int =0
-    var originalAdsList = ArrayList<AdsSeller>()
-    private var filterListCategory =ArrayList<AdsSeller>()
-    private var filterListTianguis =ArrayList<AdsSeller>()
-    private var selectedCategory = "Todas las Categorias..."
-    private var selectedTianguis = "Todos los Tianguis..."
+
+    private lateinit var originalAdsList: List<AdsSeller>
+    private lateinit var originalProductList: ArrayList<Adsproduct>
+    //var originalAdsList = ArrayList<AdsSeller>()
+    private var filterListCategory =ArrayList<Adsproduct>()
+    private var filterListTianguis =ArrayList<Adsproduct>()
+    private var selectedCategory = "Todas las categorias..."
+    private var selectedTianguis = "Todos los tianguis..."
 
     private lateinit var userType: String
     private lateinit var token: String
@@ -64,9 +84,9 @@ class HometabfragmentAds : Fragment() {
             // No se encontraron datos en las preferencias compartidas
 
         }
-        changerSpinners(view)
-        changeButtonImage()
         loadProducts()
+        getTianguis(view)
+
 
         val searchView = view.findViewById<SearchView>(R.id.searchViewAdsHome)
 
@@ -78,7 +98,8 @@ class HometabfragmentAds : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
                     // El texto de búsqueda está vacío o nulo, reinicia la lista original
-                    loadProducts()
+                    //loadProducts()
+                    //LoadDummysProducts()
                 } else {
                     // Realiza la búsqueda con el nuevo texto
                     performSearch(newText)
@@ -91,24 +112,26 @@ class HometabfragmentAds : Fragment() {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
                 selectedTianguis = parentView.getItemAtPosition(position).toString()
 
-                if (selectedTianguis == "Todos los Tianguis...") {
-                    // Si se selecciona "Todos los Tianguis...", reinicia la lista
-                    loadProducts()
-                    if(selectedCategory != "Todas las Categorias..."){//categoria fija
-                        val filteredList = originalAdsList.filter { it.category == selectedCategory } as ArrayList<AdsSeller>
+                if (selectedTianguis == "Todos los tianguis...") {
+                    // Si se selecciona "Todos los Tianguis...", reinicia la lista "
+                    //loadProducts()
+                    //LoadDummysProducts()
+                    if(selectedCategory != "Todas las categorias..."){//categoria fija
+                        val filteredList = originalProductList.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
                         filterListCategory=filteredList
                         adapter.updateData(filteredList)
                     }
 
                 } else {
-                    if(selectedCategory != "Todas las Categorias..."){//categoria fija
-                        loadProducts()
-                        val filteredList1 = originalAdsList.filter { it.location == selectedTianguis } as ArrayList<AdsSeller>
-                        val filteredList = filteredList1.filter { it.category == selectedCategory } as ArrayList<AdsSeller>
+                    if(selectedCategory != "Todas las categorias..."){//categoria fija
+                        //loadProducts()
+                        //LoadDummysProducts()
+                        val filteredList1 = originalProductList.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
+                        val filteredList = filteredList1.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
                         filterListTianguis=filteredList
                         adapter.updateData(filteredList)
                     }else{
-                        val filteredList = originalAdsList.filter { it.location == selectedTianguis } as ArrayList<AdsSeller>
+                        val filteredList = originalProductList.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
                         filterListTianguis=filteredList
                         adapter.updateData(filteredList)
                     }
@@ -124,25 +147,26 @@ class HometabfragmentAds : Fragment() {
         val categorySpinner = view?.findViewById<Spinner>(R.id.categorySpinner)
         categorySpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                selectedCategory = parentView.getItemAtPosition(position).toString()
 
-                if (selectedCategory == "Todas las Categorias...") {
-                    loadProducts()
+                if (selectedCategory == "Todas las categorias...") {
+                    //loadProducts()
+                    //LoadDummysProducts()
                     // Si se selecciona "Todas las Categorias...", reinicia la lista
                     if(selectedTianguis != "Todos los Tianguis..."){ //Tianguis fijo
-                        val filteredList = originalAdsList.filter { it.location == selectedTianguis } as ArrayList<AdsSeller>
+                        val filteredList = originalProductList.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
                         filterListTianguis=filteredList
                         adapter.updateData(filteredList)
                     }
                 } else {
                     if(selectedTianguis != "Todos los Tianguis..."){ //Tianguis fijo
-                        loadProducts()
-                        val filteredList1 = originalAdsList.filter { it.category == selectedCategory } as ArrayList<AdsSeller>
-                        val filteredList = filteredList1.filter { it.location == selectedTianguis } as ArrayList<AdsSeller>
+                        //loadProducts()
+                        //LoadDummysProducts()
+                        val filteredList1 = originalProductList.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
+                        val filteredList = filteredList1.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
                         filterListCategory=filteredList
                         adapter.updateData(filteredList)
                     }else{
-                        val filteredList = originalAdsList.filter { it.category == selectedCategory } as ArrayList<AdsSeller>
+                        val filteredList = originalProductList.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
                         filterListCategory=filteredList
 
                         adapter.updateData(filteredList)
@@ -162,60 +186,187 @@ class HometabfragmentAds : Fragment() {
 
         return view
     }
+    private fun loadCategories(view: View) {
+        Log.d("loadCategories","1")
+        val retrofit = Helper.getRetrofit()
+        val service = retrofit.create(CategoryApiClient::class.java)
+        val result: Call<List<Category>> = service.getCategorys()
+        Log.d("loadCategories","2")
+        result.enqueue(object : Callback<List<Category>> {
+            override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {
+                if (response.isSuccessful) {
+                    Log.d("loadCategories","3")
+                    categoryList= response.body() ?: emptyList()
+                    Log.d("loadCategories",categoryList.toString())
+                    changerSpinners(view)
 
-    private fun changerSpinners(view: View) {
-        // Agregar elementos al spinner de categoría
-        val categorySpinner = view.findViewById<Spinner>(R.id.categorySpinner)
-        val categoryItems = arrayOf("Todas las Categorias...","Ropa", "Electronica", "Hogar","Comida")
-        val categoryAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryItems)
-        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        categorySpinner.adapter = categoryAdapter
+                }
+            }
 
-
-        ChangerCategory()
-        ChangerTianguis()
-        // Agregar elementos al spinner de tianguis
-        val tianguisSpinner = view.findViewById<Spinner>(R.id.tianguisSpinner)
-        val tianguisItems = arrayOf("Todos los Tianguis...","Tianguis Urban", "Tianguis Central", "Tianguis Plaza Cristal")
-        val tianguisAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, tianguisItems)
-        tianguisAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        tianguisSpinner.adapter = tianguisAdapter
+            override fun onFailure(call: Call<List<Category>>, t: Throwable) {
+                activity?.let {
+                    Log.d("loadCategories",t.message.toString())
+                    Toast.makeText(it, "Error en la llamada: ${t.message}", Toast.LENGTH_SHORT)
+                        .show()
+                    Log.e("CreateAdActivity", "Error en la llamada: ${t.message}")
+                }
+            }
+        })
     }
+    private fun getTianguis(view: View) {
+        Log.d("getTianguis","1")
+        val retrofit = Helper.getRetrofit()
+        val service = retrofit.create(UserSellerApiClient::class.java)
+        val result: Call<List<Tianguis>> = service.getTianguis()
+        Log.d("getTianguis","2")
+        result.enqueue(object : Callback<List<Tianguis>>{
 
-    private fun ChangerCategory() {
-        //TODO("Not yet implemented")
-    }
+            override fun onResponse(
+                call: Call<List<Tianguis>>,
+                response: Response<List<Tianguis>>
+            ) {
+                if(response.isSuccessful) {
+                    Log.d("getTianguis","3")
+                    tianguisList = response.body()!!
+                    Log.d("getTianguis",tianguisList.toString())
+                    activity?.let {
+                        Toast.makeText(it, "Bien hecho", Toast.LENGTH_SHORT).show()
+                    }
+                    loadCategories(view)
 
-    private fun ChangerTianguis (){
-       // TODO("Not yet implemented")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Tianguis>>, t: Throwable) {
+                activity?.let {
+                    Log.d("getTianguis",t.message.toString())
+                    Toast.makeText(it, "Error en la llamada: ${t.message}", Toast.LENGTH_SHORT).show()
+                    println(t.message)
+                }
+
+            }
+
+        })
     }
-    private fun loadProducts() {
+    private fun LoadDummysProducts(){
         val Adssellproduct = ArrayList<AdsSeller>()
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Pantalones de Mezclilla", "$40","Tianguis Urban","Ropa"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Teléfono Samsung Galaxy", "$300","Tianguis Central","Electronica"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Mesa de Comedor", "$150","Tianguis Plaza Cristal","Hogar"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Manzanas Frescas", "$2","Tianguis Urban","Comida"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Blusa Estampada", "$20","Tianguis Plaza Cristal","Ropa"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Laptop HP", "$500","Tianguis Central","Electronica"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Sofá de Cuero", "$200","Tianguis Central","Hogar"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Sandwich de Pollo", "$5","Tianguis Urban","Comida"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Vestido de Noche", "$30","Tianguis Plaza Cristal","Ropa"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Tablet Android", "$120","Tianguis Central","Electronica"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Lámpara de Pie", "$50","Tianguis Plaza Cristal","Hogar"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Frutas Variadas", "$3","Tianguis Urban","Comida"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Zapatos Deportivos", "$25","Tianguis Plaza Cristal","Ropa"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Cámara Canon EOS", "$400","Tianguis Central","Electronica"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Muebles de Jardín", "$180","Tianguis Central","Hogar"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Pizza Margarita", "$7","Tianguis Urban","Comida"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Camiseta Casual", "$15","Tianguis Plaza Cristal","Ropa"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Smartwatch Fitbit", "$80","Tianguis Central","Electronica"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Sillas de Comedor", "$100","Tianguis Plaza Cristal","Hogar"))
-        Adssellproduct.add(AdsSeller(R.drawable.without_image, "Tacos de Asada", "$6","Tianguis Urban","Comida"))
+        Adssellproduct.add(AdsSeller(idAnuncio = 0, estatusAnuncio = "Disponible", fotoAnuncio = "", precioAnuncio = 40.0f, qrAnuncio = "Código QR", nombreAnuncio = "Pantalones de Mezclilla", idTianguisAnuncio = 1, cantidadAnuncio = 0, idVendedorAnuncio = 0, idCategoriaAnuncio = 0))
+
 
         originalAdsList=Adssellproduct
 
         adapterConexion(Adssellproduct)
     }
+    private fun loadProducts() {
+        Log.d("loadProducts","1")
+        val retrofit = Helper.getRetrofit()
+        val service = retrofit.create(AdvertisementsApiClient::class.java)
+        val result: Call<List<AdsSeller>> = service.getAllAds()
+        Log.d("loadProducts","2")
+        //Log.d("loadProducts",result.toString())
+            result.enqueue(object : Callback<List<AdsSeller>> {
+                override fun onResponse(call: Call<List<AdsSeller>>, response: Response<List<AdsSeller>>) {
+
+                    Log.d("loadProducts", "Response code: EEEEEEEEEEEEEE")
+                    if (response.isSuccessful) {
+                        Log.d("loadProducts","3")
+                        originalAdsList= response.body() ?: emptyList()
+                        Log.d("loadProducts",originalAdsList.toString())
+                        adapterConexion(originalAdsList)
+                    }else {
+                        when (response.code()) {
+                            401 -> {
+                                activity?.let{
+                                    Toast.makeText(it, "Error de autorización", Toast.LENGTH_SHORT).show()
+                                }
+
+                            }
+                            500 -> {
+                                activity?.let{
+                                    Toast.makeText(it, "Error del servidor", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            else -> {
+                                activity?.let{
+                                    Log.e("loadProducts", "Error desconocido")
+                                    Toast.makeText(it, "Error desconocido", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<AdsSeller>>, t: Throwable) {
+                    Log.e("loadProducts", "Failure")
+                    activity?.let {
+                        Toast.makeText(it, "Error en la llamada: ${t.message}", Toast.LENGTH_SHORT)
+                            .show()
+                        Log.e("loadProducts", "Error en la llamada: ${t.message}")
+                    }
+                }
+
+            })
+
+
+    }
+    private fun getCategoryNameById(categoryId: Int): String {
+        Log.d("getCategoryNameById","1")
+        val category = categoryList.find { it.idCategoria == categoryId }
+        return category?.nombreCategoria ?: ""
+    }
+    private fun getTianguisNameById(tianguisId: Int): String {
+        Log.d("getTianguisNameById","1")
+        val tianguis = tianguisList.find { it.idTianguis == tianguisId }
+        return tianguis?.nombreTianguis ?: ""
+    }
+    private fun adapterConexion(AdssellerList: List<AdsSeller>) {
+        val adsProductList = ArrayList<Adsproduct>()
+        Log.d("adapterConexion","1")
+        for (adsSeller in AdssellerList) {
+            Log.d("adapterConexion","buble")
+            val category = getCategoryNameById(adsSeller.idCategoriaAnuncio)
+            val tianguis = getTianguisNameById(adsSeller.idTianguisAnuncio)
+
+            val adsProduct = Adsproduct(
+                adsSeller.estatusAnuncio,
+                adsSeller.precioAnuncio,
+                adsSeller.fotoAnuncio,
+                adsSeller.qrAnuncio,
+                adsSeller.nombreAnuncio,
+                tianguis,
+                adsSeller.cantidadAnuncio,
+                adsSeller.idVendedorAnuncio,
+                category
+            )
+
+            adsProductList.add(adsProduct)
+        }
+
+        originalProductList=adsProductList
+        adapter = AdsAdapter(requireContext(),adsProductList,userType)
+        recyclerView.adapter = adapter
+    }
+    private fun changerSpinners(view: View) {
+
+        activity?.let{
+            val categorySpinner = view.findViewById<Spinner>(R.id.categorySpinner)
+            val categoryNames = categoryList.map { it.nombreCategoria }
+            val categoryAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryNames)
+            categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            categorySpinner.adapter = categoryAdapter
+        }
+
+        activity?.let{
+            val tianguisSpinner = view.findViewById<Spinner>(R.id.tianguisSpinner)
+            val tianguisNames = tianguisList.map { it.nombreTianguis }
+            val tianguisAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, tianguisNames)
+            tianguisAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            tianguisSpinner.adapter = tianguisAdapter
+        }
+        changeButtonImage()
+
+    }
+
     private fun changeButtonImage() {
         val imageResource = when (userType) {
             "Comprador" -> R.drawable.ic_qr // Reemplaza 'ic_qr' con el nombre de tu recurso drawable para QR
@@ -223,11 +374,11 @@ class HometabfragmentAds : Fragment() {
             else -> R.drawable.ic_default // Opcional, en caso de un valor inesperado
         }
         actionButton.setImageResource(imageResource)
+
+        //loadProducts()
+        LoadDummysProducts()
     }
-    private fun adapterConexion(Adssellproduct: ArrayList<AdsSeller>) {
-        adapter = AdsAdapter(requireContext(),Adssellproduct,userType)
-        recyclerView.adapter = adapter
-    }
+
     private fun onActionButtonClicked() {
         when (userType) {
             "Comprador" -> {
@@ -303,11 +454,11 @@ class HometabfragmentAds : Fragment() {
 
 
     private fun performSearch(query: String) {
-        val filteredAds = ArrayList<AdsSeller>()
+        val filteredAds = ArrayList<Adsproduct>()
 
         // Recorre todos los elementos originales y filtra los que coincidan con la consulta
-        for (ad in originalAdsList) {
-            if (ad.name.contains(query, true) || ad.category.contains(query, true) || ad.location.contains(query, true)) {
+        for (ad in originalProductList) {
+            if (ad.nombreAnuncio.contains(query, true) || ad.CategoriaAnuncio.contains(query, true) || ad.TianguisAnuncio.contains(query, true)) {
                 filteredAds.add(ad)
             }
         }

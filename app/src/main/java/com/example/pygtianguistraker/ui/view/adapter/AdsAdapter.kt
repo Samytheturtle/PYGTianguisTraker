@@ -1,5 +1,7 @@
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +12,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
-import com.example.pygtianguistraker.data.model.AdsSeller
+import com.example.pygtianguistraker.data.model.Adsproduct
 
 
 class AdsAdapter(
     context: Context,
-    var productList: ArrayList<AdsSeller>,
+    var productList: ArrayList<Adsproduct>,
     var userType: String
 ): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -40,13 +42,18 @@ class AdsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("prueba","7")
+
+
+        //decodificador Base64
         val product = productList[position]
-        holder.NameProducto.text=product.name
-        //holder.imageProduct.drawable=product.imageResource
-        holder.priceProduct.text=product.price
-        holder.locationProduct.text=product.location
-        holder.categoryProduct.text=product.category
+        val decodedImage = Base64.decode(product.fotoAnuncio, Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.size)
+
+        holder.NameProducto.text=product.nombreAnuncio
+        holder.imageProduct.setImageBitmap(bitmap)
+        holder.priceProduct.text=product.precioAnuncio.toString()
+        holder.locationProduct.text=product.TianguisAnuncio
+        holder.categoryProduct.text=product.CategoriaAnuncio
         if (userType == "Vendedor") {
             holder.buttonFav.visibility = View.GONE
         } else {
@@ -59,11 +66,11 @@ class AdsAdapter(
 
             holder.buttonReserver.setOnClickListener {
                 // Acciones para el botón "Editar"
-                Log.d("prueba", "Editar ${product.name}")
+                Log.d("prueba", "Editar ${product.nombreAnuncio}")
             }
             holder.buttonDetails.setOnClickListener {
                 // Acciones para el botón "Eliminar"
-                Log.d("prueba", "Eliminar ${product.name}")
+                Log.d("prueba", "Eliminar ${product.nombreAnuncio}")
             }
         } else if (userType == "Comprador") {
             holder.buttonReserver.text = "Reservar"
@@ -71,21 +78,21 @@ class AdsAdapter(
 
             holder.buttonReserver.setOnClickListener {
                 // Acciones para el botón "Reservar"
-                Log.d("prueba", "Reservar ${product.name}")
+                Log.d("prueba", "Reservar ${product.nombreAnuncio}")
             }
             holder.buttonDetails.setOnClickListener {
                 // Acciones para el botón "Detalles"
-                Log.d("prueba", "Detalles ${product.name}")
+                Log.d("prueba", "Detalles ${product.nombreAnuncio}")
             }
         }
 
         holder.buttonFav.setOnClickListener {
             // Acciones para el botón de favoritos
-            Log.d("prueba", "Favoritos ${product.name}")
+            Log.d("prueba", "Favoritos ${product.nombreAnuncio}")
         }
 
     }
-    fun updateData(newData: ArrayList<AdsSeller>) {
+    fun updateData(newData: List<Adsproduct>) {
         productList.clear() // Limpia la lista actual
         productList.addAll(newData) // Agrega los nuevos datos
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado
