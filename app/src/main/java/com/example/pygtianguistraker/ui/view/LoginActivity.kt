@@ -9,7 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.core.Helper
+import com.example.pygtianguistraker.data.model.AdsSeller
+import com.example.pygtianguistraker.data.model.Adsproduct
 import com.example.pygtianguistraker.data.model.AuthResponse
+import com.example.pygtianguistraker.data.model.Category
+import com.example.pygtianguistraker.data.model.Tianguis
 import com.example.pygtianguistraker.data.model.User
 import com.example.pygtianguistraker.data.network.LoginApiClient
 import com.example.pygtianguistraker.databinding.LoginActivityBinding
@@ -25,15 +29,35 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding
     private lateinit var loginResponse: AuthResponse
 
+    private var categoryNames = ArrayList<String>()
+    private var selectedCategoryId: Int = -1
+    private var idListCategory: ArrayList<Int> = ArrayList()
+
+    private lateinit var tianguisList: List<Tianguis>
+    private lateinit var categoryList: List<Category>
+    //private var typeUser :Int =0
+
+    private lateinit var originalAdsList: List<AdsSeller>
+    private lateinit var originalProductList: ArrayList<Adsproduct>
+    //var originalAdsList = ArrayList<AdsSeller>()
+    private var filterListCategory =ArrayList<Adsproduct>()
+    private var filterListTianguis =ArrayList<Adsproduct>()
+    private var selectedCategory = "Todas las categorias..."
+    private var selectedTianguis = "Todos los tianguis..."
+
+    private lateinit var userType: String
+    private lateinit var token: String
+    private  var id:Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         applySavedLanguage()
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.Loginbutton.setOnClickListener {
             createUserData()
             authVerification()
+
         }
 
         binding.registerButton.setOnClickListener {
@@ -135,7 +159,6 @@ class LoginActivity : AppCompatActivity() {
             })
         }
     }
-
     private fun handleLoginSuccess() {
         Toast.makeText(applicationContext, getString(R.string.ToastLoginCorrect), Toast.LENGTH_SHORT).show()
         val intent = Intent(this, HomeActivity::class.java)
