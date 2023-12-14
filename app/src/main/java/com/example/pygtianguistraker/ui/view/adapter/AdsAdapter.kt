@@ -54,7 +54,6 @@ class AdsAdapter(
         holder.priceProduct.text=product.precioAnuncio.toString()
         holder.locationProduct.text=product.TianguisAnuncio
         holder.categoryProduct.text=product.CategoriaAnuncio
-
         if (userType == "Vendedor") {
             holder.buttonFav.visibility = View.GONE
         } else {

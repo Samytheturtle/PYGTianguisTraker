@@ -100,7 +100,6 @@ class HometabfragmentAds : Fragment() {
                     // El texto de búsqueda está vacío o nulo, reinicia la lista original
                     //loadProducts()
                     //LoadDummysProducts()
-
                 } else {
                     // Realiza la búsqueda con el nuevo texto
                     performSearch(newText)
@@ -265,48 +264,48 @@ class HometabfragmentAds : Fragment() {
         val result: Call<List<AdsSeller>> = service.getAllAds()
         Log.d("loadProducts","2")
         //Log.d("loadProducts",result.toString())
-        result.enqueue(object : Callback<List<AdsSeller>> {
-            override fun onResponse(call: Call<List<AdsSeller>>, response: Response<List<AdsSeller>>) {
+            result.enqueue(object : Callback<List<AdsSeller>> {
+                override fun onResponse(call: Call<List<AdsSeller>>, response: Response<List<AdsSeller>>) {
 
-                Log.d("loadProducts", "Response code: EEEEEEEEEEEEEE")
-                if (response.isSuccessful) {
-                    Log.d("loadProducts","3")
-                    originalAdsList= response.body() ?: emptyList()
-                    Log.d("loadProducts",originalAdsList.toString())
-                    adapterConexion(originalAdsList)
-                }else {
-                    when (response.code()) {
-                        401 -> {
-                            activity?.let{
-                                Toast.makeText(it, "Error de autorización", Toast.LENGTH_SHORT).show()
-                            }
+                    Log.d("loadProducts", "Response code: EEEEEEEEEEEEEE")
+                    if (response.isSuccessful) {
+                        Log.d("loadProducts","3")
+                        originalAdsList= response.body() ?: emptyList()
+                        Log.d("loadProducts",originalAdsList.toString())
+                        adapterConexion(originalAdsList)
+                    }else {
+                        when (response.code()) {
+                            401 -> {
+                                activity?.let{
+                                    Toast.makeText(it, "Error de autorización", Toast.LENGTH_SHORT).show()
+                                }
 
-                        }
-                        500 -> {
-                            activity?.let{
-                                Toast.makeText(it, "Error del servidor", Toast.LENGTH_SHORT).show()
                             }
-                        }
-                        else -> {
-                            activity?.let{
-                                Log.e("loadProducts", "Error desconocido")
-                                Toast.makeText(it, "Error desconocido", Toast.LENGTH_SHORT).show()
+                            500 -> {
+                                activity?.let{
+                                    Toast.makeText(it, "Error del servidor", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            else -> {
+                                activity?.let{
+                                    Log.e("loadProducts", "Error desconocido")
+                                    Toast.makeText(it, "Error desconocido", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<List<AdsSeller>>, t: Throwable) {
-                Log.e("loadProducts", "Failure")
-                activity?.let {
-                    Toast.makeText(it, "Error en la llamada: ${t.message}", Toast.LENGTH_SHORT)
-                        .show()
-                    Log.e("loadProducts", "Error en la llamada: ${t.message}")
+                override fun onFailure(call: Call<List<AdsSeller>>, t: Throwable) {
+                    Log.e("loadProducts", "Failure")
+                    activity?.let {
+                        Toast.makeText(it, "Error en la llamada: ${t.message}", Toast.LENGTH_SHORT)
+                            .show()
+                        Log.e("loadProducts", "Error en la llamada: ${t.message}")
+                    }
                 }
-            }
 
-        })
+            })
 
 
     }
@@ -375,6 +374,7 @@ class HometabfragmentAds : Fragment() {
             else -> R.drawable.ic_default // Opcional, en caso de un valor inesperado
         }
         actionButton.setImageResource(imageResource)
+
         //loadProducts()
         LoadDummysProducts()
     }
@@ -472,4 +472,5 @@ class HometabfragmentAds : Fragment() {
 
     }
 }
+
 
