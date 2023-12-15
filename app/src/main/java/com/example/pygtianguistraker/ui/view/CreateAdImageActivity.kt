@@ -22,7 +22,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.core.Helper
-import com.example.pygtianguistraker.data.model.Adsproduct
+import com.example.pygtianguistraker.data.model.AdsSeller
 import com.example.pygtianguistraker.data.model.ApiResponse
 import com.example.pygtianguistraker.data.model.AuthResponse
 import com.example.pygtianguistraker.data.model.UserSeller
@@ -46,7 +46,7 @@ class CreateAdImageActivity : AppCompatActivity() {
     private lateinit var buttonLoadImage: Button
     private lateinit var imageView: ImageView
     private lateinit var binding: ActivityCreateAdImageBinding
-    private var ads = Adsproduct()
+    private var ads = AdsSeller()
     private lateinit var btSaveCreateAd: Button
     private lateinit var userType: String
     private lateinit var authorizationHeader: String
@@ -187,7 +187,7 @@ class CreateAdImageActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadTianguisId(ads: Adsproduct) {
+    private fun loadTianguisId(ads: AdsSeller) {
         Log.d("Tianguis","TG1")
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(UserSellerApiClient::class.java)
@@ -236,7 +236,7 @@ class CreateAdImageActivity : AppCompatActivity() {
     }
 
     private fun RegisterAds() {
-        var AdsAux: Adsproduct = ads
+        var AdsAux: AdsSeller = ads
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(AdvertisementsApiClient::class.java)
         val imageFilePath = getPathFromUri(this, selectedImageUri!!)
