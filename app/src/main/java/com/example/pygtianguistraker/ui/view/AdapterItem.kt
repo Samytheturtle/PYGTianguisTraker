@@ -10,15 +10,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.data.model.ReviewItem
+import com.example.pygtianguistraker.data.model.ReviewModel
+
 class AdapterItem(
     private val context: Context,
-    private val data: ArrayList<ReviewItem>
+    private val data: ArrayList<ReviewModel>
 ) : RecyclerView.Adapter<AdapterItem.ViewHolder>() {
 
     // Define ViewHolder here
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        // Tus componentes, como ImageView y TextView
+        val imageViewBuyer: ImageView = view.findViewById(R.id.imageViewBuyer)
+        val textViewBuyerName: TextView = view.findViewById(R.id.textViewBuyerName)
+        val textViewReviewContent: TextView = view.findViewById(R.id.textViewReviewContent)
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -28,8 +33,11 @@ class AdapterItem(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
-        // Configura tu holder aquí
+        holder.imageViewBuyer.setImageResource(R.drawable.buyer_image_placeholder) // Asegúrate de que buyerImage sea un ID de drawable
+        holder.textViewBuyerName.text = "User"
+        holder.textViewReviewContent.text = item.mensajeResenia
     }
+
 
     override fun getItemCount(): Int {
         return data.size
