@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background"
     tools:context=".ui.view.fragment.ConsultActivityFavProducts">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/title_fav_product"
         android:textSize="18sp"
-        android:textColor="#808080"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:padding="16dp"/>
 

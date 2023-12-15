@@ -21,4 +21,6 @@ public interface UserSellerApiClient {
 
     @GET("/api/seller/getSeller/{idVendedor}")
     fun getSeller(@Header("Authorization") token: String, @Path("idVendedor") idVendedor:Int):Call<UserSeller>
+
+
 }

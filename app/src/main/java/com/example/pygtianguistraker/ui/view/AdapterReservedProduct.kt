@@ -38,7 +38,7 @@ class AdapterReservedProduct(
         holder.imageViewProduct.setImageBitmap(decodedImage)
 
         holder.textViewProductName.text = currentItem.nombreAnuncio
-        holder.textViewProductPrice.text = "${currentItem.precioAnuncio}"
+        holder.textViewProductPrice.text = "$${currentItem.precioAnuncio}"
     }
 
     override fun getItemCount() = data.size

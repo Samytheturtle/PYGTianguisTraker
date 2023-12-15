@@ -47,19 +47,7 @@
         android:layout_toEndOf="@id/imageViewProduct"
         android:gravity="center_vertical">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/location_icon"
-            android:layout_marginEnd="8dp" />
 
-        <TextView
-            android:id="@+id/textViewLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lugar de venta:"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp" />
     </LinearLayout>
 
     <Button

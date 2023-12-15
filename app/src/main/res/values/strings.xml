@@ -132,4 +132,6 @@
     <string name="category">Categoria</string>
     <string name="ToastImageSelected">Error: Seleccione una imagen para registrar</string>
     <string name="statusProductInit">Disponible</string>
+    <string name="ToastReviewIncorrect">La reseña no ha sido enviada correctamente, completa los campos.</string>
+    <string name="ToastReviewSent">Listo, Reseña enviada correctamente!</string>
 </resources>

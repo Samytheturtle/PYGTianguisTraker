@@ -3,6 +3,7 @@ package com.example.pygtianguistraker.data.network
 import com.example.pygtianguistraker.data.model.ApiResponse
 import com.example.pygtianguistraker.data.model.ReviewItem
 import com.example.pygtianguistraker.data.model.ReviewModel
+import com.example.pygtianguistraker.data.model.UserSeller
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -18,4 +19,7 @@ interface ReviewApiClient {
 
     @GET("reviews")
     fun getReviews(): Call<List<ReviewItem>>
+
+    @GET("api/seller/getSellers")
+    fun getSellers(): Call<List<UserSeller>>
 }
