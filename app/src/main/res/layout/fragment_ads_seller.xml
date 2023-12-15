@@ -75,6 +75,8 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="5dp"
         android:text="@string/details_product"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/favoriteButton" />
 
@@ -86,6 +88,8 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="4dp"
         android:text="@string/button_reserver"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/detailsButton"
         app:layout_constraintHorizontal_bias="0.672"
@@ -105,8 +109,8 @@
 
     <TextView
         android:id="@+id/productNameTextView"
-        android:layout_width="184dp"
-        android:layout_height="27dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:text="Nombre del Producto"
@@ -135,8 +139,8 @@
 
     <TextView
         android:id="@+id/productLocationTextView"
-        android:layout_width="171dp"
-        android:layout_height="23dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="4dp"
         android:text="Ubicación"

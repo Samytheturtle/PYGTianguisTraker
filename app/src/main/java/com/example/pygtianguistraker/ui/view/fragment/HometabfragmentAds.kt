@@ -87,7 +87,6 @@ class HometabfragmentAds : Fragment() {
 
             // Realiza las operaciones que necesites con estos datos
         } else {
-            // No se encontraron datos en las preferencias compartidas
 
         }
 
@@ -107,10 +106,10 @@ class HometabfragmentAds : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                recoverProducts()
                 if (newText.isNullOrEmpty()) {
                     // El texto de búsqueda está vacío o nulo, reinicia la lista original
-
-                    //LoadDummysProducts()
+                    recoverProducts()
                 } else {
                     // Realiza la búsqueda con el nuevo texto
                     performSearch(newText)
@@ -300,6 +299,7 @@ class HometabfragmentAds : Fragment() {
             val tianguis = getTianguisNameById(adsSeller.idTianguisAnuncio)
 
             val adsProduct = Adsproduct(
+                adsSeller.idAnuncio,
                 adsSeller.estatusAnuncio,
                 adsSeller.precioAnuncio,
                 adsSeller.fotoAnuncio,
@@ -321,7 +321,7 @@ class HometabfragmentAds : Fragment() {
 
         Log.d("LIST",originalProductList[0].nombreAnuncio)
 
-        adapter = AdsAdapter(requireContext(),adsProductList,userType)
+        adapter = AdsAdapter(requireContext(),adsProductList,userType,token)
         recyclerView.adapter = adapter
     }
     private fun changerSpinners(view: View) {
@@ -467,13 +467,13 @@ class HometabfragmentAds : Fragment() {
 
         // Recorre todos los elementos originales y filtra los que coincidan con la consulta
         for (ad in originalProductList) {
-            if (ad.nombreAnuncio.contains(query, true) || ad.CategoriaAnuncio.contains(query, true) || ad.TianguisAnuncio.contains(query, true)) {
+            if (ad.nombreAnuncio.contains(query, true)) {
                 filteredAds.add(ad)
             }
         }
 
         // Actualiza el adaptador con los resultados filtrados
-       // adapter.updateData(filteredAds)
+        adapter.updateData(filteredAds)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

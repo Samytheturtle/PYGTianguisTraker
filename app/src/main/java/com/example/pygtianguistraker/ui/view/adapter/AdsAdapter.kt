@@ -1,6 +1,7 @@
 
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,15 +11,28 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
+import com.example.pygtianguistraker.core.Helper
 import com.example.pygtianguistraker.data.model.Adsproduct
+import com.example.pygtianguistraker.data.model.ApiResponse
+import com.example.pygtianguistraker.data.model.UpdateAdvertisementRequest
+import com.example.pygtianguistraker.data.network.AdvertisementsApiClient
+import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.concurrent.CompletableFuture
 
 
 class AdsAdapter(
     context: Context,
     var productList: ArrayList<Adsproduct>,
-    var userType: String
+    var userType: String,
+    var token:String
 ): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -44,11 +58,11 @@ class AdsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
         //decodificador Base64
         val product = productList[position]
         val decodedImage = Base64.decode(product.fotoAnuncio, Base64.DEFAULT)
         val bitmap = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.size)
+
 
         holder.NameProducto.text=product.nombreAnuncio
         holder.imageProduct.setImageBitmap(bitmap)
@@ -63,19 +77,47 @@ class AdsAdapter(
             holder.buttonFav.visibility = View.VISIBLE
         }
 
+        if(product.estatusAnuncio=="Vendido"){
+            holder.status.setTextColor(Color.GREEN)
+        }else if(product.estatusAnuncio=="Disponible"){
+            holder.status.setTextColor(Color.BLACK)
+        }else if(product.estatusAnuncio=="Apartado"){
+            holder.status.setTextColor(Color.RED)
+        }
+
         if (userType == "Vendedor") {
-            holder.buttonReserver.text = "Editar"
             holder.buttonDetails.text = "Eliminar"
+            if(holder.status.text=="Vendido"){
+                holder.status.setTextColor(Color.GREEN)
+                holder.buttonReserver.text = "Marcar como \n Disponible"
+            }else{
+                holder.status.setTextColor(Color.BLACK)
+                holder.buttonReserver.text = "Marcar como vendido"
+            }
 
             holder.buttonReserver.setOnClickListener {
-                // Acciones para el botón "Editar"
-                Log.d("prueba", "Editar ${product.nombreAnuncio}")
+                if(holder.status.text=="Disponible"){
+                    holder.buttonReserver.text = "Marcar como \n" +
+                            " Disponible"
+                    holder.status.setTextColor(Color.GREEN)
+                    Log.e("estatusAnuncio", product.idAnuncio.toString())
+                    updateAdsSell(product.idAnuncio)
+                    holder.status.text="Vendido"
+
+                }else if(holder.status.text=="Vendido"){
+                    holder.buttonReserver.text = "Marcar como vendido"
+                    holder.status.setTextColor(Color.BLACK)
+                    updateAdsSellAvaible(product.idAnuncio)
+                    holder.status.text="Disponible"
+
+                }
             }
             holder.buttonDetails.setOnClickListener {
                 // Acciones para el botón "Eliminar"
-                Log.d("prueba", "Eliminar ${product.nombreAnuncio}")
+                Toast.makeText(holder.itemView.context, "En desarrollo...\uD83D\uDE09", Toast.LENGTH_SHORT).show()
             }
-        } else if (userType == "Comprador") {
+        }
+        else if (userType == "Comprador") {
             holder.buttonReserver.text = "Reservar"
             holder.buttonDetails.text = "Detalles"
 
@@ -95,6 +137,68 @@ class AdsAdapter(
         }
 
     }
+
+    private fun updateAdsSellAvaible(idVendedorAnuncio: Int): CompletableFuture<ApiResponse>{
+        val completableFuture = CompletableFuture<ApiResponse>()
+
+        // Crear un objeto UpdateAdvertisementRequest con la idAnuncio
+        val request = UpdateAdvertisementRequest(idVendedorAnuncio)
+        Log.e("estatusAnuncio", request.toString())
+        // Convertir el objeto a JSON utilizando Gson
+        val requestBody = RequestBody.create(MediaType.parse("application/json"), Gson().toJson(request))
+        Log.e("estatusAnuncio", requestBody.toString())
+        val retrofit = Helper.getRetrofit()
+        val service = retrofit.create(AdvertisementsApiClient::class.java)
+
+        val result: Call<ApiResponse> = service.updateAdsSellerAvaible(token, requestBody)
+        result.enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    val responseAuth = response.body()!!
+                } else {
+                    // El código restante para manejar errores de respuesta
+                    // ...
+                    completableFuture.completeExceptionally(Throwable("Error en la respuesta"))
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Log.e("avabile", "Error en la solicitud: ${t.message}")
+            }
+        })
+        return completableFuture
+    }
+
+    private fun updateAdsSell(idVendedorAnuncio: Int) {
+        val completableFuture = CompletableFuture<ApiResponse>()
+
+        // Crear un objeto UpdateAdvertisementRequest con la idAnuncio
+        val request = UpdateAdvertisementRequest(idVendedorAnuncio)
+        Log.e("estatusAnuncio", request.toString())
+        // Convertir el objeto a JSON utilizando Gson
+        val requestBody = RequestBody.create(MediaType.parse("application/json"), Gson().toJson(request))
+        Log.e("estatusAnuncio", requestBody.toString())
+        val retrofit = Helper.getRetrofit()
+        val service = retrofit.create(AdvertisementsApiClient::class.java)
+
+        val result: Call<ApiResponse> = service.updateAdsSeller(token, requestBody)
+        result.enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    val responseAuth = response.body()!!
+
+                } else {
+
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Log.e("SELL", "Error en la solicitud: ${t.message}")
+            }
+        })
+    }
+
+
     fun updateData(newData: List<Adsproduct>) {
         Log.d("cleardata",newData.toString())
         productList.clear() // Limpia la lista actual
