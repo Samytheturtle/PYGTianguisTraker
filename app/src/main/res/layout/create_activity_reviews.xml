@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/background"
     tools:context=".ui.view.CreateReviews">
 
     <TextView
@@ -19,37 +19,54 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"/>
 
-
     <TextView
-        android:id="@+id/textViewSellerName"
+        android:id="@+id/textViewSelectSeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:text="Vendedor: Juan Perez Ochoa "
+        android:text="Selecciona Vendedor"
         android:textSize="18sp"
         android:textColor="#000000"
         android:layout_below="@id/textViewTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerSellerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewSelectSeller"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
     <ImageView
         android:id="@+id/imageViewSeller"
         android:layout_width="156dp"
         android:layout_height="138dp"
-        android:layout_below="@id/textViewSellerName"
+        android:layout_below="@id/spinnerSellerName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="@drawable/seller_icon"
         android:elevation="4dp"
         android:padding="4dp"
         android:src="@drawable/seller_image_placeholder" />
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:rating="0"
+        android:layout_below="@id/imageViewSeller"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/editTextReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Escribe tu reseña aquí"
-        android:layout_below="@id/imageViewSeller"
+        android:layout_below="@id/ratingBar"
         android:layout_marginTop="16dp"
         android:background="#F5F5F5"
         android:padding="12dp"
@@ -65,8 +82,8 @@
         android:layout_below="@id/editTextReview"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-
         android:textColor="#FFFFFF"
+        android:backgroundTint="@color/yellow"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
         android:paddingTop="12dp"
@@ -77,9 +94,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancelar"
+        android:backgroundTint="@color/yellow"
         android:layout_below="@id/buttonSubmit"
         android:layout_centerHorizontal="true"
-
         android:layout_marginTop="16dp"
         android:textColor="#FFFFFF"
         android:textSize="12sp"

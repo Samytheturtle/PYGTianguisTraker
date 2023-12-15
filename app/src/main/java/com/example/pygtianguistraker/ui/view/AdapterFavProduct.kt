@@ -7,51 +7,30 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.data.model.FavProduct
 import com.example.pygtianguistraker.data.model.ReviewItem
+import com.example.pygtianguistraker.ui.view.adapter.ViewHolderFavProducts
 
-class AdapterFavProduct (context: Context, private val data: ArrayList<FavProduct>) :
-    ArrayAdapter<FavProduct>(context, R.layout.item_fav_product, data) {
+class AdapterFavProduct(
+    private val context: Context,
+    private val data: ArrayList<FavProduct>
+) : RecyclerView.Adapter<ViewHolderFavProducts>() {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var view: View? = convertView
-        val holder: ViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderFavProducts {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_fav_product, parent, false)
+        return ViewHolderFavProducts(view)
+    }
 
-        if (view == null) {
-            val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.item_fav_product, parent, false)
-            holder = ViewHolder()
 
-            // Asignar vistas al ViewHolder
-            holder.imageViewProduct = view.findViewById(R.id.imageViewProduct)
-            holder.textViewProductName = view.findViewById(R.id.textViewProductName)
-            holder.textViewPrice = view.findViewById(R.id.textViewPrice)
-            holder.textViewLocation = view.findViewById(R.id.textViewLocation)
-
-            view.tag = holder
-        } else {
-            holder = view.tag as ViewHolder
-        }
-
+    override fun onBindViewHolder(holder: ViewHolderFavProducts, position: Int) {
         val currentItem = data[position]
-
-        // Asignar valores a las vistas
-        holder.imageViewProduct?.setImageResource(currentItem.imageResource)
-        holder.textViewProductName?.text = currentItem.name
-        holder.textViewPrice?.text = currentItem.price
-        holder.textViewLocation?.text = currentItem.location
-        return view!!
+        holder.imageViewProduct.setImageResource(currentItem.imageResource)
+        holder.textViewProductName.text = currentItem.name
+        holder.textViewPrice.text = currentItem.price
+        holder.textViewLocation.text = currentItem.location
     }
 
-    // Clase ViewHolder para mantener las referencias a las vistas
-    private class ViewHolder {
-        var imageViewProduct: ImageView? = null
-        var textViewProductName: TextView? = null
-        var textViewPrice: TextView? = null
-        var textViewLocation: TextView? = null
-    }
+    override fun getItemCount() = data.size
 }
-
-
-

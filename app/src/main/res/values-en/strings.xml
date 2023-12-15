@@ -128,10 +128,8 @@
     <string name="details_product">Details</string>
     <string name="ToastTextVoid">Error: There are empty fields, please review</string>
     <string name="ToastValidNumbers">Error, please enter a valid quantity.</string>
-<<<<<<< HEAD
-=======
     <string name="category">Category</string>
     <string name="ToastImageSelected">Error: Please select an image to register</string>
     <string name="statusProductInit">Available</string>
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
+
 </resources>

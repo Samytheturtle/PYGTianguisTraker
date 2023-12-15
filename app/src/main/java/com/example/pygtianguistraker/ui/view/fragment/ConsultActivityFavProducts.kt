@@ -6,17 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.data.model.FavProduct
 import com.example.pygtianguistraker.ui.view.AdapterFavProduct
 
 
 class ConsultActivityFavProducts : Fragment(){
-    private lateinit var listView: ListView
+    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterFavProduct
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.consult_activity_fav_products, container, false)
-        listView = view.findViewById(R.id.listViewFavoriteProducts)
+        recyclerView = view.findViewById(R.id.recyclerViewFavoriteProducts)
 
 
         val favProducts = ArrayList<FavProduct>()
@@ -35,15 +38,14 @@ class ConsultActivityFavProducts : Fragment(){
         favProducts.add(FavProduct(R.drawable.without_image, "Laptop Ultraligera", "$600", "Tianguis M"))
         favProducts.add(FavProduct(R.drawable.without_image, "Botas de Cuero", "$90", "Tianguis N"))
         favProducts.add(FavProduct(R.drawable.without_image, "Bicicleta de Montaña", "$250", "Tianguis O"))
-        favProducts.add(FavProduct(R.drawable.without_image, "Libros Clásicos", "$20", "Tianguis P"))
-        favProducts.add(FavProduct(R.drawable.without_image, "Pelotas de Golf", "$15", "Tianguis Q"))
-        favProducts.add(FavProduct(R.drawable.without_image, "Pinturas Artísticas", "$70", "Tianguis R"))
-        favProducts.add(FavProduct(R.drawable.without_image, "Joyas Vintage", "$180", "Tianguis S"))
-        favProducts.add(FavProduct(R.drawable.without_image, "Lámpara Retro", "$35", "Tianguis T"))
 
         adapter = AdapterFavProduct(requireContext(), favProducts)
-        listView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // Asigna el adaptador al RecyclerView
+        recyclerView.adapter = adapter
 
         return view
+
     }
 }

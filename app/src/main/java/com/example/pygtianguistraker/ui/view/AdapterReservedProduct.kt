@@ -1,55 +1,45 @@
 package com.example.pygtianguistraker.ui.view
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.data.model.ItemSold
 import com.example.pygtianguistraker.data.model.ReservedProduct
+class AdapterReservedProduct(
+    private val context: Context,
+    private val data: List<ReservedProduct>
+) : RecyclerView.Adapter<AdapterReservedProduct.ViewHolder>() {
 
-class AdapterReservedProduct (context: Context, private val data: ArrayList<ReservedProduct>) :
-    ArrayAdapter<ReservedProduct>(context, R.layout.reserved_product, data) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imageViewProduct: ImageView = view.findViewById(R.id.imageViewProduct)
+        val textViewProductName: TextView = view.findViewById(R.id.textViewProductName)
+        val textViewProductPrice: TextView = view.findViewById(R.id.textViewProductPrice)
+    }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var view: View? = convertView
-        val holder: ViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.reserved_product, parent, false)
+        return ViewHolder(view)
+    }
 
-        if (view == null) {
-            val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.reserved_product, parent, false)
-            holder = ViewHolder()
-
-            // Asignar vistas al ViewHolder
-            holder.imageViewProduct = view.findViewById(R.id.imageViewProduct)
-            holder.textViewProductName = view.findViewById(R.id.textViewProductName)
-            holder.textViewProductPrice = view.findViewById(R.id.textViewProductPrice)
-
-            view.tag = holder
-        } else {
-            holder = view.tag as ViewHolder
-        }
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = data[position]
 
-        // Asignar valores a las vistas
-        holder.imageViewProduct?.setImageResource(currentItem.productImage)
-        holder.textViewProductName?.text = currentItem.productName
-        holder.textViewProductPrice?.text = currentItem.productPrice
-        holder.textViewSellingPlace?.text = currentItem.sellingPlace
+        // Convertir Base64 a Bitmap y establecer en ImageView
+        val imageBytes = Base64.decode(currentItem.fotoAnuncio, Base64.DEFAULT)
+        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        holder.imageViewProduct.setImageBitmap(decodedImage)
 
-        return view!!
+        holder.textViewProductName.text = currentItem.nombreAnuncio
+        holder.textViewProductPrice.text = "${currentItem.precioAnuncio}"
     }
 
-    // Clase ViewHolder para mantener las referencias a las vistas
-    private class ViewHolder {
-        var imageViewProduct: ImageView? = null
-        var textViewProductName: TextView? = null
-        var textViewProductPrice: TextView? = null
-        var textViewSellingPlace: TextView? = null
-
-    }
+    override fun getItemCount() = data.size
 }

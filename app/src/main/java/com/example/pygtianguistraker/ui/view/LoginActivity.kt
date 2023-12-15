@@ -1,8 +1,5 @@
 package com.example.pygtianguistraker.ui.view
-<<<<<<< HEAD
-=======
 
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -34,12 +31,7 @@ class LoginActivity : AppCompatActivity() {
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-<<<<<<< HEAD
-
-        binding.Loginbutton.setOnClickListener{
-=======
         binding.Loginbutton.setOnClickListener {
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
             createUserData()
             authVerification()
         }
@@ -48,31 +40,6 @@ class LoginActivity : AppCompatActivity() {
             val dialogFragment = UserPopRegisterSelectFragment()
             dialogFragment.show(supportFragmentManager, "PopUp")
         }
-    }
-    private fun applySavedLanguage() {
-        val preferences = getSharedPreferences("AppSettings", Context.MODE_PRIVATE)
-        val language = preferences.getString("Language", "es") ?: "es"
-        val locale = Locale(language)
-        Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        resources.updateConfiguration(config, resources.displayMetrics)
-    }
-    private fun sharePreferencesPYAndroid(loginResponse: AuthResponse) {
-        // Nombre que identifica tus preferencias compartidas
-        val preferenceName = "my_app_information"
-
-        // Obtiene una instancia de SharedPreferences
-        val prefs: SharedPreferences = getSharedPreferences(preferenceName, MODE_PRIVATE)
-
-        // Obtiene un editor para realizar cambios en las preferencias compartidas
-        val editor: SharedPreferences.Editor = prefs.edit()
-        val gson = Gson()
-        val loginResponseJson = gson.toJson(loginResponse)
-        Log.d("JSONDATA",loginResponseJson.toString())
-
-        editor.putString("datos_usuario", loginResponseJson)
-        editor.apply()
     }
 
     private fun applySavedLanguage() {
@@ -112,20 +79,6 @@ class LoginActivity : AppCompatActivity() {
                     call: Call<AuthResponse>,
                     response: Response<AuthResponse>
                 ) {
-<<<<<<< HEAD
-                    if(response.isSuccessful){
-
-                        loginResponse = response.body()!!
-                        if(loginResponse.message.equals("Correo no encontrado")){
-                            Toast.makeText(applicationContext, getString(R.string.ToastEmailIncorrect), Toast.LENGTH_SHORT).show()
-                        }else if(loginResponse.message.equals("Contraseña incorrecta")){
-                            Toast.makeText(applicationContext, getString(R.string.ToastPasswordIncorrect) ,Toast.LENGTH_SHORT).show()
-                        } else{
-                            sharePreferencesPYAndroid(loginResponse)
-                            handleLoginSuccess()
-                        }
-
-=======
                     if (response.isSuccessful) {
                         loginResponse = response.body()!!
                         if (loginResponse.message.equals("Correo no encontrado")) {
@@ -168,20 +121,15 @@ class LoginActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
                     }
                 }
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-<<<<<<< HEAD
-                    Toast.makeText(applicationContext, getString(R.string.ToastErrorResponse), Toast.LENGTH_SHORT).show()
-=======
                     Toast.makeText(
                         applicationContext,
                         getString(R.string.ToastErrorResponse),
                         Toast.LENGTH_SHORT
                     ).show()
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
                     println(t.message)
                 }
             })
@@ -189,14 +137,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun handleLoginSuccess() {
-<<<<<<< HEAD
-
-=======
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
         Toast.makeText(applicationContext, getString(R.string.ToastLoginCorrect), Toast.LENGTH_SHORT).show()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
-
     }
 
     private fun validateFields(): Boolean {

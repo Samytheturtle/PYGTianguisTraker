@@ -88,12 +88,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewQuantity" />
-<<<<<<< HEAD
-    <Spinner
-        style="@style/style_text_input"
-        android:id="@+id/etNewState"
-        android:background="@color/white"
-=======
     <EditText
         style="@style/style_text_input"
         android:id="@+id/etNewState"
@@ -103,7 +97,6 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
->>>>>>> PYGTianguisTrajer-V-Beta-1.0
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvState" />

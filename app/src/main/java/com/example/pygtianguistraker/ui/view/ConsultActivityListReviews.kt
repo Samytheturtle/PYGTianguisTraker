@@ -22,7 +22,7 @@ class ConsultActivityListReviews : AppCompatActivity() {
         reviewList.add(ReviewItem(R.drawable.user_icon, "Usuario2", "Muy buen vendedor. Producto de calidad."))
 
         val adapter = AdapterItem(this, reviewList)
-        val listView: ListView = findViewById(R.id.listViewReviews)
+        val listView: ListView = findViewById(R.id.recyclerViewReviews)
         listView.adapter = adapter
     }
 }

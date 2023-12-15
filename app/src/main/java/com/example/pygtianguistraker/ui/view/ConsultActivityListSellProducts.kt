@@ -20,7 +20,7 @@ class ConsultActivityListSellProducts: AppCompatActivity() {
         soldProductsList.add(ItemSold(R.drawable.without_image, "Halo Infinite", "600."))
 
         val adapter = AdapterSoldItem(this, soldProductsList)
-        val listView: ListView = findViewById(R.id.listViewProductsSold)
+        val listView: ListView = findViewById(R.id.recyclerViewProductsSold)
         listView.adapter = adapter
     }
 }
