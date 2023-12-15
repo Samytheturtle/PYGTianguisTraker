@@ -15,6 +15,7 @@ import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,7 @@ import com.example.pygtianguistraker.data.network.CategoryApiClient
 import com.example.pygtianguistraker.data.network.UserSellerApiClient
 import com.example.pygtianguistraker.ui.view.CreateAdActivity
 import com.example.pygtianguistraker.ui.view.HomeActivity
+import com.example.pygtianguistraker.ui.view.ShowActivityDetailsProducts
 import com.example.pygtianguistraker.ui.viewModel.AdsViewModel
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
@@ -321,7 +323,7 @@ class HometabfragmentAds : Fragment() {
 
         Log.d("LIST",originalProductList[0].nombreAnuncio)
 
-        adapter = AdsAdapter(requireContext(),adsProductList,userType,token)
+        adapter = AdsAdapter(requireContext(),adsProductList,userType,token,id)
         recyclerView.adapter = adapter
     }
     private fun changerSpinners(view: View) {
@@ -435,25 +437,32 @@ class HometabfragmentAds : Fragment() {
             integrator.setBeepEnabled(true)
             integrator.initiateScan()
         }
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        Log.d("Revisor","PRE")
+        Log.d("Revisor", "PRE")
         if (result != null) {
-            Log.d("Revisor","YES")
+            Log.d("Revisor", "YES")
             if (result.contents == null) {
-                activity?.let{
+                activity?.let {
                     Toast.makeText(it, "Cancelado", Toast.LENGTH_LONG).show()
-                    Log.d("Revisor","Cancelado")
+                    Log.d("Revisor", "Cancelado")
                 }
-
             } else {
-                Log.d("Revisor","NOOOOOOO")
-                activity?.let{
-                    Toast.makeText(it, "El valor escaneado es: " + result.contents, Toast.LENGTH_LONG).show()
-                    Log.d("Revisor","El valor escaneado es: " + result.contents)
+                Log.d("Revisor", "NOOOOOOO")
+                val scannedValue = result.contents
+                if (scannedValue.isDigitsOnly()) { // Verifica si el valor escaneado es un número
+                    val context = activity ?: return
+                    val intent = Intent(context, ShowActivityDetailsProducts::class.java).apply {
+                        putExtra("id", scannedValue.toInt()) // Convierte el valor escaneado a un entero
+                    }
+                    context.startActivity(intent)
+                } else {
+                    activity?.let {
+                        Toast.makeText(it, "El valor escaneado es: $scannedValue", Toast.LENGTH_LONG).show()
+                    }
                 }
-
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

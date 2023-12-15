@@ -91,11 +91,11 @@ class LoginActivity : AppCompatActivity() {
        // user.correoUsuario = binding.editTextTextEmailAddress.text.toString().trim()
        // user.contraseniaUsuario = binding.editTextTextPassword.text.toString().trim()
 
-        //user.correoUsuario = "adminB@tianguis.com"
-        //user.contraseniaUsuario = "qwer1234"
+        user.correoUsuario = "tony@gmail.com"
+        user.contraseniaUsuario = "Nozomi69"
 
-       user.correoUsuario = "adminS@tianguis.com"
-        user.contraseniaUsuario = "qwer1234"
+       // user.correoUsuario = "samyTheTrutle@gmail.com"
+        //user.contraseniaUsuario = "KevinK123"
     }
 
     private fun authVerification() {

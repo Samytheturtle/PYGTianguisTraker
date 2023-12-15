@@ -1,5 +1,6 @@
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.util.Base64
@@ -18,7 +19,9 @@ import com.example.pygtianguistraker.core.Helper
 import com.example.pygtianguistraker.data.model.Adsproduct
 import com.example.pygtianguistraker.data.model.ApiResponse
 import com.example.pygtianguistraker.data.model.UpdateAdvertisementRequest
+import com.example.pygtianguistraker.data.model.addPulletApartAdvertisement
 import com.example.pygtianguistraker.data.network.AdvertisementsApiClient
+import com.example.pygtianguistraker.ui.view.ShowActivityDetailsProducts
 import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -32,7 +35,8 @@ class AdsAdapter(
     context: Context,
     var productList: ArrayList<Adsproduct>,
     var userType: String,
-    var token:String
+    var token:String,
+    var id:Int
 ): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -90,6 +94,10 @@ class AdsAdapter(
             if(holder.status.text=="Vendido"){
                 holder.status.setTextColor(Color.GREEN)
                 holder.buttonReserver.text = "Marcar como \n Disponible"
+            }else if(holder.status.text=="Apartado"){
+                holder.status.setTextColor(Color.RED)
+                holder.buttonReserver.text = "Marcar como \n" +
+                        " Disponible"
             }else{
                 holder.status.setTextColor(Color.BLACK)
                 holder.buttonReserver.text = "Marcar como vendido"
@@ -110,6 +118,12 @@ class AdsAdapter(
                     updateAdsSellAvaible(product.idAnuncio)
                     holder.status.text="Disponible"
 
+                }else if(holder.status.text=="Apartado"){
+                    holder.buttonReserver.text = "Marcar como vendido"
+                    holder.status.setTextColor(Color.GREEN)
+                    Log.e("estatusAnuncio", product.idAnuncio.toString())
+                    updateAdsSell(product.idAnuncio)
+                    holder.status.text="Vendido"
                 }
             }
             holder.buttonDetails.setOnClickListener {
@@ -118,16 +132,38 @@ class AdsAdapter(
             }
         }
         else if (userType == "Comprador") {
-            holder.buttonReserver.text = "Reservar"
+            holder.buttonReserver.text = "Apartar"
             holder.buttonDetails.text = "Detalles"
 
+            if(holder.status.text=="Vendido"){
+                holder.buttonReserver.text = "No se puede apartar"
+                holder.buttonReserver.isEnabled=false
+            }else if(holder.status.text=="Apartado"){
+                holder.buttonReserver.text = "No se puede apartar"
+                holder.buttonReserver.isEnabled=false
+            }
+
             holder.buttonReserver.setOnClickListener {
-                // Acciones para el botón "Reservar"
-                Log.d("prueba", "Reservar ${product.nombreAnuncio}")
+                if(holder.status.text=="Disponible"){
+                    holder.buttonReserver.text = "Apartado"
+                    holder.status.setTextColor(Color.RED)
+                    reserverads(product.idAnuncio)
+                    holder.status.text="Apartado"
+                }else if(holder.status.text=="Apartado"){
+                    holder.buttonReserver.text = "No se puede apartar"
+                    holder.buttonReserver.isEnabled=false
+                }else if(holder.status.text=="Vendido"){
+                    holder.buttonReserver.text = "No se puede apartar"
+                    holder.buttonReserver.isEnabled=false
+                }
             }
             holder.buttonDetails.setOnClickListener {
-                // Acciones para el botón "Detalles"
-                Log.d("prueba", "Detalles ${product.nombreAnuncio}")
+                // Start ShowActivityDetailsProducts and pass the product details
+                val context = holder.itemView.context
+                val intent = Intent(context, ShowActivityDetailsProducts::class.java).apply {
+                    putExtra("id", product.idAnuncio)
+                }
+                context.startActivity(intent)
             }
         }
 
@@ -136,6 +172,35 @@ class AdsAdapter(
             Log.d("prueba", "Favoritos ${product.nombreAnuncio}")
         }
 
+    }
+
+    private fun reserverads(idAnuncio: Int) {
+        val completableFuture = CompletableFuture<ApiResponse>()
+
+        // Crear un objeto UpdateAdvertisementRequest con la idAnuncio
+        val request = addPulletApartAdvertisement(idAnuncio,id)
+        // Convertir el objeto a JSON utilizando Gson
+        val requestBody = RequestBody.create(MediaType.parse("application/json"), Gson().toJson(request))
+        Log.e("estatusAnuncio", requestBody.toString())
+        val retrofit = Helper.getRetrofit()
+        val service = retrofit.create(AdvertisementsApiClient::class.java)
+
+        val result: Call<ApiResponse> = service.updateAdsSellerAvaible(token, requestBody)
+        result.enqueue(object : Callback<ApiResponse> {
+            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+                if (response.isSuccessful) {
+                    val responseAuth = response.body()!!
+                } else {
+                    // El código restante para manejar errores de respuesta
+                    // ...
+                    completableFuture.completeExceptionally(Throwable("Error en la respuesta"))
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                Log.e("avabile", "Error en la solicitud: ${t.message}")
+            }
+        })
     }
 
     private fun updateAdsSellAvaible(idVendedorAnuncio: Int): CompletableFuture<ApiResponse>{

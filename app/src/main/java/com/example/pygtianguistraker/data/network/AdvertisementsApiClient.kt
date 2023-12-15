@@ -35,4 +35,13 @@ interface AdvertisementsApiClient {
         @Header("Authorization") token: String,
         @Body requestBody: RequestBody
     ): Call<ApiResponse>
+
+    @GET("/api/advertisement/getAdvertisement/{idAnuncio}")
+    fun getAdsById( @Path("idAnuncio") idAnuncio:Int): Call<AdsSeller>
+
+    @PUT("/api/advertisement/addPulletApartAdvertisement")
+    fun addPulletApartAdvertisement(
+        @Header("Authorization") token: String,
+        @Body requestBody: RequestBody
+    ): Call<ApiResponse>
 }
