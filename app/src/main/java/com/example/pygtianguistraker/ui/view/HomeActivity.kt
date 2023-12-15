@@ -115,7 +115,6 @@ class HomeActivity : AppCompatActivity(){
     private fun loadProducts() {
         Log.d("LOADHOME","1")
         binding.progressBar.visibility = View.VISIBLE // Mostrar la barra de progreso
-
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(AdvertisementsApiClient::class.java)
         val result: Call<List<AdsSeller>> = service.getAllAds()
