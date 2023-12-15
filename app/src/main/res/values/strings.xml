@@ -99,7 +99,7 @@
     <string name="login">Iniciar Sesión</string>
     <string name="button_register">Registrarse</string>
     <string name="edit">Editar perfil</string>
-    <string name="delete">Eliminar perfil</string>
+    <string name="show_details_user_seller">Más información</string>
     <string name="next">Siguiente</string>
     <string name="register">Registrar</string>
     <string name="save">Guardar</string>
@@ -132,4 +132,5 @@
     <string name="category">Categoria</string>
     <string name="ToastImageSelected">Error: Seleccione una imagen para registrar</string>
     <string name="statusProductInit">Disponible</string>
+    <string name="tianguis_locate">Ubicación de tianguis</string>
 </resources>

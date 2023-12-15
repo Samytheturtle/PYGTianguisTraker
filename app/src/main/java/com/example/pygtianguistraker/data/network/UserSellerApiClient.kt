@@ -11,10 +11,13 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 
-public interface UserSellerApiClient {
+interface UserSellerApiClient {
 
     @GET("/api/tianguis")
     fun getTianguis(): Call<List<Tianguis>>
+
+    @GET("/api/tianguis/getTianguisById/{idTianguis}")
+    fun getOneTianguis(@Path("idTianguis") idTianguis: Int): Call<Tianguis>
 
     @POST("/api/Seller/registerSeller")
     fun addSeller(@Body seller: UserSeller): Call<UserSeller>

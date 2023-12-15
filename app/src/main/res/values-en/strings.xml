@@ -98,7 +98,7 @@
     <string name="login">Login</string>
     <string name="button_register">Register</string>
     <string name="edit">Edit Profile</string>
-    <string name="delete">Delete Profile</string>
+    <string name="show_details_user_seller">More Information</string>
     <string name="next">Next</string>
     <string name="register">Register</string>
     <string name="save">Save</string>
@@ -131,4 +131,5 @@
     <string name="category">Category</string>
     <string name="ToastImageSelected">Error: Please select an image to register</string>
     <string name="statusProductInit">Available</string>
+    <string name="tianguis_locate">Tianguis location</string>
 </resources>
