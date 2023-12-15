@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
@@ -13,6 +14,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -32,6 +34,11 @@ import com.example.pygtianguistraker.databinding.ActivityCreateAdImageBinding
 import com.google.gson.Gson
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -48,11 +55,15 @@ class CreateAdImageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateAdImageBinding
     private var ads = AdsSeller()
     private lateinit var btSaveCreateAd: Button
-    private lateinit var userType: String
-    private lateinit var authorizationHeader: String
-    private var id: Int = 0
     private lateinit var responseAuth: ApiResponse
     private lateinit var Usersellerresponse: UserSeller
+
+    private lateinit var loginResponse: AuthResponse
+
+    private lateinit var user:String
+    private lateinit var token:String
+    private var id:Int = 0
+
 
     private var selectedImageUri: Uri? = null
 
@@ -64,25 +75,14 @@ class CreateAdImageActivity : AppCompatActivity() {
         binding = ActivityCreateAdImageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtener datos guardados en caché
-
-        val prefs = getSharedPreferences("my_app_information", Context.MODE_PRIVATE)
-        val datosGuardados = prefs.getString("datos_usuario", null)
-
-        if (datosGuardados != null) {
-            val gson = Gson()
-            val usuario = gson.fromJson(datosGuardados, AuthResponse::class.java)
-            authorizationHeader = usuario.token
-            id = usuario.id
-            userType = usuario.user
-
-            loadDataIntent()
-
-        } else {
-
-        }
 
         initComponents()
+        loadDataIntent()
+        Log.d("DATA:!",token)
+        Log.d("DATA:!",id.toString())
+        Log.d("DATA:!",user)
+        val authResponse=AuthResponse("retorned",token,id,user)
+        sharePreferencesPYAndroid(authResponse)
 
         buttonLoadImage.setOnClickListener {
             if (checkPermissionForGallery()) {
@@ -102,7 +102,6 @@ class CreateAdImageActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            finish()
         }
         buttonCancel.setOnClickListener() {
             finish()
@@ -165,9 +164,22 @@ class CreateAdImageActivity : AppCompatActivity() {
         ads.qrAnuncio = "INHABILITATE"
 
         ads.nombreAnuncio = intent.getSerializableExtra("name").toString()
+        user = intent.getSerializableExtra("user").toString()
+        token = intent.getSerializableExtra("token").toString()
+
+        val idString = intent.getStringExtra("idV")
+        Log.d("loadata",idString.toString())
+        try {
+            val idInt = idString?.toInt() ?: 0
+            ads.idVendedorAnuncio = idInt
+            id=idInt
+        } catch (e: NumberFormatException) {
+            ads.idVendedorAnuncio = 0
+        }
 
         loadTianguisId(ads)
        //
+
 
         val quantityString = intent.getStringExtra("quantity")
         try {
@@ -176,7 +188,9 @@ class CreateAdImageActivity : AppCompatActivity() {
         } catch (e: NumberFormatException) {
             ads.cantidadAnuncio = 0
         }
-        ads.idVendedorAnuncio = id
+
+
+
 
         val categoryId = intent.getStringExtra("category")
         try {
@@ -186,12 +200,21 @@ class CreateAdImageActivity : AppCompatActivity() {
             ads.idCategoriaAnuncio = 0
         }
     }
-
+    private fun sharePreferencesPYAndroid(loginResponse: AuthResponse) {
+        val preferenceName = "my_app_information"
+        val prefs: SharedPreferences = getSharedPreferences(preferenceName, MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = prefs.edit()
+        val gson = Gson()
+        val loginResponseJson = gson.toJson(loginResponse)
+        Log.d("JSONDATA", loginResponseJson.toString())
+        editor.putString("datos_usuario", loginResponseJson)
+        editor.apply()
+    }
     private fun loadTianguisId(ads: AdsSeller) {
         Log.d("Tianguis","TG1")
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(UserSellerApiClient::class.java)
-        val result: Call<UserSeller> = service.getSeller(authorizationHeader, id)
+        val result: Call<UserSeller> = service.getSeller(token, ads.idVendedorAnuncio)
         Log.d("Tianguis","TG2")
         result.enqueue(object : Callback<UserSeller> {
             override fun onResponse(call: Call<UserSeller>, response: Response<UserSeller>) {
@@ -236,6 +259,7 @@ class CreateAdImageActivity : AppCompatActivity() {
     }
 
     private fun RegisterAds() {
+        binding.progressBar.visibility = View.VISIBLE // Mostrar la barra de progreso
         var AdsAux: AdsSeller = ads
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(AdvertisementsApiClient::class.java)
@@ -252,34 +276,36 @@ class CreateAdImageActivity : AppCompatActivity() {
             .build()
 
         val result: Call<ApiResponse> =
-            service.addAdvertisement(authorizationHeader, requestBody)
-
+            service.addAdvertisement(token, requestBody)
         result.enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {
                     responseAuth = response.body()!!
-
-                    val qrCodeBitmap = generateQRCode(responseAuth.idTianguisAnuncio.toString())
-
-                    val savedUri = saveImageToGallery(this@CreateAdImageActivity, qrCodeBitmap, "MyQRAlbum")
-                    Log.d("Anuncio","${responseAuth.toString()}")
                     Toast.makeText(applicationContext, "Busca tu QR en tu galeria", Toast.LENGTH_SHORT).show()
-                } else {
-                    when (response.code()) {
-                        401 -> {
-                            Toast.makeText(applicationContext, "Error de autorización", Toast.LENGTH_SHORT).show()
-                        }
-                        500 -> {
-                            Toast.makeText(applicationContext, "Error del servidor", Toast.LENGTH_SHORT).show()
-                        }
-                        else -> {
-                            Toast.makeText(applicationContext, "Error desconocido", Toast.LENGTH_SHORT).show()
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        delay(5000) // Espera 5 segundos (5000 milisegundos)
+                        withContext(Dispatchers.Main) {
+                            // Oculta la ProgressBar después del retraso
+                            binding.progressBar.visibility = View.GONE
+                            val qrCodeBitmap = generateQRCode(responseAuth.idTianguisAnuncio.toString())
+                            val savedUri = saveImageToGallery(this@CreateAdImageActivity, qrCodeBitmap, "MyQRAlbum")
+                            Log.d("Anuncio","${responseAuth.toString()}")
+
+                            // Ahora inicia la actividad después del retraso
+                            val intent = Intent(this@CreateAdImageActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
                     }
+                } else {
+                    // El código restante para manejar errores de respuesta
+                    // ...
                 }
             }
 
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
+                binding.progressBar.visibility = View.GONE
                 Log.e("RegisterADS", "Error en la solicitud: ${t.message}")
                 Toast.makeText(applicationContext, "No se ha podido registrar", Toast.LENGTH_SHORT).show()
             }

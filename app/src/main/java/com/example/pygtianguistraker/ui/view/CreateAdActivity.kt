@@ -1,5 +1,6 @@
 package com.example.pygtianguistraker.ui.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +14,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pygtianguistraker.R
 import com.example.pygtianguistraker.core.Helper
+import com.example.pygtianguistraker.data.model.AuthResponse
 import com.example.pygtianguistraker.data.model.Category
 import com.example.pygtianguistraker.data.network.CategoryApiClient
 import com.example.pygtianguistraker.databinding.ActivityCreateAdBinding
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,14 +34,38 @@ class CreateAdActivity : AppCompatActivity() {
     private lateinit var btNextCreateAdImage: Button
     private lateinit var btCancelCreateAd: Button
 
+    private lateinit var userType: String
+    private lateinit var authorizationHeader: String
+    private var id: Int = 0
+
     private var categoryNames = ArrayList<String>()
     private var selectedCategoryId: Int = -1
     private var idListCategory: ArrayList<Int> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAdBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val prefs = getSharedPreferences("my_app_information", Context.MODE_PRIVATE)
+        val datosGuardados = prefs.getString("datos_usuario", null)
+
+        if (datosGuardados != null) {
+            val gson = Gson()
+            val usuario = gson.fromJson(datosGuardados, AuthResponse::class.java)
+            authorizationHeader = usuario.token
+            id = usuario.id
+            userType = usuario.user
+            Log.d("CREATEDATA:!", id.toString())
+            Log.d("CREATEDATA:!", authorizationHeader.toString())
+            Log.d("CREATEDATA:!", userType.toString())
+        } else {
+            Toast.makeText(applicationContext, "Error desconocido", Toast.LENGTH_SHORT).show()
+        }
+
+
+
         initComponents()
         setupSpinners()
         loadCategories()
@@ -65,7 +92,9 @@ class CreateAdActivity : AppCompatActivity() {
             val state = etNewState.text.toString().trim()
             val type = spNewType.selectedItem.toString().trim()
             val idCategory = selectedCategoryId
-
+            val userType = userType
+            val authorizationHeader = authorizationHeader
+            val id = id
             if (selectedCategoryId == -1) {
                 Toast.makeText(applicationContext, "Por favor, selecciona una categoría válida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -86,6 +115,9 @@ class CreateAdActivity : AppCompatActivity() {
                     intent.putExtra("quantity", quantityText)
                     intent.putExtra("state", state)
                     intent.putExtra("category", idCategory.toString())
+                    intent.putExtra("user", userType)
+                    intent.putExtra("token",authorizationHeader)
+                    intent.putExtra("idV",id.toString())
                     startActivity(intent)
                     finish()
                 }
@@ -93,7 +125,9 @@ class CreateAdActivity : AppCompatActivity() {
         }
 
         btCancelCreateAd.setOnClickListener {
+            //adsViewModel.originalAdsList=null
             finish()
+
         }
     }
 
