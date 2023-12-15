@@ -1,5 +1,6 @@
 
 package com.example.pygtianguistraker.ui.view.fragment
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,15 +10,19 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-
 import com.example.pygtianguistraker.R
+import com.example.pygtianguistraker.data.model.AuthResponse
 import com.example.pygtianguistraker.ui.view.ConsultActivityListReviews
 import com.example.pygtianguistraker.ui.view.ConsultActivityListSellProducts
 import com.example.pygtianguistraker.ui.view.CreateReviews
 import com.example.pygtianguistraker.ui.view.LoginActivity
+import com.google.gson.Gson
 import java.util.Locale
 
 class SettingsFragment : Fragment() {
+    private lateinit var userType: String
+    private lateinit var token: String
+    private  var id:Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +38,27 @@ class SettingsFragment : Fragment() {
         val buttonConsultReviews = view.findViewById<Button>(R.id.buttonConsultReviews)
         val buttonCreateReview = view.findViewById<Button>(R.id.buttonCreateReview)
 
+        val prefs = activity?.getSharedPreferences("my_app_information", Context.MODE_PRIVATE)
+        val datosGuardados = prefs?.getString("datos_usuario", null)
+
+        if (datosGuardados != null) {
+            // Los datos se encontraron en las preferencias compartidas
+            // Haz algo con los datos recuperados
+
+            // Por ejemplo, si estás usando Gson para analizar JSON en una clase de datos
+            val gson = Gson()
+            val usuario = gson.fromJson(datosGuardados, AuthResponse::class.java)
+            token = usuario.token
+            id = usuario.id
+            userType = usuario.user
+
+            // Realiza las operaciones que necesites con estos datos
+        } else {
+
+        }
+        if(userType=="Comprador"){
+            buttonSellProducts.visibility=View.GONE
+        }
         buttonChangeLanguage.setOnClickListener {
             // Cambiar entre inglés (en) y español (es)
             val currentLanguage = getCurrentLanguage() // Método que necesitas crear

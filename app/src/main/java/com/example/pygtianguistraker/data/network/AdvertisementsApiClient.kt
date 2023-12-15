@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface AdvertisementsApiClient {
@@ -22,4 +23,16 @@ interface AdvertisementsApiClient {
 
     @GET("/api/advertisement/getAdvertisementBySeller/{idVendedor}")
     fun getAllAdsSeller( @Path("idVendedor") idVendedor:Int): Call<List<AdsSeller>>
+
+    @PUT("/api/advertisement/updateAdvertisementSelled")
+    fun updateAdsSeller(
+        @Header("Authorization") token: String,
+        @Body requestBody: RequestBody
+    ): Call<ApiResponse>
+
+    @PUT("/api/advertisement/updateAdvertisementAvaible")
+    fun updateAdsSellerAvaible(
+        @Header("Authorization") token: String,
+        @Body requestBody: RequestBody
+    ): Call<ApiResponse>
 }
