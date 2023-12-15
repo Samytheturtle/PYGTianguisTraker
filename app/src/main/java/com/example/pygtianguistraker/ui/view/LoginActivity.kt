@@ -29,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: LoginActivityBinding
     private lateinit var loginResponse: AuthResponse
 
-
     private var categoryNames = ArrayList<String>()
     private var selectedCategoryId: Int = -1
     private var idListCategory: ArrayList<Int> = ArrayList()
@@ -49,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var userType: String
     private lateinit var token: String
     private  var id:Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         applySavedLanguage()
