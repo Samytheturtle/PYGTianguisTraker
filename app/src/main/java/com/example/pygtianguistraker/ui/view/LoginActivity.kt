@@ -54,6 +54,10 @@ class LoginActivity : AppCompatActivity() {
         applySavedLanguage()
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 74ca342 (Lista de productos reservados)
         binding.Loginbutton.setOnClickListener {
             createUserData()
             authVerification()

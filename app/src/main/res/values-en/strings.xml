@@ -131,4 +131,5 @@
     <string name="category">Category</string>
     <string name="ToastImageSelected">Error: Please select an image to register</string>
     <string name="statusProductInit">Available</string>
+
 </resources>

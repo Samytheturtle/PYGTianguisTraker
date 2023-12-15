@@ -12,6 +12,4 @@ interface ReservedProductsApiClient {
         @Header("Authorization") token: String,
         @Path("idVendedor") idVendedor: Int):
             Call<List<ReservedProduct>>
-
-
 }

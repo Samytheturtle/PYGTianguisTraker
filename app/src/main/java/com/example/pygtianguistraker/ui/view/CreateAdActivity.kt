@@ -115,9 +115,12 @@ class CreateAdActivity : AppCompatActivity() {
                     intent.putExtra("quantity", quantityText)
                     intent.putExtra("state", state)
                     intent.putExtra("category", idCategory.toString())
+<<<<<<< HEAD
                     intent.putExtra("user", userType)
                     intent.putExtra("token",authorizationHeader)
                     intent.putExtra("idV",id.toString())
+=======
+>>>>>>> 74ca342 (Lista de productos reservados)
                     startActivity(intent)
                     finish()
                 }
@@ -174,4 +177,8 @@ class CreateAdActivity : AppCompatActivity() {
             }
         })
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 74ca342 (Lista de productos reservados)

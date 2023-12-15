@@ -6,9 +6,13 @@ object Helper {
     fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             //Cambien la ip cada que quieran ejecutarlo, la ip es la de sus computadoras.
+<<<<<<< HEAD
 
             .baseUrl("http://192.168.100.74:3000")
 
+=======
+            .baseUrl("http://192.168.100.74:3000")
+>>>>>>> 74ca342 (Lista de productos reservados)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

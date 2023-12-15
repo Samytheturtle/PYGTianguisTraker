@@ -1,6 +1,7 @@
 package com.example.pygtianguistraker.data.model
 import java.io.Serializable
 data class AdsSeller(
+
     var idAnuncio: Int,
     var estatusAnuncio: String, var fotoAnuncio:String, var precioAnuncio: Float,
     var qrAnuncio: String, var nombreAnuncio: String, var idTianguisAnuncio: Int,
@@ -8,6 +9,8 @@ data class AdsSeller(
 ): Serializable{
     constructor() : this(0, "", "", 0F, "",
         "",0,0,0,0)
+<<<<<<< HEAD
 }
-
-
+=======
+}
+>>>>>>> 74ca342 (Lista de productos reservados)
