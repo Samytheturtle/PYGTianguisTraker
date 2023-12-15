@@ -30,6 +30,7 @@ class AdsAdapter(
         val buttonReserver = itemView.findViewById(R.id.reserveButton) as Button
         val buttonFav = itemView.findViewById(R.id.favoriteButton) as ImageButton
         val buttonDetails = itemView.findViewById(R.id.detailsButton) as Button
+        val status=itemView.findViewById(R.id.productNameTextView2) as TextView
 
     }
 
@@ -54,6 +55,8 @@ class AdsAdapter(
         holder.priceProduct.text=product.precioAnuncio.toString()
         holder.locationProduct.text=product.TianguisAnuncio
         holder.categoryProduct.text=product.CategoriaAnuncio
+        holder.status.text=product.estatusAnuncio
+
         if (userType == "Vendedor") {
             holder.buttonFav.visibility = View.GONE
         } else {
@@ -93,6 +96,7 @@ class AdsAdapter(
 
     }
     fun updateData(newData: List<Adsproduct>) {
+        Log.d("cleardata",newData.toString())
         productList.clear() // Limpia la lista actual
         productList.addAll(newData) // Agrega los nuevos datos
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado

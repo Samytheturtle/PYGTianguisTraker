@@ -88,13 +88,19 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun createUserData() {
-        user.correoUsuario = binding.editTextTextEmailAddress.text.toString().trim()
-        user.contraseniaUsuario = binding.editTextTextPassword.text.toString().trim()
+       // user.correoUsuario = binding.editTextTextEmailAddress.text.toString().trim()
+       // user.contraseniaUsuario = binding.editTextTextPassword.text.toString().trim()
+
+        user.correoUsuario = "adminB@tianguis.com"
+        user.contraseniaUsuario = "qwer1234"
+
+       // user.correoUsuario = "adminS@tianguis.com"
+        //user.contraseniaUsuario = "qwer1234"
     }
 
     private fun authVerification() {
         var validateRegister = false
-        if (!validateFields()) {
+        if (validateFields()) { //NO OLVIDES ES !
             val retrofit = Helper.getRetrofit()
             val service = retrofit.create(LoginApiClient::class.java)
             val result: Call<AuthResponse> = service.loginUser(user)

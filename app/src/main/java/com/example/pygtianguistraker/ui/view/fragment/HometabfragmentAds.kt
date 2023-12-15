@@ -16,6 +16,7 @@ import android.widget.SearchView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
@@ -25,12 +26,17 @@ import com.example.pygtianguistraker.data.model.Adsproduct
 import com.example.pygtianguistraker.data.model.AuthResponse
 import com.example.pygtianguistraker.data.model.Category
 import com.example.pygtianguistraker.data.model.Tianguis
-import com.example.pygtianguistraker.data.network.AdvertisementsApiClient
 import com.example.pygtianguistraker.data.network.CategoryApiClient
 import com.example.pygtianguistraker.data.network.UserSellerApiClient
 import com.example.pygtianguistraker.ui.view.CreateAdActivity
+import com.example.pygtianguistraker.ui.view.HomeActivity
+import com.example.pygtianguistraker.ui.viewModel.AdsViewModel
 import com.google.gson.Gson
 import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,10 +45,6 @@ class HometabfragmentAds : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdsAdapter
     private lateinit var actionButton: ImageButton
-
-    private var categoryNames = ArrayList<String>()
-    private var selectedCategoryId: Int = -1
-    private var idListCategory: ArrayList<Int> = ArrayList()
 
     private lateinit var tianguisList: List<Tianguis>
     private lateinit var categoryList: List<Category>
@@ -53,8 +55,10 @@ class HometabfragmentAds : Fragment() {
     //var originalAdsList = ArrayList<AdsSeller>()
     private var filterListCategory =ArrayList<Adsproduct>()
     private var filterListTianguis =ArrayList<Adsproduct>()
-    private var selectedCategory = "Todas las categorias..."
-    private var selectedTianguis = "Todos los tianguis..."
+    private var selectedCategory = "Todas las categorías"
+    private var selectedTianguis = "Todos los tianguis"
+
+    private lateinit var adsViewModel: AdsViewModel
 
     private lateinit var userType: String
     private lateinit var token: String
@@ -64,6 +68,8 @@ class HometabfragmentAds : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewAdsHome)
         recyclerView.layoutManager = LinearLayoutManager(context)
         actionButton = view.findViewById(R.id.buttonAccionHome)
+
+        adsViewModel = ViewModelProvider(requireActivity()).get(AdsViewModel::class.java)
 
         val prefs = activity?.getSharedPreferences("my_app_information", Context.MODE_PRIVATE)
         val datosGuardados = prefs?.getString("datos_usuario", null)
@@ -84,8 +90,13 @@ class HometabfragmentAds : Fragment() {
             // No se encontraron datos en las preferencias compartidas
 
         }
-        loadProducts()
-        getTianguis(view)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            getTianguis(view)
+            withContext(Dispatchers.Main) {
+
+            }
+        }
 
 
         val searchView = view.findViewById<SearchView>(R.id.searchViewAdsHome)
@@ -98,7 +109,7 @@ class HometabfragmentAds : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
                     // El texto de búsqueda está vacío o nulo, reinicia la lista original
-                    //loadProducts()
+
                     //LoadDummysProducts()
                 } else {
                     // Realiza la búsqueda con el nuevo texto
@@ -111,31 +122,37 @@ class HometabfragmentAds : Fragment() {
         tianguisSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
                 selectedTianguis = parentView.getItemAtPosition(position).toString()
-
-                if (selectedTianguis == "Todos los tianguis...") {
-                    // Si se selecciona "Todos los Tianguis...", reinicia la lista "
-                    //loadProducts()
-                    //LoadDummysProducts()
-                    if(selectedCategory != "Todas las categorias..."){//categoria fija
+                recoverProducts()
+                if (selectedTianguis == "Todos los tianguis") {
+                    if (selectedCategory != "Todas las categorías") {
+                        // Si se selecciona "Todos los tianguis" y la categoría no es "Todas las categorías",
+                        // realiza la filtración solo por categoría
                         val filteredList = originalProductList.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
-                        filterListCategory=filteredList
-                        adapter.updateData(filteredList)
+                        filterListCategory = filteredList
+                        Log.d("Filter", filterListCategory.toString())
+                        adapter.updateData(filterListCategory)
+                    } else {
+                        // Si se selecciona "Todos los tianguis" y "Todas las categorías", muestra todos los productos originales
+                        Log.d("1Filter","ALL C ALL T")
+                        //Log.d("1Filter",originalProductList.toString())
+                        recoverProducts()
                     }
-
                 } else {
-                    if(selectedCategory != "Todas las categorias..."){//categoria fija
-                        //loadProducts()
-                        //LoadDummysProducts()
+                    // Si se selecciona un tianguis específico
+                    if (selectedCategory != "Todas las categorías") {
+                        // Si también se ha seleccionado una categoría específica, filtra por ambas
                         val filteredList1 = originalProductList.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
                         val filteredList = filteredList1.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
-                        filterListTianguis=filteredList
-                        adapter.updateData(filteredList)
-                    }else{
+                        filterListTianguis = filteredList
+                        Log.d("Filter", filterListTianguis.toString())
+                        adapter.updateData(filterListTianguis)
+                    } else {
+                        // Si solo se ha seleccionado un tianguis específico, filtra solo por tianguis
                         val filteredList = originalProductList.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
-                        filterListTianguis=filteredList
-                        adapter.updateData(filteredList)
+                        filterListTianguis = filteredList
+                        Log.d("Filter", filterListTianguis.toString())
+                        adapter.updateData(filterListTianguis)
                     }
-
                 }
             }
 
@@ -147,31 +164,37 @@ class HometabfragmentAds : Fragment() {
         val categorySpinner = view?.findViewById<Spinner>(R.id.categorySpinner)
         categorySpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-
-                if (selectedCategory == "Todas las categorias...") {
-                    //loadProducts()
-                    //LoadDummysProducts()
-                    // Si se selecciona "Todas las Categorias...", reinicia la lista
-                    if(selectedTianguis != "Todos los Tianguis..."){ //Tianguis fijo
+                selectedCategory = parentView.getItemAtPosition(position).toString()
+                recoverProducts()
+                if (selectedCategory == "Todas las categorías") {
+                    if (selectedTianguis != "Todos los tianguis") {
+                        // Si se selecciona "Todas las categorías" y el tianguis no es "Todos los tianguis",
+                        // realiza la filtración solo por tianguis
                         val filteredList = originalProductList.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
-                        filterListTianguis=filteredList
-                        adapter.updateData(filteredList)
+                        filterListTianguis = filteredList
+                        Log.d("Filter", filterListTianguis.toString())
+                        adapter.updateData(filterListTianguis)
+                    } else {
+                        // Si se selecciona "Todas las categorías" y "Todos los tianguis", muestra todos los productos originales
+                        //Log.d("Filter","ALL C ALL T")
+                        recoverProducts()
                     }
                 } else {
-                    if(selectedTianguis != "Todos los Tianguis..."){ //Tianguis fijo
-                        //loadProducts()
-                        //LoadDummysProducts()
+                    // Si se selecciona una categoría específica
+                    if (selectedTianguis != "Todos los tianguis") {
+                        // Si también se ha seleccionado un tianguis específico, filtra por ambas
                         val filteredList1 = originalProductList.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
                         val filteredList = filteredList1.filter { it.TianguisAnuncio == selectedTianguis } as ArrayList<Adsproduct>
-                        filterListCategory=filteredList
-                        adapter.updateData(filteredList)
-                    }else{
+                        filterListCategory = filteredList
+                        Log.d("Filter", filterListCategory.toString())
+                        adapter.updateData(filterListCategory)
+                    } else {
+                        // Si solo se ha seleccionado una categoría específica, filtra solo por categoría
                         val filteredList = originalProductList.filter { it.CategoriaAnuncio == selectedCategory } as ArrayList<Adsproduct>
-                        filterListCategory=filteredList
-
-                        adapter.updateData(filteredList)
+                        filterListCategory = filteredList
+                        Log.d("Filter", filterListCategory.toString())
+                        adapter.updateData(filterListCategory)
                     }
-
                 }
             }
 
@@ -180,10 +203,9 @@ class HometabfragmentAds : Fragment() {
             }
         }
 
+
         actionButton = view.findViewById(R.id.buttonAccionHome)
         actionButton.setOnClickListener { onActionButtonClicked() }
-
-
         return view
     }
     private fun loadCategories(view: View) {
@@ -230,7 +252,7 @@ class HometabfragmentAds : Fragment() {
                     tianguisList = response.body()!!
                     Log.d("getTianguis",tianguisList.toString())
                     activity?.let {
-                        Toast.makeText(it, "Bien hecho", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(it, "Productos cargados :D", Toast.LENGTH_SHORT).show()
                     }
                     loadCategories(view)
 
@@ -257,58 +279,7 @@ class HometabfragmentAds : Fragment() {
 
         adapterConexion(Adssellproduct)
     }
-    private fun loadProducts() {
-        Log.d("loadProducts","1")
-        val retrofit = Helper.getRetrofit()
-        val service = retrofit.create(AdvertisementsApiClient::class.java)
-        val result: Call<List<AdsSeller>> = service.getAllAds()
-        Log.d("loadProducts","2")
-        //Log.d("loadProducts",result.toString())
-            result.enqueue(object : Callback<List<AdsSeller>> {
-                override fun onResponse(call: Call<List<AdsSeller>>, response: Response<List<AdsSeller>>) {
 
-                    Log.d("loadProducts", "Response code: EEEEEEEEEEEEEE")
-                    if (response.isSuccessful) {
-                        Log.d("loadProducts","3")
-                        originalAdsList= response.body() ?: emptyList()
-                        Log.d("loadProducts",originalAdsList.toString())
-                        adapterConexion(originalAdsList)
-                    }else {
-                        when (response.code()) {
-                            401 -> {
-                                activity?.let{
-                                    Toast.makeText(it, "Error de autorización", Toast.LENGTH_SHORT).show()
-                                }
-
-                            }
-                            500 -> {
-                                activity?.let{
-                                    Toast.makeText(it, "Error del servidor", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            else -> {
-                                activity?.let{
-                                    Log.e("loadProducts", "Error desconocido")
-                                    Toast.makeText(it, "Error desconocido", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<List<AdsSeller>>, t: Throwable) {
-                    Log.e("loadProducts", "Failure")
-                    activity?.let {
-                        Toast.makeText(it, "Error en la llamada: ${t.message}", Toast.LENGTH_SHORT)
-                            .show()
-                        Log.e("loadProducts", "Error en la llamada: ${t.message}")
-                    }
-                }
-
-            })
-
-
-    }
     private fun getCategoryNameById(categoryId: Int): String {
         Log.d("getCategoryNameById","1")
         val category = categoryList.find { it.idCategoria == categoryId }
@@ -320,6 +291,7 @@ class HometabfragmentAds : Fragment() {
         return tianguis?.nombreTianguis ?: ""
     }
     private fun adapterConexion(AdssellerList: List<AdsSeller>) {
+        Log.d("adapterConexion","1")
         val adsProductList = ArrayList<Adsproduct>()
         Log.d("adapterConexion","1")
         for (adsSeller in AdssellerList) {
@@ -340,32 +312,49 @@ class HometabfragmentAds : Fragment() {
             )
 
             adsProductList.add(adsProduct)
+            Log.d("LIST",adsProduct.nombreAnuncio)
+            Log.d("LIST",adsProduct.TianguisAnuncio)
+            Log.d("LIST",adsProduct.CategoriaAnuncio)
         }
 
         originalProductList=adsProductList
+
+        Log.d("LIST",originalProductList[0].nombreAnuncio)
+
         adapter = AdsAdapter(requireContext(),adsProductList,userType)
         recyclerView.adapter = adapter
     }
     private fun changerSpinners(view: View) {
+        // Agrega "Todas las categorías" y "Todos los tianguis" a las listas de nombres
+        val categoryNames = mutableListOf("Todas las categorías")
+        categoryNames.addAll(categoryList.map { it.nombreCategoria })
 
-        activity?.let{
+        val tianguisNames = mutableListOf("Todos los tianguis")
+        tianguisNames.addAll(tianguisList.map { it.nombreTianguis })
+
+        activity?.let {
             val categorySpinner = view.findViewById<Spinner>(R.id.categorySpinner)
-            val categoryNames = categoryList.map { it.nombreCategoria }
             val categoryAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoryNames)
             categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             categorySpinner.adapter = categoryAdapter
+
+            // Selecciona "Todas las categorías" inicialmente
+            categorySpinner.setSelection(0)
         }
 
-        activity?.let{
+        activity?.let {
             val tianguisSpinner = view.findViewById<Spinner>(R.id.tianguisSpinner)
-            val tianguisNames = tianguisList.map { it.nombreTianguis }
             val tianguisAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, tianguisNames)
             tianguisAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             tianguisSpinner.adapter = tianguisAdapter
-        }
-        changeButtonImage()
 
+            // Selecciona "Todos los tianguis" inicialmente
+            tianguisSpinner.setSelection(0)
+        }
+
+        changeButtonImage()
     }
+
 
     private fun changeButtonImage() {
         val imageResource = when (userType) {
@@ -375,9 +364,25 @@ class HometabfragmentAds : Fragment() {
         }
         actionButton.setImageResource(imageResource)
 
-        //loadProducts()
-        LoadDummysProducts()
+        recoverProducts()
+        //LoadDummysProducts()
     }
+
+    private fun recoverProducts() {
+        val originalAdsList = adsViewModel.originalAdsList
+        Log.d("recover2",originalAdsList.toString())
+
+        if (originalAdsList != null) {
+            // Utiliza originalAdsList en tu fragmento
+            adapterConexion(originalAdsList)
+        }else{
+            activity?.let {
+                Toast.makeText(it, "Lista vacia", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
 
     private fun onActionButtonClicked() {
         when (userType) {
@@ -387,9 +392,13 @@ class HometabfragmentAds : Fragment() {
             }
             "Vendedor" -> {
                 // Acción para el tipo de usuario "Vendedor"
-
                 val intent = Intent(requireContext(), CreateAdActivity::class.java)
                 startActivity(intent)
+                val homeActivity = activity
+                if (homeActivity is HomeActivity) {
+                    homeActivity.finish()
+                }
+
 
             }
             else -> {
@@ -464,12 +473,18 @@ class HometabfragmentAds : Fragment() {
         }
 
         // Actualiza el adaptador con los resultados filtrados
-        adapter.updateData(filteredAds)
+       // adapter.updateData(filteredAds)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    }
+    override fun onResume() {
+        super.onResume()
+        //recoverProducts()
+        // Coloca aquí el código para recargar o actualizar los datos del Fragment
+        // Por ejemplo, puedes volver a cargar la lista de productos, si es necesario.
     }
 }
 
