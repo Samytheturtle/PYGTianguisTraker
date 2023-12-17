@@ -200,7 +200,7 @@ class CreateAdImageActivity : AppCompatActivity() {
             ads.idCategoriaAnuncio = 0
         }
     }
-<<<<<<< HEAD
+
     private fun sharePreferencesPYAndroid(loginResponse: AuthResponse) {
         val preferenceName = "my_app_information"
         val prefs: SharedPreferences = getSharedPreferences(preferenceName, MODE_PRIVATE)
@@ -211,9 +211,7 @@ class CreateAdImageActivity : AppCompatActivity() {
         editor.putString("datos_usuario", loginResponseJson)
         editor.apply()
     }
-=======
 
->>>>>>> 74ca342 (Lista de productos reservados)
     private fun loadTianguisId(ads: AdsSeller) {
         Log.d("Tianguis","TG1")
         val retrofit = Helper.getRetrofit()
@@ -263,10 +261,9 @@ class CreateAdImageActivity : AppCompatActivity() {
     }
 
     private fun RegisterAds() {
-<<<<<<< HEAD
+
         binding.progressBar.visibility = View.VISIBLE // Mostrar la barra de progreso
-=======
->>>>>>> 74ca342 (Lista de productos reservados)
+
         var AdsAux: AdsSeller = ads
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(AdvertisementsApiClient::class.java)

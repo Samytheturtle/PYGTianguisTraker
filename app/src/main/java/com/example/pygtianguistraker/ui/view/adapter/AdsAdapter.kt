@@ -1,12 +1,8 @@
 
 import android.content.Context
-<<<<<<< HEAD
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
-=======
-import android.graphics.BitmapFactory
->>>>>>> 74ca342 (Lista de productos reservados)
 import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,7 +15,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pygtianguistraker.R
-<<<<<<< HEAD
 import com.example.pygtianguistraker.core.Helper
 import com.example.pygtianguistraker.data.model.Adsproduct
 import com.example.pygtianguistraker.data.model.ApiResponse
@@ -34,21 +29,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.concurrent.CompletableFuture
-=======
-import com.example.pygtianguistraker.data.model.Adsproduct
->>>>>>> 74ca342 (Lista de productos reservados)
 
 
 class AdsAdapter(
     context: Context,
     var productList: ArrayList<Adsproduct>,
-<<<<<<< HEAD
     var userType: String,
     var token:String,
     var id:Int
-=======
-    var userType: String
->>>>>>> 74ca342 (Lista de productos reservados)
 ): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -74,28 +62,18 @@ class AdsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 74ca342 (Lista de productos reservados)
         //decodificador Base64
         val product = productList[position]
         val decodedImage = Base64.decode(product.fotoAnuncio, Base64.DEFAULT)
         val bitmap = BitmapFactory.decodeByteArray(decodedImage, 0, decodedImage.size)
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 74ca342 (Lista de productos reservados)
         holder.NameProducto.text=product.nombreAnuncio
         holder.imageProduct.setImageBitmap(bitmap)
         holder.priceProduct.text=product.precioAnuncio.toString()
         holder.locationProduct.text=product.TianguisAnuncio
         holder.categoryProduct.text=product.CategoriaAnuncio
-<<<<<<< HEAD
         holder.status.text=product.estatusAnuncio
-=======
->>>>>>> 74ca342 (Lista de productos reservados)
 
         if (userType == "Vendedor") {
             holder.buttonFav.visibility = View.GONE
@@ -126,7 +104,6 @@ class AdsAdapter(
             }
 
             holder.buttonReserver.setOnClickListener {
-<<<<<<< HEAD
                 if(holder.status.text=="Disponible"){
                     holder.buttonReserver.text = "Marcar como \n" +
                             " Disponible"
@@ -152,14 +129,6 @@ class AdsAdapter(
             holder.buttonDetails.setOnClickListener {
                 // Acciones para el botón "Eliminar"
                 Toast.makeText(holder.itemView.context, "En desarrollo...\uD83D\uDE09", Toast.LENGTH_SHORT).show()
-=======
-                // Acciones para el botón "Editar"
-                Log.d("prueba", "Editar ${product.nombreAnuncio}")
-            }
-            holder.buttonDetails.setOnClickListener {
-                // Acciones para el botón "Eliminar"
-                Log.d("prueba", "Eliminar ${product.nombreAnuncio}")
->>>>>>> 74ca342 (Lista de productos reservados)
             }
         }
         else if (userType == "Comprador") {
@@ -175,7 +144,6 @@ class AdsAdapter(
             }
 
             holder.buttonReserver.setOnClickListener {
-<<<<<<< HEAD
                 if(holder.status.text=="Disponible"){
                     holder.buttonReserver.text = "Apartado"
                     holder.status.setTextColor(Color.RED)
@@ -196,14 +164,6 @@ class AdsAdapter(
                     putExtra("id", product.idAnuncio)
                 }
                 context.startActivity(intent)
-=======
-                // Acciones para el botón "Reservar"
-                Log.d("prueba", "Reservar ${product.nombreAnuncio}")
-            }
-            holder.buttonDetails.setOnClickListener {
-                // Acciones para el botón "Detalles"
-                Log.d("prueba", "Detalles ${product.nombreAnuncio}")
->>>>>>> 74ca342 (Lista de productos reservados)
             }
         }
 
@@ -213,7 +173,6 @@ class AdsAdapter(
         }
 
     }
-<<<<<<< HEAD
 
     private fun reserverads(idAnuncio: Int) {
         val completableFuture = CompletableFuture<ApiResponse>()
@@ -221,12 +180,13 @@ class AdsAdapter(
         // Crear un objeto UpdateAdvertisementRequest con la idAnuncio
         val request = addPulletApartAdvertisement(idAnuncio,id)
         // Convertir el objeto a JSON utilizando Gson
+        Log.d("r",idAnuncio.toString() + id.toString())
         val requestBody = RequestBody.create(MediaType.parse("application/json"), Gson().toJson(request))
         Log.e("estatusAnuncio", requestBody.toString())
         val retrofit = Helper.getRetrofit()
         val service = retrofit.create(AdvertisementsApiClient::class.java)
 
-        val result: Call<ApiResponse> = service.updateAdsSellerAvaible(token, requestBody)
+        val result: Call<ApiResponse> = service.addPulletApartAdvertisement(token, requestBody)
         result.enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                 if (response.isSuccessful) {
@@ -307,9 +267,6 @@ class AdsAdapter(
 
     fun updateData(newData: List<Adsproduct>) {
         Log.d("cleardata",newData.toString())
-=======
-    fun updateData(newData: List<Adsproduct>) {
->>>>>>> 74ca342 (Lista de productos reservados)
         productList.clear() // Limpia la lista actual
         productList.addAll(newData) // Agrega los nuevos datos
         notifyDataSetChanged() // Notifica al RecyclerView que los datos han cambiado

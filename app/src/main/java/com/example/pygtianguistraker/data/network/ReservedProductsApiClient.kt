@@ -7,9 +7,9 @@ import retrofit2.http.Header
 import retrofit2.http.Path
 
 interface ReservedProductsApiClient {
-    @GET("/api/advertisement/getAdvertisementsPulledApartSeller/{idVendedor}")
+    @GET("/api/advertisement/getAdvertisementBuyer/{idComprador}")
     fun getAdvertisementsPulledApartSeller(
         @Header("Authorization") token: String,
-        @Path("idVendedor") idVendedor: Int):
+        @Path("idComprador") idComprador: Int):
             Call<List<ReservedProduct>>
 }

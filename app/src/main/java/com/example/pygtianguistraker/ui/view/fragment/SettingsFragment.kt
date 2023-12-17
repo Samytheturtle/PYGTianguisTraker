@@ -57,7 +57,11 @@ class SettingsFragment : Fragment() {
 
         }
         if(userType=="Comprador"){
-            buttonSellProducts.visibility=View.GONE
+            buttonSellProducts.isEnabled=false
+            buttonConsultReviews.isEnabled=false
+        }else{
+            buttonSellProducts.isEnabled=false
+            buttonCreateReview.isEnabled=false
         }
         buttonChangeLanguage.setOnClickListener {
             // Cambiar entre inglés (en) y español (es)

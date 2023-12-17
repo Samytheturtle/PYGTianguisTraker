@@ -9,8 +9,5 @@ data class AdsSeller(
 ): Serializable{
     constructor() : this(0, "", "", 0F, "",
         "",0,0,0,0)
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 74ca342 (Lista de productos reservados)

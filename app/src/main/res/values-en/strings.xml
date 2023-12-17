@@ -98,6 +98,7 @@
     <string name="login">Login</string>
     <string name="button_register">Register</string>
     <string name="edit">Edit Profile</string>
+    <string name="show_details_user_seller">More info</string>
     <string name="delete">Delete Profile</string>
     <string name="next">Next</string>
     <string name="register">Register</string>
@@ -131,5 +132,7 @@
     <string name="category">Category</string>
     <string name="ToastImageSelected">Error: Please select an image to register</string>
     <string name="statusProductInit">Available</string>
-
+    <string name="ToastReviewIncorrect">The review has not been sent correctly, please complete the fields.</string>
+    <string name="ToastReviewSent">Done, the review has been sent successfully!</string>
+    <string name="tianguis_locate">Tianguis location</string>
 </resources>

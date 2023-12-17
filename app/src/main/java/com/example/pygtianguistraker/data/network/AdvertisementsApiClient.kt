@@ -21,7 +21,6 @@ interface AdvertisementsApiClient {
     @GET("/api/advertisement/getAdvertisements")
     fun getAllAds(): Call<List<AdsSeller>>
 
-<<<<<<< HEAD
     @GET("/api/advertisement/getAdvertisementBySeller/{idVendedor}")
     fun getAllAdsSeller( @Path("idVendedor") idVendedor:Int): Call<List<AdsSeller>>
 
@@ -40,11 +39,10 @@ interface AdvertisementsApiClient {
     @GET("/api/advertisement/getAdvertisement/{idAnuncio}")
     fun getAdsById( @Path("idAnuncio") idAnuncio:Int): Call<AdsSeller>
 
-    @PUT("/api/advertisement/addPulletApartAdvertisement")
+    @POST("/api/advertisement/addPulletApartAdvertisement")
     fun addPulletApartAdvertisement(
         @Header("Authorization") token: String,
         @Body requestBody: RequestBody
     ): Call<ApiResponse>
-=======
->>>>>>> 74ca342 (Lista de productos reservados)
+
 }

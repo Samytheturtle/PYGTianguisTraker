@@ -54,10 +54,7 @@ class LoginActivity : AppCompatActivity() {
         applySavedLanguage()
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-<<<<<<< HEAD
-=======
 
->>>>>>> 74ca342 (Lista de productos reservados)
         binding.Loginbutton.setOnClickListener {
             createUserData()
             authVerification()
@@ -92,11 +89,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun createUserData() {
-       // user.correoUsuario = binding.editTextTextEmailAddress.text.toString().trim()
-       // user.contraseniaUsuario = binding.editTextTextPassword.text.toString().trim()
+        user.correoUsuario = binding.editTextTextEmailAddress.text.toString().trim()
+        user.contraseniaUsuario = binding.editTextTextPassword.text.toString().trim()
 
-        user.correoUsuario = "tony@gmail.com"
-        user.contraseniaUsuario = "Nozomi69"
+       // user.correoUsuario = "tony@gmail.com"
+        //user.contraseniaUsuario = "Nozomi69"
 
        // user.correoUsuario = "samyTheTrutle@gmail.com"
         //user.contraseniaUsuario = "KevinK123"
@@ -104,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun authVerification() {
         var validateRegister = false
-        if (validateFields()) { //NO OLVIDES ES !
+        if (!validateFields()) { //NO OLVIDES ES !
             val retrofit = Helper.getRetrofit()
             val service = retrofit.create(LoginApiClient::class.java)
             val result: Call<AuthResponse> = service.loginUser(user)
